@@ -11,3 +11,12 @@
     height: auto;
     font-size: 50px;
 }
+
+#petitMenu{
+    background: white;
+    width: 20%;
+  /*  display: inline-block;*/
+    position: relative;
+    text-align: center;
+    float: right;
+}
