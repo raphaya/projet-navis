@@ -24,64 +24,57 @@
             <li class="nav navbar-btn"><a href="#">Galerie</a></li>
         </ul>
     </div>
+    <div class="chat">
+        <div id="room" class="affichage">
+            <div class="content"> tchat :</div>
+        </div>
+
+        <div class="input">
+            <form method="POST" id="input-room" name="form-room">
+                <input type="textaera" id="message" name="message" placeholder="tapez votre texte ici">
+                <input type="submit" value="Envoyer">
+            </form>
+        </div>
+    </div>
     <div class="corps">
         <div class="bandeau">bandeau
             <div id="petitMenu"><span data-action="open-popin">
                 <ul>
-                    <li>Connection</li>
-                    <li><a href="register.html">Inscription</a></li>
+                    <li><a href="#">Log in</a></li>
+                    <li><a href="#">Register</a></li>
                 </ul></span>
             </div>
         </div>
     </div>
-    <div class="chat">
-                  <div id="room" class="affichage">
-                <div class="vertical-bar"> Membre connecté :
-                    <ul>
-                        <li>Moi</li>
-                        <li>Lui</li>
-                        <li>Elle</li>
-                        <li>L'autre</li>
-                    </ul>
-                </div>
-                <div class="content"> tchat :</div>
-            </div>
 
-            <div class="input">
-                <form method="POST" id="input-room" name="form-room">
-                    <input type="textaera" id="message" name="message" placeholder="tapez votre texte ici">
-                    <input type="submit" value="Envoyer">
-                </form>
-            </div>
-    </div>
 
     <div id="tp-popin-container">
         <div class="bg-popin" data-action="close-popin">
         </div>
         <div class="tp-popin">
             <div class="header">
-            <p><span data-action="close-popin"> X </span></p>
-            <ul id="navpopin">
-                <li class="navpopin"><a href="#">Se connecter</a></li>
-                <li class="navpopin"><a href="#">S'inscrire</a></li>
-            </ul>
-              <form method="POST" id="connect">
-                <fieldset>
-                <ul>
-                    <li>
-                        <label for="pseudo">Pseudo :</label>
-                        <input type="text" id="pseudo" name="pseudo" placeholder="pseudo">
-                    </li>
-                    <li>
-                        <label for="password">Mot de passe :</label>
-                        <input type="password"  id="password" name="password" placeholder="password">
-                    </li>
-                    <li>
-                        <input id="connection" type="submit">
-                    </li>
+                <p><span data-action="close-popin"> X </span></p>
+                <ul id="navpopin">
+                    <li class="navpopin"><a href="#">Se connecter</a></li>
+                    <li class="navpopin"><a href="#">S'inscrire</a></li>
                 </ul>
-                </fieldset>
-        </form>
+                <form method="POST" id="connect">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <label for="pseudo">Pseudo :</label>
+                                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo">
+                            </li>
+                            <li>
+                                <label for="password">Mot de passe :</label>
+                                <input type="password" id="password" name="password" placeholder="password">
+                            </li>
+                            <li>
+                                <input id="connection" type="submit">
+                            </li>
+                        </ul>
+                    </fieldset>
+                </form>
             </div>
         </div>
     </div>
