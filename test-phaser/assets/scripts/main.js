@@ -1,23 +1,27 @@
-var game = new Phaser.Game(1024, 1259, Phaser.CANVAS);
+var game = new Phaser.Game(1600, 920, Phaser.CANVAS);
 
 var fireButton;
 var bullets;
 var bulletTime = 0;
 var vaisseau;
 var enemies;
+var enemyBullets;
+var firingTimer = 1000;
+var livingEnemies = [];
 var GameState = {
 
   preload: function () {
-    this.load.image('background', 'assets/images/nebula.png');
+    this.load.image('background', 'assets/images/background.png');
     this.load.image('vaisseau', 'assets/images/vaisseau.png');
     this.load.image('enemy', 'assets/images/ennemi.png');
     this.load.image('bullet', 'assets/images/bullet.png');
+    this.load.image('enemyBullet', 'assets/images/enemy_bullet.png');
     /*this.load.spritesheet('kaboom', 'assets/images/explode.png', 128, 128);*/
   },
 
   create: function () {
-    this.fond = this.game.add.tileSprite(0, 0, 1024, 1259, 'background');
-    vaisseau = this.game.add.sprite(100, 100, 'vaisseau');
+    this.fond = this.game.add.tileSprite(0, 0, 1600, 920, 'background');
+    vaisseau = this.game.add.sprite(700, 920, 'vaisseau');
 
     enemies = game.add.group();
     enemies.enableBody = true;
@@ -33,19 +37,25 @@ var GameState = {
     bullets.physicsBodytype = Phaser.Physics.ARCADE;
     bullets.createMultiple(30, 'bullet');
     bullets.setAll('angle', -90);
-    bullets.setAll('anchor.x', 0.5);
-    bullets.setAll('anchor.y', -0.4);
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
 
+    enemyBullets = game.add.group();
+    enemyBullets.enableBody = true;
+    enemyBullets.physicsBodytype = Phaser.Physics.ARCADE;
+    enemyBullets.createMultiple(30, 'enemyBullet');
+    enemyBullets.setAll('angle', -90);
+    enemyBullets.setAll('outOfBoundsKill', true);
+    enemyBullets.setAll('checkWorldBounds', true);
+
 
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    vaisseau.anchor.setTo(0.5, -3.5);
-    vaisseau.scale.setTo(0.5);
+    vaisseau.anchor.setTo(0.5, 0.5);
+    vaisseau.scale.setTo(0.08);
 
 
-    explosions = game.add.group();
-    explosions.createMultiple(30, 'kaboom');
+    //explosions = game.add.group();
+    //explosions.createMultiple(30, 'kaboom');
 
 
   },
@@ -112,12 +122,21 @@ var GameState = {
       vaisseau.frame = 4;
     }
 
-    if (fireButton.isDown) {
+    if (vaisseau.alive && fireButton.isDown) {
       fireBullet();
     }
 
-    game.physics.arcade.overlap(bullets, enemies, collisionHandler, null, this);
+    if (game.time.now > firingTimer) {
+        enemyFires();
+    }
 
+    game.physics.arcade.overlap(bullets, enemies, collisionHandler, null, this);
+    game.physics.arcade.overlap(enemyBullets, vaisseau, enemyHitsPlayer, null, this);
+
+  },
+
+  render: function () {
+    //text = game.add.text("ALLO !!!" + vaisseau.health);
   }
 };
 
@@ -139,8 +158,9 @@ function fireBullet() {
 A modifier pour la hitbox des ennemies
 */
 function createEnnemies() {
-  var enemy = enemies.create(500, 500, 'enemy');
-  enemy.anchor.setTo(0.1, 1);
+  var enemy = enemies.create(6000, 0, 'enemy');
+  enemy.body.setSize(enemy.width * 0.08, enemy.height * 0.1);
+  enemy.damageAmount = 20;
   enemies.scale.setTo(0.1);
   enemies.x = 100;
   enemies.y = 100;
@@ -152,11 +172,44 @@ function collisionHandler(bullet, enemy) {
   explosion.reset(enemy.body.x, enemy.body.y);
   explosion.play('kaboom', 30, false, true);*/
 
-  enemy.kill();
+  //enemy.kill();
   bullet.kill();
 }
 
+function enemyHitsPlayer(vaisseau, enemyBullet) {
+  vaisseau.kill();
+  enemyBullet.kill();
+}
 
+function enemyFires () {
+
+    //  Grab the first bullet we can from the pool
+    enemyBullet = enemyBullets.getFirstExists(false);
+
+    livingEnemies.length=0;
+
+    enemies.forEachAlive(function(enemy){
+
+        // put every living enemy in an array
+        livingEnemies.push(enemy);
+    });
+
+
+    if (enemyBullet && livingEnemies.length > 0)
+    {
+        
+        var random=game.rnd.integerInRange(0,livingEnemies.length-1);
+
+        // randomly select one of them
+        var shooter=livingEnemies[random];
+        // And fire the bullet from this enemy
+        enemyBullet.reset(shooter.body.x, shooter.body.y);
+
+        game.physics.arcade.moveToObject(enemyBullet, vaisseau, 300);
+        firingTimer = game.time.now + 200;
+    }
+
+}
 
 game.state.add('GameState', GameState);
 game.state.start('GameState');
