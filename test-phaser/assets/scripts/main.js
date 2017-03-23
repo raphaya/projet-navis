@@ -215,9 +215,6 @@ function fireSpecial() {
   }
 }
 
-/*
-A modifier pour la hitbox des ennemies
-*/
 function createEnnemies() {
   var MIN_ENEMY_SPACING = 2000;
   var MAX_ENEMY_SPACING = 3000;
@@ -228,7 +225,7 @@ function createEnnemies() {
   if (enemy) {
 
     enemy.reset(0 + Math.random() * 10000, -100, 'enemy');
-    enemy.body.setSize(enemy.width * 0.08, enemy.height * 0.1);
+    enemy.body.setSize(enemy.width * 0.16, enemy.height * 0.1);
     enemy.body.velocity.y = ENEMY_SPEED;
     enemy.body.drag.x = 100;
 
