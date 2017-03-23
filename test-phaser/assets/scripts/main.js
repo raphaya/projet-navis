@@ -1,18 +1,21 @@
 var game = new Phaser.Game(1600, 920, Phaser.CANVAS);
 
 var fireButton;
-var shield;
 var specialButton;
 var specialTime = 0;
 var bullets;
 var bulletTime = 0;
 var vaisseau;
+var healthBar;
+var expBar;
 var icone;
+var warning;
 var enemies;
 var enemyBullets;
 var gameOver;
 var score = 0;
 var scoreText;
+var warningTimer = 0;
 var firingTimer = 1000;
 var livingEnemies = [];
 var GameState = {
@@ -23,6 +26,9 @@ var GameState = {
     this.load.image('enemy', 'assets/images/ennemi.png');
     this.load.image('bullet', 'assets/images/bullet.png');
     this.load.image('icone', 'assets/images/icone.jpg');
+    this.load.image('healthBar', 'assets/images/healthbar.png');
+    this.load.image('expBar', 'assets/images/xpbar.png');
+    this.load.image('warning', 'assets/images/warning.png');
     this.load.image('special', 'assets/images/special.png');
     this.load.image('special2', 'assets/images/special2.png');
     this.load.image('enemyBullet', 'assets/images/enemy_bullet.png');
@@ -35,12 +41,29 @@ var GameState = {
     vaisseau = this.game.add.sprite(800, 800, 'vaisseau');
     vaisseau.anchor.setTo(0.5, 0.5);
     vaisseau.scale.setTo(0.08);
+    vaisseau.damageAmount = 1;
     vaisseau.health = 100;
+
+    healthBar = this.game.add.sprite(25, 840, 'healthBar');
+    healthBar.scale.setTo(0.1);
+    healthBar.scale.x = vaisseau.health / 150;
+    healthBar.alpha = 0.7;
+
+    expBar = this.game.add.sprite(25, 870, 'expBar');
+    expBar.scale.setTo(0.1);
+    expBar.scale.x = 0;
+    expBar.alpha = 0.7;
 
     icone = this.game.add.sprite(800, 880, 'icone');
     icone.anchor.setTo(0.5, 0.5);
     icone.scale.setTo(0.06);
     icone.alpha = 0.5;
+
+    warning = this.add.sprite(800, 820, 'warning');
+    warning.anchor.setTo(0.5, 0.5);
+    warning.angle = 365;
+    warning.scale.setTo(0.2);
+    warning.alpha = 0.7;
 
     enemies = game.add.group();
     enemies.enableBody = true;
@@ -94,16 +117,10 @@ var GameState = {
       explosion.animations.add('kaboom');
     });
 
-    //  Shields stat
-    shields = game.add.text(game.world.width - 150, 10, 'Santé: ' + vaisseau.health + ' HP', { font: '20px Comic sans', fill: '#fff' });
-    shields.render = function () {
-      shields.text = 'Santé: ' + Math.max(vaisseau.health, 0) + ' HP';
-    };
-
-        //  Score
+    //  Score
     scoreText = game.add.text(10, 10, '', { font: '20px Comic Sans', fill: '#fff' });
     scoreText.render = function () {
-        scoreText.text = 'Score: ' + score;
+      scoreText.text = 'Score: ' + score;
     };
     scoreText.render();
 
@@ -205,6 +222,14 @@ var GameState = {
       }
     }
 
+    if (vaisseau.health <= 20 && warningTimer < game.time.now) {
+      warning.visible = true;
+      warningTimer = game.time.now + 1400;
+    } 
+    if (vaisseau.health > 20 || (warningTimer - 700) < game.time.now) {
+      warning.visible = false;
+    }
+
     game.physics.arcade.overlap(bullets, enemies, collisionHandler, null, this);
     game.physics.arcade.overlap(specials, enemies, collisionHandlerSpecial, null, this);
     game.physics.arcade.overlap(specials2, enemies, collisionHandlerSpecial2, null, this);
@@ -252,6 +277,7 @@ function createEnnemies() {
     enemy.body.setSize(enemy.width * 0.16, enemy.height * 0.1);
     enemy.body.velocity.y = ENEMY_SPEED;
     enemy.body.drag.x = 100;
+    enemy.health = 3;
 
   }
 
@@ -265,9 +291,12 @@ function collisionHandler(bullet, enemy) {
   explosion.reset(bullet.body.x, bullet.body.y);
   explosion.alpha = 0.7;
   explosion.play('kaboom', 30, false, true);
-  score = score + 10;
-  scoreText.render();
-  enemy.kill();
+  enemy.damage(vaisseau.damageAmount);
+  if (!enemy.alive) {
+    score = score + 10;
+    scoreText.render();
+    game.add.tween(expBar.scale).to({ x : score / 1000}, 100, Phaser.Easing.Linear.None, true);
+  }
   bullet.kill();
 }
 
@@ -320,8 +349,12 @@ function collisionHandlerSpecial2(special2, enemy) {
   explosion.reset(special2.body.x, special2.body.y);
   explosion.alpha = 0.7;
   explosion.play('kaboom', 30, false, true);
-
-  enemy.kill();
+  enemy.damage(vaisseau.damageAmount * 3);
+  if (!enemy.alive) {
+    score = score + 10;
+    scoreText.render();
+    game.add.tween(expBar.scale).to({ x : score / 1000}, 100, Phaser.Easing.Linear.None, true);
+  }
 }
 
 function enemyHitsPlayer(vaisseau, enemyBullet) {
@@ -330,7 +363,7 @@ function enemyHitsPlayer(vaisseau, enemyBullet) {
   this.kaboom.animations.add('explosion', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 25, true);
   this.kaboom.animations.play('explosion', 30, false, true);
   vaisseau.damage(enemies.damageAmount);
-  shields.render();
+  game.add.tween(healthBar.scale).to({ x : vaisseau.health / 150}, 100, Phaser.Easing.Linear.None, true);
   enemyBullet.kill();
 }
 
@@ -373,9 +406,9 @@ function restart() {
   //  Revive the player
   vaisseau.revive();
   vaisseau.health = 100;
-  shields.render();
-      score = 0;
-    scoreText.render();
+  healthBar.scale.x = vaisseau.health / 150;
+  score = 0;
+  scoreText.render();
   //  Hide the text
   gameOver.visible = false;
 }
