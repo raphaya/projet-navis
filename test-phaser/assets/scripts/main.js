@@ -2,14 +2,15 @@ var game = new Phaser.Game(1600, 920, Phaser.CANVAS);
 
 var fireButton;
 var shield;
-var competence;
 var specialButton;
 var specialTime = 0;
 var bullets;
 var bulletTime = 0;
 var vaisseau;
+var icone;
 var enemies;
 var enemyBullets;
+var gameOver;
 var firingTimer = 1000;
 var livingEnemies = [];
 var GameState = {
@@ -19,6 +20,7 @@ var GameState = {
     this.load.image('vaisseau', 'assets/images/vaisseau.png');
     this.load.image('enemy', 'assets/images/ennemi.png');
     this.load.image('bullet', 'assets/images/bullet.png');
+    this.load.image('icone', 'assets/images/icone.jpg');
     this.load.image('special', 'assets/images/special.png');
     this.load.image('special2', 'assets/images/special2.png');
     this.load.image('enemyBullet', 'assets/images/enemy_bullet.png');
@@ -28,10 +30,15 @@ var GameState = {
   create: function () {
     this.fond = this.game.add.tileSprite(0, 0, 1600, 920, 'background');
 
-    vaisseau = this.game.add.sprite(700, 920, 'vaisseau');
+    vaisseau = this.game.add.sprite(800, 800, 'vaisseau');
     vaisseau.anchor.setTo(0.5, 0.5);
     vaisseau.scale.setTo(0.08);
     vaisseau.health = 100;
+
+    icone = this.game.add.sprite(800, 880, 'icone');
+    icone.anchor.setTo(0.5, 0.5);
+    icone.scale.setTo(0.06);
+    icone.alpha = 0.5;
 
     enemies = game.add.group();
     enemies.enableBody = true;
@@ -91,10 +98,9 @@ var GameState = {
       shields.text = 'Santé: ' + Math.max(vaisseau.health, 0) + ' HP';
     };
 
-    competence = game.add.text(game.world.width - 150, 30, '', { font: '20px Comic sans', fill: '#fff' });
-    competence.render = function () {
-      competence.text = 'competence prete';
-    };
+    gameOver = game.add.text(game.world.centerX, game.world.centerY, 'YOU DIED !', { font: '160px Comic sans', fill: '#FF00FF' });
+    gameOver.anchor.setTo(0.5, 0.5);
+    gameOver.visible = false;
   },
 
   update: function () {
@@ -171,14 +177,22 @@ var GameState = {
     }
 
     if (specialTime > game.time.now) {
-      competence.visible = false;
+      icone.visible = false;
     } else {
-      competence.visible = true;
-      competence.render();
+      icone.visible = true;
     }
 
     if (game.time.now > firingTimer) {
-        enemyFires();
+      enemyFires();
+    }
+
+    if (!vaisseau.alive) {
+
+      gameOver.visible = true;
+      bouton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+      if (bouton.isDown) {
+        restart();
+      }
     }
 
     game.physics.arcade.overlap(bullets, enemies, collisionHandler, null, this);
@@ -218,7 +232,7 @@ function fireSpecial() {
 function createEnnemies() {
   var MIN_ENEMY_SPACING = 2000;
   var MAX_ENEMY_SPACING = 3000;
-  var ENEMY_SPEED = 1500;
+  var ENEMY_SPEED = 300;
 
   var enemy = enemies.getFirstExists(false);
 
@@ -336,6 +350,22 @@ function enemyFires() {
     firingTimer = game.time.now + 200;
   }
 
+}
+
+function restart() {
+  //  Reset the enemies
+  enemies.callAll('kill');
+  bullets.callAll('kill');
+  enemyBullets.callAll('kill');
+  game.time.events.add(10, createEnnemies);
+
+  //  Revive the player
+  vaisseau.revive();
+  vaisseau.health = 100;
+  shields.render();
+
+  //  Hide the text
+  gameOver.visible = false;
 }
 
 game.state.add('GameState', GameState);
