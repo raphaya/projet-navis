@@ -1,6 +1,8 @@
 var game = new Phaser.Game(1600, 920, Phaser.CANVAS);
 
 var fireButton;
+var shield;
+var competence;
 var specialButton;
 var specialTime = 0;
 var bullets;
@@ -25,11 +27,18 @@ var GameState = {
 
   create: function () {
     this.fond = this.game.add.tileSprite(0, 0, 1600, 920, 'background');
+
     vaisseau = this.game.add.sprite(700, 920, 'vaisseau');
+    vaisseau.anchor.setTo(0.5, 0.5);
+    vaisseau.scale.setTo(0.08);
+    vaisseau.health = 100;
 
     enemies = game.add.group();
     enemies.enableBody = true;
     enemies.physicsBodytype = Phaser.Physics.ARCADE;
+    enemies.createMultiple(15, 'enemy');
+    enemies.scale.setTo(0.2);
+    enemies.damageAmount = 10;
     createEnnemies();
 
     bullets = game.add.group();
@@ -65,15 +74,33 @@ var GameState = {
 
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     specialButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
-    vaisseau.anchor.setTo(0.5, 0.5);
-    vaisseau.scale.setTo(0.08);
+
+    explosions = game.add.group();
+    explosions.enableBody = true;
+    explosions.physicsBodyType = Phaser.Physics.ARCADE;
+    explosions.createMultiple(30, 'kaboom');
+    explosions.setAll('anchor.x', 0.5);
+    explosions.setAll('anchor.y', 0.5);
+    explosions.forEach(function (explosion) {
+      explosion.animations.add('kaboom');
+    });
+
+    //  Shields stat
+    shields = game.add.text(game.world.width - 150, 10, 'Santé: ' + vaisseau.health + ' HP', { font: '20px Comic sans', fill: '#fff' });
+    shields.render = function () {
+      shields.text = 'Santé: ' + Math.max(vaisseau.health, 0) + ' HP';
+    };
+
+    competence = game.add.text(game.world.width - 150, 30, '', { font: '20px Comic sans', fill: '#fff' });
+    competence.render = function () {
+      competence.text = 'competence prete';
+    };
   },
 
   update: function () {
 
     this.fond.tilePosition.y += 3;
 
-    //this.fond.tilePosition.x +=3;
     game.physics.arcade.enable(vaisseau);
     // deplacement joueur
     cursors = game.input.keyboard.createCursorKeys();
@@ -136,16 +163,23 @@ var GameState = {
     }
 
     if (vaisseau.alive && specialButton.isDown) {
-      if(specialTime > game.time.now) {
+      if (specialTime > game.time.now) {
         return;
       }
       fireSpecial();
       specialTime = game.time.now + 10000;
     }
 
-    /*if (game.time.now > firingTimer) {
+    if (specialTime > game.time.now) {
+      competence.visible = false;
+    } else {
+      competence.visible = true;
+      competence.render();
+    }
+
+    if (game.time.now > firingTimer) {
         enemyFires();
-    }*/
+    }
 
     game.physics.arcade.overlap(bullets, enemies, collisionHandler, null, this);
     game.physics.arcade.overlap(specials, enemies, collisionHandlerSpecial, null, this);
@@ -153,10 +187,6 @@ var GameState = {
     game.physics.arcade.overlap(enemyBullets, vaisseau, enemyHitsPlayer, null, this);
 
   },
-
-  render: function () {
-    //text = game.add.text("ALLO !!!" + vaisseau.health);
-  }
 };
 
 function fireBullet() {
@@ -189,19 +219,31 @@ function fireSpecial() {
 A modifier pour la hitbox des ennemies
 */
 function createEnnemies() {
-  var enemy = enemies.create(0, 0, 'enemy');
-  enemy.body.setSize(enemy.width * 0.08, enemy.height * 0.1);
-  enemy.damageAmount = 20;
-  enemies.scale.setTo(0.1);
-  enemies.x = 800;
-  enemies.y = 200;
+  var MIN_ENEMY_SPACING = 2000;
+  var MAX_ENEMY_SPACING = 3000;
+  var ENEMY_SPEED = 1500;
+
+  var enemy = enemies.getFirstExists(false);
+
+  if (enemy) {
+
+    enemy.reset(0 + Math.random() * 10000, -100, 'enemy');
+    enemy.body.setSize(enemy.width * 0.08, enemy.height * 0.1);
+    enemy.body.velocity.y = ENEMY_SPEED;
+    enemy.body.drag.x = 100;
+
+  }
+
+  //  Send another enemy soon
+  game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), createEnnemies);
 }
 
 function collisionHandler(bullet, enemy) {
 
-  this.kaboom = game.add.sprite(enemies.x - 25, enemies.y - 20, 'kaboom');
-  this.kaboom.animations.add('explosion', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 25, true);
-  this.kaboom.animations.play('explosion', 30, false, true);
+  var explosion = explosions.getFirstExists(false);
+  explosion.reset(bullet.body.x, bullet.body.y);
+  explosion.alpha = 0.7;
+  explosion.play('kaboom', 30, false, true);
 
   enemy.kill();
   bullet.kill();
@@ -252,9 +294,10 @@ function collisionHandlerSpecial(special, enemy) {
 
 function collisionHandlerSpecial2(special2, enemy) {
 
-  this.kaboom = game.add.sprite(enemies.x - 25, enemies.y - 20, 'kaboom');
-  this.kaboom.animations.add('explosion', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 25, true);
-  this.kaboom.animations.play('explosion', 30, false, true);
+  var explosion = explosions.getFirstExists(false);
+  explosion.reset(special2.body.x, special2.body.y);
+  explosion.alpha = 0.7;
+  explosion.play('kaboom', 30, false, true);
 
   enemy.kill();
 }
@@ -264,7 +307,8 @@ function enemyHitsPlayer(vaisseau, enemyBullet) {
   this.kaboom = game.add.sprite(vaisseau.x - 80, vaisseau.y - 80, 'kaboom');
   this.kaboom.animations.add('explosion', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 25, true);
   this.kaboom.animations.play('explosion', 30, false, true);
-  vaisseau.kill();
+  vaisseau.damage(enemies.damageAmount);
+  shields.render();
   enemyBullet.kill();
 }
 
