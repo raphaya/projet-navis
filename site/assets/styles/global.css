@@ -49,3 +49,16 @@ body
 #div-galerie{
   display: none;
 }
+
+#table-communaute{
+    border-collapse: collapse;
+    color: white;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#table-communaute th, td {
+    text-align: left;
+    padding: 8px;
+}
