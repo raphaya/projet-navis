@@ -33,3 +33,19 @@ body
   background: green;
   position: relative;
 }
+
+#div-accueil{
+  display: block;
+}
+
+#div-jeu{
+  display: none;
+}
+
+#div-communaute{
+  display: none;
+}
+
+#div-galerie{
+  display: none;
+}
