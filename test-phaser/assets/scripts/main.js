@@ -11,6 +11,8 @@ var icone;
 var enemies;
 var enemyBullets;
 var gameOver;
+var score = 0;
+var scoreText;
 var firingTimer = 1000;
 var livingEnemies = [];
 var GameState = {
@@ -97,6 +99,14 @@ var GameState = {
     shields.render = function () {
       shields.text = 'Santé: ' + Math.max(vaisseau.health, 0) + ' HP';
     };
+
+        //  Score
+    scoreText = game.add.text(10, 10, '', { font: '20px Comic Sans', fill: '#fff' });
+    scoreText.render = function () {
+        scoreText.text = 'Score: ' + score;
+    };
+    scoreText.render();
+
 
     gameOver = game.add.text(game.world.centerX, game.world.centerY, 'YOU DIED !', { font: '160px Comic sans', fill: '#FF00FF' });
     gameOver.anchor.setTo(0.5, 0.5);
@@ -255,7 +265,8 @@ function collisionHandler(bullet, enemy) {
   explosion.reset(bullet.body.x, bullet.body.y);
   explosion.alpha = 0.7;
   explosion.play('kaboom', 30, false, true);
-
+  score = score + 10;
+  scoreText.render();
   enemy.kill();
   bullet.kill();
 }
@@ -363,7 +374,8 @@ function restart() {
   vaisseau.revive();
   vaisseau.health = 100;
   shields.render();
-
+      score = 0;
+    scoreText.render();
   //  Hide the text
   gameOver.visible = false;
 }
