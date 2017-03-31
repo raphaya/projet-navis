@@ -10,7 +10,7 @@
             var regexlogin = new RegExp('/^[a-z0-9_-]{3,16}$/'),
                 regexpass = new RegExp('/^[a-z0-9_-]{6,18}$/'),
                 regexemail = new RegExp('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/');
-
+/* test test git*/
             var reslogin = regexlogin.test($login.val()),
                 respassword = regexpass.test($password.val()),
                 resmail = regexemail.test($mail.val());
