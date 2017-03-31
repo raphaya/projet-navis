@@ -10,8 +10,6 @@ var level = function (levelNumber) {
                 count = 0,
                 popWave1 = false,
                 time = 0,
-                bossFire1Time = 0,
-                bossFire2Time = 0,
                 bossFireCount = 0,
                 bossFireCountPhase2 = 0,
                 bossFireBurstCount = 0,
@@ -23,7 +21,7 @@ var level = function (levelNumber) {
                 if (!popWave1) {
                     for (var y = 0; y < 3; y++) {
                         for (var x = 0; x < 10; x++) {
-                            createEnemy1(x, y*800);
+                            createEnemy1(x, y * 800);
                         }
                     }
                     popWave1 = true;
@@ -57,7 +55,7 @@ var level = function (levelNumber) {
                     }
                 }
 
-                if (game.time.now > time + speedPopBoss + speedPopEnemies + levelRefresh && popBoss) {
+                if (game.time.now > time + speedPopBoss + speedPopEnemies + levelRefresh + 2000 && popBoss) {
                     vaisseau.alive = true;
                     enemy1Fires();
 
@@ -97,10 +95,14 @@ var level = function (levelNumber) {
                         }
                         bossFireBurstCount++;
                     }
+                }
 
+                if (enemiesBoss1.hash[0].health <= 0) {
+                    bossHealthBar.destroy();
                 }
 
                 if (enemiesBoss1.hash[0].health <= 0 && livingEnemies1.length <= 0) {
+                    endLevel();
                     clearInterval(interval);
                 }
 
@@ -108,4 +110,22 @@ var level = function (levelNumber) {
 
             break;
     }
+};
+
+function endLevel() {
+    levelEnded = true;
+    ship.speed = 0;
+    vaisseau.body.velocity.y = 0;
+    vaisseau.body.velocity.x = 0;
+    vaisseau.alive = false;
+    vaisseau.body.collideWorldBounds = false;
+    var tween = game.add.tween(vaisseau).to({ x: 800, y: 800 }, 2000, Phaser.Easing.Linear.None, true);
+    tween.onComplete.add(vaisseauUp, this);
+}
+
+function vaisseauUp() {
+    shipTrail.start(false, 5000, 10);
+    ship.speed = 0;
+    vaisseau.body.velocity.y = -1000;
+    levelClear.visible = true;
 }
