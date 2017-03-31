@@ -1,11 +1,9 @@
-var livingEnemies1 = [];
-var livingEnemiesBoss1 = [];
-var timeEnemies1 = 0;
-var timeEnemiesBoss1 = 0;
-var boss1Fire = true;
+var livingEnemies1 = [],
+    timeEnemies1 = 0,
+    boss1Fire = true;
 
 function enemy1Fires() {
-    //  Grab the first bullet we can from the pool
+    // Grab the first bullet we can from the pool
     enemyBullet = enemy1Bullets.getFirstExists(false);
     livingEnemies1.length = 0;
     enemies1.forEachAlive(function (enemy) {

@@ -20,9 +20,11 @@ function collisionHandler(bullet, enemy) {
     explosion.alpha = 0.7;
     explosion.play('kaboom', 30, false, true);
     enemy.damage(vaisseau.damageAmount);
+
     if (enemy.key == "enemyBoss") {
-        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 1000, Phaser.Easing.Linear.None, true);
+        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 100, Phaser.Easing.Linear.None, true);
     }
+
     if (!enemy.alive) {
         score = score + 10;
         scoreText.render();
@@ -84,15 +86,16 @@ function collisionHandlerSpecial(special, enemy) {
 }
 
 function collisionHandlerSpecial2(special2, enemy) {
-
     var explosion = explosions.getFirstExists(false);
     explosion.reset(special2.body.x, special2.body.y);
     explosion.alpha = 0.7;
     explosion.play('kaboom', 30, false, true);
     enemy.damage(vaisseau.damageAmount * 0.5);
+
     if (enemy.key == "enemyBoss") {
-        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 1000, Phaser.Easing.Linear.None, true);
+        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 100, Phaser.Easing.Linear.None, true);
     }
+
     if (!enemy.alive) {
         score = score + 10;
         scoreText.render();
@@ -103,6 +106,7 @@ function collisionHandlerSpecial2(special2, enemy) {
 // spécial vaisseau tank
 function specialTank() {
     var special = specials.getFirstExists(false);
+
     if (special) {
         special.anchor.setTo(0.5, 0.5);
         special.scale.setTo(0.2);
@@ -119,6 +123,7 @@ function collisionHandlerShield(special, enemy) {
 // spécial vaisseau heal
 function specialHeal() {
     var special = specials.getFirstExists(false);
+
     if (special) {
         special.reset(vaisseau.body.x + 20, vaisseau.body.y - 20);
         special.body.velocity.y = -300;

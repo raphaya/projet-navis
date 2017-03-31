@@ -9,7 +9,6 @@ switch (type) {
             skin: 'assets/images/dps.png',
             icone: 'assets/images/iconeDps.jpg',
             special: 'assets/images/specialDps.png',
-            special2: 'assets/images/special2Dps.png',
             bulletSkin: 'assets/images/bulletDps.png',
             collision: collisionHandlerSpecial,
             scaleSkin: 0.08,
