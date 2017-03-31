@@ -21,7 +21,7 @@
             }
             regexTest = true;
         }
-        
+        /*test test test git*/
        irc.ajax({
             data: {
                 login : $login.val(),
