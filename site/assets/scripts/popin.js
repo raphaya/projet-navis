@@ -38,7 +38,7 @@
         var popinContainer = document.querySelector('#tp-popin-container');
         popinContainer.style.display = "none";
     };
-
+    
     for (var loop = 0; loop < closePopin.length; loop++) {
         closePopin[loop].addEventListener("click", close);
     }
