@@ -2,6 +2,7 @@ var livingEnemies1 = [];
 var livingEnemiesBoss1 = [];
 var timeEnemies1 = 0;
 var timeEnemiesBoss1 = 0;
+var boss1Fire = true;
 
 function enemy1Fires() {
     //  Grab the first bullet we can from the pool
@@ -24,23 +25,124 @@ function enemy1Fires() {
 }
 
 function enemyBoss1Fires() {
-    //  Grab the first bullet we can from the pool
-    enemyBullet = boss1Bullets.getFirstExists(false);
-    livingEnemiesBoss1.length = 0;
-    enemiesBoss1.forEachAlive(function (enemy) {
-        // put every living enemy in an array
-        livingEnemiesBoss1.push(enemy);
-    });
+    var i = 0;
+    enemiesBoss1.damageAmount = 10;
+    enemiesBoss1.forEachAlive(function () {
+        switch (boss1Fire) {
+            case true:
+                while (i <= 361) {
+                    var enemyBullet = boss1Bullets.getFirstExists(false);
+                    if (enemyBullet) {
+                        enemyBullet.reset(enemiesBoss1.hash[0].body.x + 360, enemiesBoss1.hash[0].body.y + 100);
+                        switch (i) {
+                            case 0:
+                                enemyBullet.body.velocity.x = 200;
+                                break;
+                            case 45:
+                                enemyBullet.body.velocity.x = 174;
+                                enemyBullet.body.velocity.y = 77.4;
+                                break;
+                            case 90:
+                                enemyBullet.body.velocity.x = 125.2;
+                                enemyBullet.body.velocity.y = 131.6;
+                                break;
+                            case 135:
+                                enemyBullet.body.velocity.x = 60.2;
+                                enemyBullet.body.velocity.y = 164.7;
+                                break;
+                            case 180:
+                                enemyBullet.body.velocity.x = -12.3;
+                                enemyBullet.body.velocity.y = 172.3;
+                                break;
+                            case 225:
+                                enemyBullet.body.velocity.x = -82.7;
+                                enemyBullet.body.velocity.y = 153.4;
+                                break;
+                            case 270:
+                                enemyBullet.body.velocity.x = -141.7;
+                                enemyBullet.body.velocity.y = 110.6;
+                                break;
+                            case 315:
+                                enemyBullet.body.velocity.x = -181.4;
+                                enemyBullet.body.velocity.y = 49.5;
+                                break;
+                            case 360:
+                                enemyBullet.body.velocity.x = -196.6;
+                                enemyBullet.body.velocity.y = -21.8;
+                                break;
+                        }
+                    }
+                    i += 45;
+                }
+                boss1Fire = false;
+                break;
 
-    if (enemyBullet && livingEnemiesBoss1.length > 0 && game.time.now > timeEnemiesBoss1) {
-        var random = game.rnd.integerInRange(0, livingEnemiesBoss1.length - 1);
-        // randomly select one of them
-        var shooter = livingEnemiesBoss1[random];
-        // And fire the bullet from this enemy
-        enemyBullet.reset(shooter.body.x + 450, shooter.body.y + 380);
-        game.physics.arcade.moveToObject(enemyBullet, vaisseau, 300);
-        timeEnemiesBoss1 = game.time.now + 200;
-    }
+            case false:
+                while (i <= 361) {
+                    var enemyBullet = boss1Bullets.getFirstExists(false);
+                    if (enemyBullet) {
+                        enemyBullet.reset(enemiesBoss1.hash[0].body.x + 360, enemiesBoss1.hash[0].body.y + 100);
+                        switch (i) {
+                            case 0:
+                                enemyBullet.body.velocity.x = -200;
+                                break;
+                            case 45:
+                                enemyBullet.body.velocity.x = -174;
+                                enemyBullet.body.velocity.y = 77.4;
+                                break;
+                            case 90:
+                                enemyBullet.body.velocity.x = -125.2;
+                                enemyBullet.body.velocity.y = 131.6;
+                                break;
+                            case 135:
+                                enemyBullet.body.velocity.x = -60.2;
+                                enemyBullet.body.velocity.y = 164.7;
+                                break;
+                            case 180:
+                                enemyBullet.body.velocity.x = 12.3;
+                                enemyBullet.body.velocity.y = 172.3;
+                                break;
+                            case 225:
+                                enemyBullet.body.velocity.x = 82.7;
+                                enemyBullet.body.velocity.y = 153.4;
+                                break;
+                            case 270:
+                                enemyBullet.body.velocity.x = 141.7;
+                                enemyBullet.body.velocity.y = 110.6;
+                                break;
+                            case 315:
+                                enemyBullet.body.velocity.x = 181.4;
+                                enemyBullet.body.velocity.y = 49.5;
+                                break;
+                            case 360:
+                                enemyBullet.body.velocity.x = 196.6;
+                                enemyBullet.body.velocity.y = -21.8;
+                                break;
+                        }
+                    }
+                    i += 45;
+                }
+                boss1Fire = true;
+                break;
+        }
+    });
+}
+
+function enemyBoss1BurstFires() {
+    var countBurst = 0;
+    enemiesBoss1.damageAmount = 1;
+    enemiesBoss1.forEachAlive(function () {
+        setInterval(function () {
+            var enemyBullet = boss1Bullets.getFirstExists(false);
+            if (enemyBullet) {
+                if (countBurst <= 50) {
+                    enemyBullet.reset(enemiesBoss1.hash[0].body.x + 360, enemiesBoss1.hash[0].body.y + 100);
+                    game.physics.arcade.moveToObject(enemyBullet, vaisseau, 1800);
+                    countBurst++;
+                }
+            }
+        }, 1);
+    });
 }
 
 function enemy1HitsPlayer(vaisseau, enemyBullet) {

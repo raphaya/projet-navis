@@ -35,7 +35,7 @@ switch (type) {
             damage: 7,
             maxHealth: 200,
             fireRate: 400,
-            speed: 250,
+            speed: 300,
             bulletX: 27
         };
         break;
@@ -53,7 +53,7 @@ switch (type) {
             damage: 4,
             maxHealth: 50,
             fireRate: 250,
-            speed: 600,
+            speed: 550,
             bulletX: 26
         };
         break;

@@ -20,6 +20,9 @@ function collisionHandler(bullet, enemy) {
     explosion.alpha = 0.7;
     explosion.play('kaboom', 30, false, true);
     enemy.damage(vaisseau.damageAmount);
+    if (enemy.key == "enemyBoss") {
+        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 1000, Phaser.Easing.Linear.None, true);
+    }
     if (!enemy.alive) {
         score = score + 10;
         scoreText.render();
@@ -87,6 +90,9 @@ function collisionHandlerSpecial2(special2, enemy) {
     explosion.alpha = 0.7;
     explosion.play('kaboom', 30, false, true);
     enemy.damage(vaisseau.damageAmount * 0.5);
+    if (enemy.key == "enemyBoss") {
+        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 1000, Phaser.Easing.Linear.None, true);
+    }
     if (!enemy.alive) {
         score = score + 10;
         scoreText.render();

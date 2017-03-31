@@ -18,9 +18,11 @@ var score = 0;
 var scoreText;
 var warningTimer = 0;
 var firingTimer = 1000;
+var bossMusic;
 var GameState = {
 
     preload: function () {
+        //this.load.audio('bossMusic', 'assets/audio/bossmusic.mp3');
         this.load.image('background', 'assets/images/background.png');
         this.load.image('vaisseau', ship.skin);
         this.load.image('bullet', ship.bulletSkin);
@@ -33,11 +35,13 @@ var GameState = {
         this.load.image('expBar', 'assets/images/xpbar.png');
         this.load.image('warning', 'assets/images/warning.png');
         this.load.image('enemyBullet', 'assets/images/enemy_bullet.png');
+        this.load.image('bulletBoss', 'assets/images/bulletBoss.png');
         this.load.spritesheet('kaboom', 'assets/images/explode.png', 128, 128);
     },
 
     create: function () {
         this.fond = this.game.add.tileSprite(0, 0, 1600, 920, 'background');
+        //bossMusic = game.add.audio('bossMusic');
 
         vaisseau = this.game.add.sprite(800, 800, 'vaisseau');
         vaisseau.anchor.setTo(0.5, 0.5);
@@ -74,6 +78,11 @@ var GameState = {
         enemiesBoss1.physicsBodytype = Phaser.Physics.ARCADE;
         level(levelNumber);
 
+        bossHealthBar = this.game.add.sprite(275, 30, 'healthBar');
+        bossHealthBar.scale.setTo(0.1);
+        bossHealthBar.scale.x = 0;
+        bossHealthBar.alpha = 0.7;
+
         bullets = game.add.group();
         bullets.enableBody = true;
         bullets.physicsBodytype = Phaser.Physics.ARCADE;
@@ -106,7 +115,7 @@ var GameState = {
         boss1Bullets = game.add.group();
         boss1Bullets.enableBody = true;
         boss1Bullets.physicsBodytype = Phaser.Physics.ARCADE;
-        boss1Bullets.createMultiple(30, 'enemyBullet');
+        boss1Bullets.createMultiple(1000, 'bulletBoss');
         boss1Bullets.setAll('angle', -90);
         boss1Bullets.setAll('outOfBoundsKill', true);
         boss1Bullets.setAll('checkWorldBounds', true);
@@ -229,11 +238,10 @@ var GameState = {
         }
 
         if (game.time.now > firingTimer) {
-            enemy1Fires();
-            enemyBoss1Fires();
+            //enemy1Fires();
         }
 
-        if (!vaisseau.alive) {
+        if (vaisseau.health <= 0) {
 
             gameOver.visible = true;
             bouton = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
