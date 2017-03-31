@@ -20,9 +20,9 @@ var fireButton,
     bossMusic,
     levelEnded = false,
     shipTrail,
-    GameState = {
+    gameState = {
 
-        preload: function () {
+        /*preload: function () {
             //this.load.audio('bossMusic', 'assets/audio/bossmusic.mp3');
             this.load.image('background', 'assets/images/background.png');
             this.load.image('vaisseau', ship.skin);
@@ -39,7 +39,7 @@ var fireButton,
             this.load.image('bulletBoss', 'assets/images/bulletBoss.png');
             this.load.image('shipTrail', 'assets/images/shipTrail.png');
             this.load.spritesheet('kaboom', 'assets/images/explode.png', 128, 128);
-        },
+        },*/
 
         create: function () {
             this.fond = this.game.add.tileSprite(0, 0, 1600, 920, 'background');
@@ -268,5 +268,10 @@ var fireButton,
         },
     };
 
-game.state.add('GameState', GameState);
-game.state.start('GameState');
+game.state.add('load', preloadState);
+game.state.add('menu' , menuState);
+game.state.add('play', gameState);
+game.state.add('boot', bootState);
+game.state.add('ship', shipState);
+
+game.state.start('boot');

@@ -29,7 +29,7 @@ var level = function (levelNumber) {
                     enemy1Fires();
                 }
 
-                if (livingEnemies1.length <= 0 && !popBoss && game.time.now > 2000) {
+                if (livingEnemies1.length <= 0 && !popBoss && game.time.now > 10000) {
                     //bossMusic.play();
                     vaisseau.alive = false;
                     game.camera.shake(0.01, speedPopBoss + 1000);
