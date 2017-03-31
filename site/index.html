@@ -3,6 +3,7 @@
 
 <head>
     <title>NAVIS,</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="assets/styles/global.css">
     <link rel="stylesheet" type="text/css" href="assets/styles/menu.css">
@@ -41,10 +42,10 @@
         </div>
     </div>
     <div class="bandeau">bandeau
-        <div id="petitMenu"><span data-action="open-popin">
+        <div id="petitMenu"><span>
             <ul>
-                <li><a href="#">Log in</a></li>
-                <li><a href="#">Register</a></li>
+                <li data-action="open-popin-log" id="menu-connect"><a href="#">Log in</a></li>
+                <li data-action="open-popin-reg" id="menu-register"><a href="#">Register</a></li>
             </ul></span>
         </div>
     </div>
@@ -210,11 +211,11 @@
         <div class="tp-popin">
             <div class="header">
                 <p><span data-action="close-popin"> X </span></p>
-                <ul id="navpopin">
-                    <li class="navpopin"><a href="#">Se connecter</a></li>
-                    <li class="navpopin"><a href="#">S'inscrire</a></li>
+                <ul class="navpopin">
+                    <li class="navpopin" id="btn-connect"><a href="#">Se connecter</a></li>
+                    <li class="navpopin" id="btn-register"><a href="#">S'inscrire</a></li>
                 </ul>
-                <form method="POST" id="connect">
+                <form method="POST" id="form-connect">
                     <fieldset>
                         <ul>
                             <li>
@@ -224,6 +225,39 @@
                             <li>
                                 <label for="password">Mot de passe :</label>
                                 <input type="password" id="password" name="password" placeholder="password">
+                            </li>
+                            <li>
+                                <input id="connection" type="submit">
+                            </li>
+                        </ul>
+                    </fieldset>
+                </form>
+                <form method="POST" id="form-register">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <label for="pseudo">Pseudo :</label>
+                                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo">
+                            </li>
+                            <li>
+                                <label for="password">Nom :</label>
+                                <input type="password" id="password" name="password" placeholder="password">
+                            </li>
+                            <li>
+                                <label for="pseudo">Prénom :</label>
+                                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo">
+                            </li>
+                            <li>
+                                <label for="pseudo">Mail :</label>
+                                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo">
+                            </li>
+                            <li>
+                                <label for="pseudo">Mot de passe :</label>
+                                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo">
+                            </li>
+                            <li>
+                                <label for="pseudo">Confirmation mot de passe :</label>
+                                <input type="text" id="pseudo" name="pseudo" placeholder="pseudo">
                             </li>
                             <li>
                                 <input id="connection" type="submit">
