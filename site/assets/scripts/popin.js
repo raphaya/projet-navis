@@ -16,5 +16,6 @@
 
     for(var loop = 0;loop < closePopin.length;loop++){
         closePopin[loop].addEventListener("click",close);
+        
     }
 })(jQuery);
