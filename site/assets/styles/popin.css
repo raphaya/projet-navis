@@ -15,7 +15,7 @@
 #tp-popin-container .tp-popin{
     position: fixed;
     display: inline-block;
-    height: 400px;
+    height: auto;
     width: 640px;
     background: #ffffff;
     top: 100px;
