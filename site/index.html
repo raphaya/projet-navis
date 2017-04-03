@@ -220,13 +220,13 @@
                     <fieldset>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="pseudo-co">Pseudo :</label>
-                            <div class="col-sm-5">
+                            <div class="col-sm-5" id="pseudolabel">
                                 <input class="form-control" type="text" id="pseudo-co" name="pseudo" placeholder="pseudo">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="mdp-co">Mot de passe :</label>
-                            <div class="col-sm-5">
+                            <div class="col-sm-5" id="mdplabel">
                                 <input class="form-control" type="password" id="mdp-co" name="mdp" placeholder="mot de passe">
                             </div>
                         </div>
@@ -236,39 +236,27 @@
                 <form method="POST" id="form-register" class="form-horizontal">
                     <fieldset>
                         <div class="form-group">
-                            <label class="control-label col-sm-5" for="pseudo">Pseudo :</label>
-                            <div class="col-sm-5">
-                                <input class="form-control" type="text" id="pseudo" name="pseudo" placeholder="pseudo">
+                            <label class="control-label col-sm-5" for="pseudo" >Pseudo :</label>
+                            <div class="col-sm-5" id="namelabel">
+                                <input class="form-control" type="text" id="pseudo-reg" name="pseudo" placeholder="pseudo">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-5" for="nom">Nom :</label>
-                            <div class="col-sm-5">
-                                <input class="form-control" type="nom" id="nom" name="nom" placeholder="nom">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="prenom">Prénom :</label>
-                            <div class="col-sm-5">
-                                <input class="form-control" type="text" id="prenom" name="prenom" placeholder="prénom">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="mail">Mail :</label>
-                            <div class="col-sm-5">
+                            <label class="control-label col-sm-5" for="mail" >Mail :</label>
+                            <div class="col-sm-5" id="maillabel">
                                 <input class="form-control" type="text" id="mail" name="mail" placeholder="mail">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-5" for="mdp">Mot de passe :</label>
-                            <div class="col-sm-5">
-                                <input class="form-control" type="password" id="mdp" name="mdp" placeholder="mot de passe">
+                            <label class="control-label col-sm-5" for="mdp" >Mot de passe :</label>
+                            <div class="col-sm-5" id="pwdlabel">
+                                <input class="form-control" type="password" id="mdp-reg" name="mdp" placeholder="mot de passe">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-5" for="confirm-mdp">Confirmation mot de passe :</label>
-                            <div class="col-sm-5">
-                                <input class="form-control" type="text" id="confirm-mdp" name="confirm-mdp" placeholder="confirmation mot de passe">
+                            <label class="control-label col-sm-5" for="confirm-mdplabel" >Confirmation mot de passe :</label>
+                            <div class="col-sm-5" id="confirm-mdplabel">
+                                <input class="form-control" type="password" id="confirm-mdp-reg" name="confirm-mdp" placeholder="confirmation mot de passe">
                             </div>
                         </div>
                         <input id="inscription" type="submit">
@@ -284,7 +272,7 @@
     <script src="assets/scripts/lib/ajax.js"></script>
     <script src="assets/scripts/room.js"></script>
     <script src="assets/scripts/login.js"></script>
-    <!--  <script src="assets/scripts/register.js"></script> -->
+    <script src="assets/scripts/register.js"></script>
 </body>
 
 </html>

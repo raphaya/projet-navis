@@ -40,8 +40,17 @@
 #tp-popin-container .tp-popin span{
     float: right;
     color: red;
+    padding: 5px;
 }
 
 [data-action=close-popin]:hover{
     background: blue;
+}
+
+.btn-group{
+    padding-bottom: 10px;
+}
+
+#inscription, #connection{
+    margin-bottom: 10px;
 }
