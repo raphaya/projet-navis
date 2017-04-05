@@ -113,6 +113,12 @@ var level = function (levelNumber) {
                     clearInterval(interval);
                 }
 
+                if (vaisseau.health <= 0) {
+                    vaisseau.alive = false;
+                    healthBar.destroy();
+                    clearInterval(interval);
+                }
+
             }, levelRefresh);
 
             break;
