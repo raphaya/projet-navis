@@ -214,6 +214,7 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-success" id="btn-connect">Se connecter</button>
                     <button type="button" class="btn btn-success" id="btn-register">S'inscrire</button>
+                    <button type="button" class="btn btn-success" id="btn-recovery">Recupérer son mot de passe</button>
                 </div>
                 <div></div>
                 <form method="POST" id="form-connect" class="form-horizontal">
@@ -260,6 +261,17 @@
                             </div>
                         </div>
                         <input id="inscription" type="submit">
+                    </fieldset>
+                </form>
+                <form method="POST" action="assets\scripts\recupPass.php" id="form-recup" class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="control-label col-sm-5" for="mail-recup">Votre adresse mail :</label>
+                            <div class="col-sm-5" id="maillabel">
+                                <input class="form-control" type="text" id="mail-recup" name="mail" placeholder="exemple@mail.xxx">
+                            </div>
+                        </div>
+                        <input id="recuperation" type="submit">
                     </fieldset>
                 </form>
             </div>

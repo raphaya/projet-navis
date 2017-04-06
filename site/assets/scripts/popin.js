@@ -5,14 +5,18 @@
 
     var btnConnect = document.getElementById('btn-connect');
     var btnRegister = document.getElementById('btn-register');
+    var btnRecup = document.getElementById('btn-recovery');
+
     var formConnect = document.getElementById('form-connect');
     var formRegister = document.getElementById('form-register');
+    var formRecup = document.getElementById('form-recup');
 
     openPopinLog.addEventListener("click", function () {
         var popinContainer = document.querySelector('#tp-popin-container');
         popinContainer.style.display = "block";
         formConnect.style.display = "block";
         formRegister.style.display = "none";
+        formRecup.style.display = "none";
     });
 
     openPopinReg.addEventListener("click", function () {
@@ -20,16 +24,25 @@
         popinContainer.style.display = "block";
         formConnect.style.display = "none";
         formRegister.style.display = "block";
+        formRecup.style.display = "none";
     });
 
     $('#btn-connect').click(function () {
         formConnect.style.display = "block";
         formRegister.style.display = "none";
+        formRecup.style.display = "none";
     });
 
     $('#btn-register').click(function () {
         formConnect.style.display = "none";
         formRegister.style.display = "block";
+        formRecup.style.display = "none";       
+    });
+
+    $('#btn-recovery').click(function () {
+        formRecup.style.display = "block";
+        formConnect.style.display = "none";
+        formRegister.style.display = "none";
     });
 
     var closePopin = document.querySelectorAll('[data-action=close-popin]');
