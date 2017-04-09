@@ -1,10 +1,44 @@
-.menu{
-    height: 100%;
-    background: rgba(25, 25, 25, 1);
-    float: left;
-    width: 200px;
-}
+/* make sidebar nav vertical */ 
+	@media (min-width: 768px) {
+		.sidebar-nav{
+			height: 100vh;
+			background-color: #000000;
+		}
+		.sidebar-nav .navbar .navbar-collapse {
+		padding: 0;
+		background-color: #000000;
+		}
 
+		.sidebar-nav .navbar ul li:before {
+			display: block;
+			content: '';
+			position: absolute;
+			/*left: -5px;*/
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			max-width: 0;
+			background: #28d244;
+			z-index: 0;
+			/*transform: skew(-16deg);*/
+			transition: all ease .25s;
+		}
+
+		.sidebar-nav .navbar ul li:hover:before {
+			max-width: 10%;
+			transition: all ease .25s;
+		}
+
+		.sidebar-nav .navbar li {
+			float: none;
+			display: block;
+		}
+		.sidebar-nav .navbar li a {
+			padding-top: 12px;
+			padding-bottom: 12px;
+		}
+	}
+/*
 .menu ul{
     margin: 0;
     list-style: none;
@@ -64,12 +98,11 @@
     width: auto;
     height: auto;
     font-size: 50px;
-}
+}*/
 
-#petitMenu{
-    width: 300px;
+/*#petitMenu{
+    width: 300px;   
     height: 100%;
-    /*position: relative;*/
     text-align: center;
     float: right;
 }
@@ -88,4 +121,4 @@
     padding: 10px;
     border-radius: 15px;
     background: #ffffff;
-}
+}*/

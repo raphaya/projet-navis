@@ -2,289 +2,304 @@
 <html>
 
 <head>
-    <title>NAVIS,</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/global.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/menu.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/popin.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/room.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/div-accueil.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/div-lejeu.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/div-galerie.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/div-communaute.css">
+	<title>NAVIS,</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="assets/styles/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/global.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/menu.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/popin.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/room.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/div-accueil.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/div-lejeu.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/div-galerie.css">
+	<link rel="stylesheet" type="text/css" href="assets/styles/div-communaute.css">
 </head>
 
 <body>
+	<div class="col-lg-2 col-md-2 col-sm-2">
+		<div class="sidebar-nav">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					<span class="visible-xs navbar-brand">NAVIS,</span>
+				</div>
+				<div class="navbar-collapse collapse sidebar-navbar-collapse">
+					<ul class="nav navbar-nav" id="menu">
+						<li class="visible-lg visible-md visible-sm navbar-btn">NAVIS,</li>
+						<li class="navbar-btn" id="btn-accueil"><a href="#">Accueil</a></li>
+						<li class="navbar-btn" id="btn-jeu"><a href="#">Le jeu</a></li>
+						<li class="navbar-btn" id="btn-communaute"><a href="#">Communauté</a></li>
+						<li class="navbar-btn" id="btn-galerie"><a href="#">Galerie</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<div class="col-lg-8 col-md-8 col-sm-7" id="corps">
+		<div class="col-lg-12 col-md-12 col-sm-12" id="bandeau">
+			<div class="btn-group center-block">
+				<button class="btn btn-success" type="button" data-action="open-popin-log" data-toggle="modal" data-target="#popin" id="menu-connect">Log in</button>
+				<button class="btn btn-success" type="button" data-action="open-popin-reg" data-toggle="modal" data-target="#popin" id="menu-register">Register</button>
+				<button type="button" class="btn btn-warning" id="fermeChat">Afficher / Cacher le chat</button>
+			</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div id="div-accueil">
+				L'accueil
+			</div>
+			<div id="div-jeu">
+				Le jeu
+			</div>
+			<div id="div-communaute">
+				<h1>La communauté</h1>
+				<table id="table-communaute" class="table">
 
-    <div class="menu">
-        <div class="logo">
-            NAVIS,
-        </div>
-        <ul>
-            <li id="btn-accueil"><a href="#">Accueil</a></li>
-            <li id="btn-jeu"><a href="#">Le jeu</a></li>
-            <li id="btn-communaute"><a href="#">Communauté</a></li>
-            <li id="btn-galerie"><a href="#">Galerie</a></li>
-        </ul>
-    </div>
-    <div class="chat">
-        <div id="room" class="affichage">
-            <div class="content"> tchat :</div>
-        </div>
+					<thead>
+						<tr>
+							<th>Position</th>
+							<th>Nom joueur</th>
+							<th>Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Doe</td>
+							<td>23000</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Moe</td>
+							<td>20500</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>Quelqu'un</td>
+							<td>18000</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>D'autre</td>
+							<td>16500</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>Doe</td>
+							<td>16000</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>Moe</td>
+							<td>14500</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>Quelqu'un</td>
+							<td>13000</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>D'autre</td>
+							<td>12700</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>Doe</td>
+							<td>12400</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>Moe</td>
+							<td>11000</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>Quelqu'un</td>
+							<td>10500</td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>D'autre</td>
+							<td>10100</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>Doe</td>
+							<td>9000</td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td>Moe</td>
+							<td>8600</td>
+						</tr>
+						<tr>
+							<td>15</td>
+							<td>Quelqu'un</td>
+							<td>8000</td>
+						</tr>
+						<tr>
+							<td>16</td>
+							<td>D'autre</td>
+							<td>3000</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="div-galerie">
+				<table id="table-galerie">
+					<h1>La galerie</h1>
+					<thead>
+						<tr>
+							<td>Photo</td>
+							<td>Description</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img src="../test-phaser/assets/images/ennemi.png" alt=""></td>
+							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt quam et ultrices consequat. Cras nulla ex,
+								sollicitudin et sagittis at, scelerisque quis sapien. Aliquam hendrerit egestas orci, sit amet pretium enim dapibus
+								ut. Nam ornare varius velit ac ullamcorper. Vestibulum lobortis a ex ac dictum. Etiam cursus risus nec mauris porta
+								suscipit. Ut ornare varius mi, sit amet rutrum lacus. Ut ut dignissim ex, eget fringilla felis. Cras in velit sem.
+								Phasellus porta, odio nec eleifend mattis, ligula libero elementum ante, quis sodales dolor eros sodales sapien.
+								Mauris hendrerit dui sed leo consectetur</td>
+						</tr>
+						<tr>
+							<td><img src="../test-phaser/assets/images/ennemi.png" alt=""></td>
+							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt quam et ultrices consequat. Cras nulla ex,
+								sollicitudin et sagittis at, scelerisque quis sapien. Aliquam hendrerit egestas orci, sit amet pretium enim dapibus
+								ut. Nam ornare varius velit ac ullamcorper. Vestibulum lobortis a ex ac dictum. Etiam cursus risus nec mauris porta
+								suscipit. Ut ornare varius mi, sit amet rutrum lacus. Ut ut dignissim ex, eget fringilla felis. Cras in velit sem.
+								Phasellus porta, odio nec eleifend mattis, ligula libero elementum ante, quis sodales dolor eros sodales sapien.
+								Mauris hendrerit dui sed leo consectetur</td>
+						</tr>
+						<tr>
+							<td><img src="../test-phaser/assets/images/ennemi.png" alt=""></td>
+							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt quam et ultrices consequat. Cras nulla ex,
+								sollicitudin et sagittis at, scelerisque quis sapien. Aliquam hendrerit egestas orci, sit amet pretium enim dapibus
+								ut. Nam ornare varius velit ac ullamcorper. Vestibulum lobortis a ex ac dictum. Etiam cursus risus nec mauris porta
+								suscipit. Ut ornare varius mi, sit amet rutrum lacus. Ut ut dignissim ex, eget fringilla felis. Cras in velit sem.
+								Phasellus porta, odio nec eleifend mattis, ligula libero elementum ante, quis sodales dolor eros sodales sapien.
+								Mauris hendrerit dui sed leo consectetur</td>
+						</tr>
+						<tr>
+							<td><img src="../test-phaser/assets/images/ennemi.png" alt=""></td>
+							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt quam et ultrices consequat. Cras nulla ex,
+								sollicitudin et sagittis at, scelerisque quis sapien. Aliquam hendrerit egestas orci, sit amet pretium enim dapibus
+								ut. Nam ornare varius velit ac ullamcorper. Vestibulum lobortis a ex ac dictum. Etiam cursus risus nec mauris porta
+								suscipit. Ut ornare varius mi, sit amet rutrum lacus. Ut ut dignissim ex, eget fringilla felis. Cras in velit sem.
+								Phasellus porta, odio nec eleifend mattis, ligula libero elementum ante, quis sodales dolor eros sodales sapien.
+								Mauris hendrerit dui sed leo consectetur</td>
+						</tr>
 
-        <div class="input">
-            <form method="POST" id="input-room" name="form-room">
-                <input type="textaera" id="message" name="message" placeholder="tapez votre texte ici">
-                <input type="submit" value="Envoyer">
-            </form>
-        </div>
-    </div>
-    <div class="bandeau">bandeau
-        <div id="petitMenu"><span>
-            <ul>
-                <li data-action="open-popin-log" id="menu-connect"><a href="#">Log in</a></li>
-                <li data-action="open-popin-reg" id="menu-register"><a href="#">Register</a></li>
-            </ul></span>
-        </div>
-    </div>
-    <div class="corps">
-        <div id="div-accueil">
-            L'accueil
-        </div>
-        <div id="div-jeu">
-            Le jeu
-        </div>
-        <div id="div-communaute">
-            <table id="table-communaute" class="table">
-                <thead>
-                    <tr>
-                        <th>Position</th>
-                        <th>Nom joueur</th>
-                        <th>Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Doe</td>
-                        <td>23000</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Moe</td>
-                        <td>20500</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Quelqu'un</td>
-                        <td>18000</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>D'autre</td>
-                        <td>16500</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Doe</td>
-                        <td>16000</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Moe</td>
-                        <td>14500</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Quelqu'un</td>
-                        <td>13000</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>D'autre</td>
-                        <td>12700</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>Doe</td>
-                        <td>12400</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>Moe</td>
-                        <td>11000</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Quelqu'un</td>
-                        <td>10500</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>D'autre</td>
-                        <td>10100</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>Doe</td>
-                        <td>9000</td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>Moe</td>
-                        <td>8600</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>Quelqu'un</td>
-                        <td>8000</td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td>D'autre</td>
-                        <td>3000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="div-galerie">
-            <table id="table-galerie">
-                <thead>
-                    <tr>
-                        <td>Photo</td>
-                        <td>Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../test-phaser/assets/images/ennemi.png" alt=""></td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt quam et ultrices consequat.
-                            Cras nulla ex, sollicitudin et sagittis at, scelerisque quis sapien. Aliquam hendrerit egestas
-                            orci, sit amet pretium enim dapibus ut. Nam ornare varius velit ac ullamcorper. Vestibulum lobortis
-                            a ex ac dictum. Etiam cursus risus nec mauris porta suscipit. Ut ornare varius mi, sit amet rutrum
-                            lacus. Ut ut dignissim ex, eget fringilla felis. Cras in velit sem. Phasellus porta, odio nec
-                            eleifend mattis, ligula libero elementum ante, quis sodales dolor eros sodales sapien. Mauris
-                            hendrerit dui sed leo consectetur</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../test-phaser/assets/images/ennemi.png" alt=""></td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt quam et ultrices consequat.
-                            Cras nulla ex, sollicitudin et sagittis at, scelerisque quis sapien. Aliquam hendrerit egestas
-                            orci, sit amet pretium enim dapibus ut. Nam ornare varius velit ac ullamcorper. Vestibulum lobortis
-                            a ex ac dictum. Etiam cursus risus nec mauris porta suscipit. Ut ornare varius mi, sit amet rutrum
-                            lacus. Ut ut dignissim ex, eget fringilla felis. Cras in velit sem. Phasellus porta, odio nec
-                            eleifend mattis, ligula libero elementum ante, quis sodales dolor eros sodales sapien. Mauris
-                            hendrerit dui sed leo consectetur</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../test-phaser/assets/images/ennemi.png" alt=""></td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt quam et ultrices consequat.
-                            Cras nulla ex, sollicitudin et sagittis at, scelerisque quis sapien. Aliquam hendrerit egestas
-                            orci, sit amet pretium enim dapibus ut. Nam ornare varius velit ac ullamcorper. Vestibulum lobortis
-                            a ex ac dictum. Etiam cursus risus nec mauris porta suscipit. Ut ornare varius mi, sit amet rutrum
-                            lacus. Ut ut dignissim ex, eget fringilla felis. Cras in velit sem. Phasellus porta, odio nec
-                            eleifend mattis, ligula libero elementum ante, quis sodales dolor eros sodales sapien. Mauris
-                            hendrerit dui sed leo consectetur</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../test-phaser/assets/images/ennemi.png" alt=""></td>
-                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt quam et ultrices consequat.
-                            Cras nulla ex, sollicitudin et sagittis at, scelerisque quis sapien. Aliquam hendrerit egestas
-                            orci, sit amet pretium enim dapibus ut. Nam ornare varius velit ac ullamcorper. Vestibulum lobortis
-                            a ex ac dictum. Etiam cursus risus nec mauris porta suscipit. Ut ornare varius mi, sit amet rutrum
-                            lacus. Ut ut dignissim ex, eget fringilla felis. Cras in velit sem. Phasellus porta, odio nec
-                            eleifend mattis, ligula libero elementum ante, quis sodales dolor eros sodales sapien. Mauris
-                            hendrerit dui sed leo consectetur</td>
-                    </tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
-                </tbody>
-            </table>
-        </div>
-    </div>
+	<div class="col-lg-2 col-md-2 col-sm-3" id="lechat">
 
+		<div id="room" class="affichage">
+			<div class="content"> tchat :</div>
+		</div>
 
-    <div id="tp-popin-container">
-        <div class="bg-popin" data-action="close-popin">
-        </div>
-        <div class="tp-popin">
-            <div class="header">
-                <p><span data-action="close-popin"> X </span></p>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-success" id="btn-connect">Se connecter</button>
-                    <button type="button" class="btn btn-success" id="btn-register">S'inscrire</button>
-                    <button type="button" class="btn btn-success" id="btn-recovery">Recupérer son mot de passe</button>
-                </div>
-                <div></div>
-                <form method="POST" id="form-connect" class="form-horizontal">
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="pseudo-co">Pseudo :</label>
-                            <div class="col-sm-5" id="pseudolabel">
-                                <input class="form-control" type="text" id="pseudo-co" name="pseudo" placeholder="pseudo">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="mdp-co">Mot de passe :</label>
-                            <div class="col-sm-5" id="mdplabel">
-                                <input class="form-control" type="password" id="mdp-co" name="mdp" placeholder="mot de passe">
-                            </div>
-                        </div>
-                        <input id="connection" type="submit">
-                    </fieldset>
-                </form>
-                <form method="POST" id="form-register" class="form-horizontal">
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="pseudo" >Pseudo :</label>
-                            <div class="col-sm-5" id="namelabel">
-                                <input class="form-control" type="text" id="pseudo-reg" name="pseudo" placeholder="pseudo">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="mail" >Mail :</label>
-                            <div class="col-sm-5" id="maillabel">
-                                <input class="form-control" type="text" id="mail" name="mail" placeholder="mail">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="mdp" >Mot de passe :</label>
-                            <div class="col-sm-5" id="pwdlabel">
-                                <input class="form-control" type="password" id="mdp-reg" name="mdp" placeholder="mot de passe">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="confirm-mdplabel" >Confirmation mot de passe :</label>
-                            <div class="col-sm-5" id="confirm-mdplabel">
-                                <input class="form-control" type="password" id="confirm-mdp-reg" name="confirm-mdp" placeholder="confirmation mot de passe">
-                            </div>
-                        </div>
-                        <input id="inscription" type="submit">
-                    </fieldset>
-                </form>
-                <form method="POST" action="assets\scripts\recupPass.php" id="form-recup" class="form-horizontal">
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="mail-recup">Votre adresse mail :</label>
-                            <div class="col-sm-5" id="maillabel">
-                                <input class="form-control" type="text" id="mail-recup" name="mail" placeholder="exemple@mail.xxx">
-                            </div>
-                        </div>
-                        <input id="recuperation" type="submit">
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-    </div>
+		<div class="input">
+			<form method="POST" id="input-room" name="form-room">
+				<input class="input" type="text" id="message" name="message" placeholder="tapez votre texte ici">
+				<input type="submit" value="Envoyer">
+			</form>
+		</div>
+	</div>
 
-    <script src="assets/scripts/jquery-3.1.1.min.js"></script>
-    <script src="assets/scripts/popin.js"></script>
-    <script src="assets/scripts/menu-selector.js"></script>
-    <script src="assets/scripts/lib/ajax.js"></script>
-    <script src="assets/scripts/room.js"></script>
-    <script src="assets/scripts/login.js"></script>
-    <script src="assets/scripts/register.js"></script>
+	<div class="modal fade" id="popin">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="btn btn-success" id="btn-connect">Se connecter</button>
+					<button type="button" class="btn btn-success" id="btn-register">S'inscrire</button>
+					<button type="button" class="btn btn-success" id="btn-recovery">Récupérer son mot de passe</button>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form method="POST" id="form-connect" class="form-horizontal">
+						<fieldset>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="pseudo-co">Pseudo :</label>
+								<div class="col-sm-5" id="pseudolabel">
+									<input class="form-control" type="text" id="pseudo-co" name="pseudo" placeholder="pseudo">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="mdp-co">Mot de passe :</label>
+								<div class="col-sm-5" id="mdplabel">
+									<input class="form-control" type="password" id="mdp-co" name="mdp" placeholder="mot de passe">
+								</div>
+							</div>
+							<input id="connection" type="submit">
+						</fieldset>
+					</form>
+					<form method="POST" id="form-register" class="form-horizontal">
+						<fieldset>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="pseudo">Pseudo :</label>
+								<div class="col-sm-5" id="namelabel">
+									<input class="form-control" type="text" id="pseudo-reg" name="pseudo" placeholder="pseudo">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="mail">Mail :</label>
+								<div class="col-sm-5" id="maillabel">
+									<input class="form-control" type="text" id="mail" name="mail" placeholder="mail">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="mdp">Mot de passe :</label>
+								<div class="col-sm-5" id="pwdlabel">
+									<input class="form-control" type="password" id="mdp-reg" name="mdp" placeholder="mot de passe">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="confirm-mdplabel">Confirmation mot de passe :</label>
+								<div class="col-sm-5" id="confirm-mdplabel">
+									<input class="form-control" type="password" id="confirm-mdp-reg" name="confirm-mdp" placeholder="confirmation mot de passe">
+								</div>
+							</div>
+							<input id="inscription" type="submit">
+						</fieldset>
+					</form>
+					<form method="POST" action="assets\scripts\recupPass.php" id="form-recup" class="form-horizontal">
+						<fieldset>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="mail-recup">Votre adresse mail :</label>
+								<div class="col-sm-5" id="maillabel">
+									<input class="form-control" type="text" id="mail-recup" name="mail" placeholder="exemple@mail.xxx">
+								</div>
+							</div>
+							<input id="recuperation" type="submit">
+						</fieldset>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="assets/scripts/jquery-3.2.0.min.js"></script>
+		<script src="assets/scripts/bootstrap.min.js"></script>
+		<script src="assets/scripts/popin.js"></script>
+		<script src="assets/scripts/menu-selector.js"></script>
+		<script src="assets/scripts/lib/ajax.js"></script>
+		<script src="assets/scripts/room.js"></script>
+		<script src="assets/scripts/login.js"></script>
+		<script src="assets/scripts/register.js"></script>
 </body>
 
 </html>
