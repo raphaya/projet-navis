@@ -20,14 +20,16 @@ var level = function (levelNumber) {
 
             var interval = setInterval(function () {
                 if (!popWave1) {
-                    for (var y = 0; y < 3; y++) {
+                    /*for (var y = 0; y < 3; y++) {
                         for (var x = 0; x < 10; x++) {
                             createEnemy1(x, y * 800);
                         }
-                    }
+                    }*/
+                    createEnemyMissile1(41400, 3000);
+                    //createEnemyMissile1(20000, 3000);
                     popWave1 = true;
                     time = game.time.now;
-                } else if (!popBoss) {
+                }/* else if (!popBoss) {
                     enemy1Fires();
                 }
 
@@ -44,7 +46,6 @@ var level = function (levelNumber) {
                     game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 3000, Phaser.Easing.Linear.None, true);
                     for (var x = 0; x < 10; x++) {
                         createEnemy1(x, -700);
-                        game.add.tween(enemies1).to({ y: 300 }, speedPopEnemies, Phaser.Easing.Linear.None, true);
                     }
                     popEnemies = true;
                 }
@@ -111,11 +112,9 @@ var level = function (levelNumber) {
                 if (bossIsDead && livingEnemies1.length <= 0) {
                     endLevel();
                     clearInterval(interval);
-                }
+                }*/
 
                 if (vaisseau.health <= 0) {
-                    vaisseau.alive = false;
-                    healthBar.destroy();
                     clearInterval(interval);
                 }
 

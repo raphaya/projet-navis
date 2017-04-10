@@ -12,6 +12,7 @@ var fireButton,
     warning,
     enemies,
     enemy1Bullets,
+    bulletsMissile,
     boss1Bullets,
     gameOver,
     score = 0,
@@ -21,25 +22,6 @@ var fireButton,
     levelEnded = false,
     shipTrail,
     gameState = {
-
-        /*preload: function () {
-            //this.load.audio('bossMusic', 'assets/audio/bossmusic.mp3');
-            this.load.image('background', 'assets/images/background.png');
-            this.load.image('vaisseau', ship.skin);
-            this.load.image('bullet', ship.bulletSkin);
-            this.load.image('icone', ship.icone);
-            this.load.image('special', ship.special);
-            this.load.image('special2', 'assets/images/special2Dps.png');
-            this.load.image('enemy', 'assets/images/ennemi.png');
-            this.load.image('enemyBoss', 'assets/images/enemyBoss.png');
-            this.load.image('healthBar', 'assets/images/healthbar.png');
-            this.load.image('expBar', 'assets/images/xpbar.png');
-            this.load.image('warning', 'assets/images/warning.png');
-            this.load.image('enemyBullet', 'assets/images/enemy_bullet.png');
-            this.load.image('bulletBoss', 'assets/images/bulletBoss.png');
-            this.load.image('shipTrail', 'assets/images/shipTrail.png');
-            this.load.spritesheet('kaboom', 'assets/images/explode.png', 128, 128);
-        },*/
 
         create: function () {
             this.fond = this.game.add.tileSprite(0, 0, 1600, 920, 'background');
@@ -78,6 +60,9 @@ var fireButton,
             enemiesBoss1 = game.add.group();
             enemiesBoss1.enableBody = true;
             enemiesBoss1.physicsBodytype = Phaser.Physics.ARCADE;
+            enemiesMissile1 = game.add.group();
+            enemiesMissile1.enableBody = true;
+            enemiesMissile1.physicsBodytype = Phaser.Physics.ARCADE;
             level(levelNumber);
 
             bossHealthBar = this.game.add.sprite(275, 30, 'healthBar');
@@ -121,6 +106,13 @@ var fireButton,
             boss1Bullets.setAll('angle', -90);
             boss1Bullets.setAll('outOfBoundsKill', true);
             boss1Bullets.setAll('checkWorldBounds', true);
+            bulletsMissile = game.add.group();
+            bulletsMissile.enableBody = true;
+            bulletsMissile.physicsBodytype = Phaser.Physics.ARCADE;
+            bulletsMissile.createMultiple(30, 'bulletMissile');
+            //bulletsMissile.setAll('angle', -90);
+            bulletsMissile.setAll('outOfBoundsKill', true);
+            bulletsMissile.setAll('checkWorldBounds', true);
 
             fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
             specialButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
@@ -161,6 +153,7 @@ var fireButton,
         },
 
         update: function () {
+            missileFires();
             this.fond.tilePosition.y += 3;
             shipTrail.y = vaisseau.y;
 
@@ -237,6 +230,8 @@ var fireButton,
 
             if (vaisseau.health <= 0) {
                 gameOver.visible = true;
+                vaisseau.alive = false;
+                healthBar.destroy();
             }
 
             if (vaisseau.health <= 20 && warningTimer < game.time.now) {
@@ -250,6 +245,8 @@ var fireButton,
                 case "dps":
                     game.physics.arcade.overlap(specials, enemies1, ship.collision, null, this);
                     game.physics.arcade.overlap(specials2, enemies1, collisionHandlerSpecial2, null, this);
+                    game.physics.arcade.overlap(specials, enemiesMissile1, ship.collision, null, this);
+                    game.physics.arcade.overlap(specials2, enemiesMissile1, collisionHandlerSpecial2, null, this);
                     game.physics.arcade.overlap(specials, enemiesBoss1, ship.collision, null, this);
                     game.physics.arcade.overlap(specials2, enemiesBoss1, collisionHandlerSpecial2, null, this);
                     break;
@@ -262,8 +259,10 @@ var fireButton,
             }
 
             game.physics.arcade.overlap(bullets, enemies1, collisionHandler, null, this);
+            game.physics.arcade.overlap(bullets, enemiesMissile1, collisionHandler, null, this);
             game.physics.arcade.overlap(bullets, enemiesBoss1, collisionHandler, null, this);
             game.physics.arcade.overlap(enemy1Bullets, vaisseau, enemy1HitsPlayer, null, this);
+            game.physics.arcade.overlap(bulletsMissile, vaisseau, missileHitsPlayer, null, this);
             game.physics.arcade.overlap(boss1Bullets, vaisseau, boss1HitsPlayer, null, this);
         },
     };

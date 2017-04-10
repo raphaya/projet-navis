@@ -17,13 +17,16 @@ var preloadState = {
             this.load.image('special', ship.special);
             this.load.image('special2', 'assets/images/special2Dps.png');
             this.load.image('enemy', 'assets/images/ennemi.png');
+            this.load.image('enemyMissile', 'assets/images/ennemiMissile.png');
             this.load.image('enemyBoss', 'assets/images/enemyBoss.png');
             this.load.image('healthBar', 'assets/images/healthbar.png');
             this.load.image('expBar', 'assets/images/xpbar.png');
             this.load.image('warning', 'assets/images/warning.png');
             this.load.image('enemyBullet', 'assets/images/enemy_bullet.png');
+            this.load.image('bulletMissile', 'assets/images/bulletMissile.png');
             this.load.image('bulletBoss', 'assets/images/bulletBoss.png');
             this.load.image('shipTrail', 'assets/images/shipTrail.png');
+            this.load.image('enemyTrail', 'assets/images/enemyTrail.png');
             this.load.spritesheet('kaboom', 'assets/images/explode.png', 128, 128);
     },
 
