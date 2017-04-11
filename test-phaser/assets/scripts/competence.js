@@ -10,6 +10,7 @@ function fireBullet() {
             bullet.reset(vaisseau.body.x + ship.bulletX, vaisseau.body.y);
             bullet.body.velocity.y = -550;
             bulletTime = game.time.now + ship.fireRate;
+            fireBulletAudio.play();
         }
     }
 }
@@ -39,6 +40,7 @@ function specialDps() {
     if (special) {
         special.reset(vaisseau.body.x + 20, vaisseau.body.y - 20);
         special.body.velocity.y = -300;
+        fireSpecialDpsAudio.play();
     }
 }
 
@@ -83,6 +85,7 @@ function collisionHandlerSpecial(special, enemy) {
         i += 45;
     }
     special.kill();
+    fireSpecial2DpsAudio.play();
 }
 
 function collisionHandlerSpecial2(special2, enemy) {

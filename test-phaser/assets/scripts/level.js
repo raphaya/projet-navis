@@ -4,10 +4,11 @@ var level = function (levelNumber) {
         case 1:
             createBoss1(775, 1300);
             var popBoss = false,
+                musicBoss = false,
                 bossIsDead = false,
-                speedPopBoss = 8000,
+                speedPopBoss = 6000,
                 popEnemies = false,
-                speedPopEnemies = 3000,
+                speedPopEnemies = 8000,
                 count = 0,
                 popWave1 = false,
                 time = 0,
@@ -20,37 +21,33 @@ var level = function (levelNumber) {
 
             var interval = setInterval(function () {
                 if (!popWave1) {
-                    /*for (var y = 0; y < 3; y++) {
-                        for (var x = 0; x < 10; x++) {
-                            createEnemy1(x, y * 800);
-                        }
-                    }*/
-                    createEnemyMissile1(41400, 3000);
-                    //createEnemyMissile1(20000, 3000);
+                    createEnemyMissile1(800);
                     popWave1 = true;
                     time = game.time.now;
-                }/* else if (!popBoss) {
-                    enemy1Fires();
                 }
-
-                if (livingEnemies1.length <= 0 && !popBoss && game.time.now >= time + levelRefresh) {
-                    //bossMusic.play();
+/*
+                if (livingEnemies1.length <= 0 && !musicBoss && game.time.now >= time + levelRefresh) {
                     vaisseau.alive = false;
-                    game.camera.shake(0.01, speedPopBoss + 1000);
-                    game.add.tween(enemiesBoss1).to({ y: -1450 }, speedPopBoss, Phaser.Easing.Linear.None, true);
+                    game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, speedPopBoss, Phaser.Easing.Linear.None, true);
+                    bossMusic.play();
+                    musicBoss = true;
+                    time = game.time.now;
+                }
+                if (livingEnemies1.length <= 0 && !popBoss && game.time.now >= time + 6000) {
+                    game.camera.shake(0.01, speedPopBoss + 7000);
+                    game.add.tween(enemiesBoss1).to({ y: -1450 }, speedPopBoss + 6000, Phaser.Easing.Linear.None, true);
                     popBoss = true;
                     time = game.time.now;
                 }
 
-                if (!popEnemies && game.time.now > time + speedPopBoss + levelRefresh && popBoss) {
-                    game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 3000, Phaser.Easing.Linear.None, true);
+                if (!popEnemies && game.time.now > time + speedPopBoss && popBoss) {
                     for (var x = 0; x < 10; x++) {
                         createEnemy1(x, -700);
                     }
                     popEnemies = true;
                 }
 
-                if (livingEnemies1.length <= 0 && popEnemies) {
+                if (livingEnemies1.length <= 0 && popEnemies && game.time.now > time + speedPopBoss + speedPopEnemies + 1000) {
                     count++;
                     if (count == 50) {
                         popEnemies = false;
@@ -58,7 +55,7 @@ var level = function (levelNumber) {
                     }
                 }
 
-                if (game.time.now > time + speedPopBoss + speedPopEnemies + levelRefresh + 2000 && popBoss) {
+                if (game.time.now > time + speedPopBoss + speedPopEnemies + 2000 && popBoss) {
                     vaisseau.alive = true;
                     enemy1Fires();
 
@@ -112,8 +109,8 @@ var level = function (levelNumber) {
                 if (bossIsDead && livingEnemies1.length <= 0) {
                     endLevel();
                     clearInterval(interval);
-                }*/
-
+                }
+*/
                 if (vaisseau.health <= 0) {
                     clearInterval(interval);
                 }

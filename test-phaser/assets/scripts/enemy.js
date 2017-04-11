@@ -8,8 +8,8 @@ function createEnemy1(positionX, positionY) {
         enemy1.reset(positionX * 800, positionY, 'enemy');
         enemy1.body.setSize(enemy1.width * 0.16, enemy1.height * 0.1);
         enemy1.health = 30;
+        game.add.tween(enemy1).to({ y: 800 }, 8000, Phaser.Easing.Linear.None, true);
     }
-    game.add.tween(enemies1).to({ y: 300 }, 3000, Phaser.Easing.Linear.None, true);
     game.add.tween(enemies1).to({ x: 30 }, 1000, Phaser.Easing.Linear.None, true, 0, 1000, true).loop();
 }
 
@@ -30,15 +30,15 @@ function createBoss1(positionX, positionY) {
     game.add.tween(enemiesBoss1).to({ x: 50 }, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true).loop();
 }
 
-function createEnemyMissile1(positionX, positionY) {
-    enemiesMissile1.createMultiple(15, 'enemyMissile');
+function createEnemyMissile1(positionY) {
+    enemiesMissile1.createMultiple(1, 'enemyMissile');
     enemiesMissile1.scale.setTo(0.04);
     enemiesMissile1.setAll('angle', 90);
     enemiesMissile1.damageAmount = 30;
     var enemyMissile1 = enemiesMissile1.getFirstExists(false);
 
     if (enemyMissile1) {
-        enemyMissile1.reset(positionX, positionY, 'enemyMissile');
+        enemyMissile1.reset(41400, positionY, 'enemyMissile');
         enemyMissile1.body.setSize(enemyMissile1.width * 0.03, enemyMissile1.height * 0.03, 20, 0);
         enemyMissile1.health = 10;
         enemyMissile1.body.velocity.x = -5000;
@@ -55,3 +55,27 @@ function createEnemyMissile1(positionX, positionY) {
         enemyTrail.start(false, 5000, 10);*/
     }
 }
+
+var timeKamikaze = 0;
+function createEnemyKamikaze(positionX) {
+    enemiesKamikaze.createMultiple(15, 'enemyKamikaze');
+    enemiesKamikaze.damageAmount = 50;
+    var enemyKamikaze = enemiesKamikaze.getFirstExists(false);
+
+    if (enemyKamikaze && game.time.now > timeKamikaze) {
+        enemyKamikaze.reset(positionX , -100, 'enemyKamikaze');
+        enemyKamikaze.body.setSize(enemyKamikaze.width , enemyKamikaze.height);
+        enemyKamikaze.anchor.setTo(0.5, 0.5);
+        enemyKamikaze.health = 4;
+        var tweenKami = game.add.tween(enemyKamikaze).to({ y: 100 }, 2000, Phaser.Easing.Linear.None, true);
+        tweenKami.onComplete.add(function () {
+            var angle = game.physics.arcade.angleBetween(enemyKamikaze, vaisseau);
+            var angleKami = game.add.tween(enemyKamikaze).to({ rotation: angle - 1.55 }, 1000, Phaser.Easing.Linear.None, true);
+            angleKami.onComplete.add(function () {
+                game.physics.arcade.moveToObject(enemyKamikaze, vaisseau, 1000);
+            }, this);
+        }, this);
+        timeEnemies1 = game.time.now + 500;
+    }
+}
+

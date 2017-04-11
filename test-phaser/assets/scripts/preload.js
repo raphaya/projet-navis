@@ -6,7 +6,11 @@ var preloadState = {
         loadingBar.anchor.setTo(3, 3);
         this.load.setPreloadSprite(loadingBar);
       
-            //this.load.audio('bossMusic', 'assets/audio/bossmusic.mp3');
+            this.load.audio('bossMusic', 'assets/audio/bossmusic.mp3');
+            this.load.audio('fireBulletAudio', 'assets/audio/pistol.wav');
+            this.load.audio('fireSpecialDpsAudio', 'assets/audio/blaster.mp3');
+            this.load.audio('fireSpecial2DpsAudio', 'assets/audio/shotgun.wav');
+
             this.load.image('background', 'assets/images/background.png');
             this.load.image('vaisseau', ship.skin);
             this.load.image('dps', 'assets/images/dps.png');
@@ -18,6 +22,7 @@ var preloadState = {
             this.load.image('special2', 'assets/images/special2Dps.png');
             this.load.image('enemy', 'assets/images/ennemi.png');
             this.load.image('enemyMissile', 'assets/images/ennemiMissile.png');
+            this.load.image('enemyKamikaze', 'assets/images/ennemiKamikaze.png');
             this.load.image('enemyBoss', 'assets/images/enemyBoss.png');
             this.load.image('healthBar', 'assets/images/healthbar.png');
             this.load.image('expBar', 'assets/images/xpbar.png');
