@@ -16,10 +16,7 @@ function fireBullet() {
 }
 
 function collisionHandler(bullet, enemy) {
-    var explosion = explosions.getFirstExists(false);
-    explosion.reset(bullet.body.x, bullet.body.y);
-    explosion.alpha = 0.7;
-    explosion.play('kaboom', 30, false, true);
+    explosion(bullet);
     enemy.damage(vaisseau.damageAmount);
 
     if (enemy.key == "enemyBoss") {
@@ -89,11 +86,8 @@ function collisionHandlerSpecial(special, enemy) {
 }
 
 function collisionHandlerSpecial2(special2, enemy) {
-    var explosion = explosions.getFirstExists(false);
-    explosion.reset(special2.body.x, special2.body.y);
-    explosion.alpha = 0.7;
-    explosion.play('kaboom', 30, false, true);
-    enemy.damage(vaisseau.damageAmount * 0.5);
+    explosion(special2);
+    enemy.damage(vaisseau.damageAmount * 0.1);
 
     if (enemy.key == "enemyBoss") {
         game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 100, Phaser.Easing.Linear.None, true);

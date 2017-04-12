@@ -63,8 +63,8 @@ function createEnemyKamikaze(positionX) {
     var enemyKamikaze = enemiesKamikaze.getFirstExists(false);
 
     if (enemyKamikaze && game.time.now > timeKamikaze) {
-        enemyKamikaze.reset(positionX , -100, 'enemyKamikaze');
-        enemyKamikaze.body.setSize(enemyKamikaze.width , enemyKamikaze.height);
+        enemyKamikaze.reset(positionX, -100, 'enemyKamikaze');
+        enemyKamikaze.body.setSize(enemyKamikaze.width, enemyKamikaze.height);
         enemyKamikaze.anchor.setTo(0.5, 0.5);
         enemyKamikaze.health = 4;
         var tweenKami = game.add.tween(enemyKamikaze).to({ y: 100 }, 2000, Phaser.Easing.Linear.None, true);
@@ -79,3 +79,59 @@ function createEnemyKamikaze(positionX) {
     }
 }
 
+function createEnemyMotherDrone(sidePop) {
+    enemiesMotherDrone.createMultiple(1, 'enemyMotherDrone');
+    var tweenMotherDrone,
+        positionX = -210,
+        rotation = -0.5,
+        tweenX = 140,
+        droneX = 220;
+    var enemyMotherDrone = enemiesMotherDrone.getFirstExists(false);
+
+    if (enemyMotherDrone) {
+        if (sidePop) {
+            positionX = 1850;
+            rotation = 0.5;
+            tweenX = 1460;
+            droneX = 1380;
+        }
+        enemyMotherDrone.reset(positionX, 180, 'enemyMotherDrone');
+        enemyMotherDrone.rotation = rotation;
+        tweenMotherDrone = game.add.tween(enemyMotherDrone).to({ x: tweenX }, 3000, Phaser.Easing.Linear.None, true);
+        tweenMotherDrone.onComplete.add(function () {
+            setInterval(function () {
+                if (enemyMotherDrone.alive) {
+                    createEnemyDrone(droneX, 325);
+                } else {
+                    clearInterval();
+                }
+            }, 2000);
+        }, this);
+        enemyMotherDrone.anchor.setTo(0.5, 0.5);
+        enemyMotherDrone.body.setSize(enemyMotherDrone.width, enemyMotherDrone.height * 0.9);
+        enemyMotherDrone.health = 400;
+    }
+}
+
+function createEnemyDrone(positionX, positionY) {
+    if (livingDrones.length < 1) {
+        enemiesDrone.createMultiple(1, 'enemyDrone');
+        enemiesDrone.damageAmount = 10;
+        var enemyDrone = enemiesDrone.getFirstExists(false);
+
+        if (enemyDrone) {
+            enemyDrone.reset(positionX, positionY, 'enemyDrone');
+            enemyDrone.body.setSize(enemyDrone.width * 0.5, enemyDrone.height * 0.9, 10, 0);
+            enemyDrone.anchor.setTo(0.5, 0.5);
+            enemyDrone.health = 10;
+            setInterval(function () {
+                if (game.physics.arcade.distanceBetween(enemyDrone, vaisseau) > 100) {
+                    enemyDrone.rotation = game.physics.arcade.moveToObject(enemyDrone, vaisseau, 200) - 1.5;
+                } else {
+                    enemyDrone.body.velocity.setTo(0, 0);
+                }
+                droneFires();
+            }, 10);
+        }
+    }
+}

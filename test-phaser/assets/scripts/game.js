@@ -69,6 +69,12 @@ var fireButton,
             enemiesKamikaze = game.add.group();
             enemiesKamikaze.enableBody = true;
             enemiesKamikaze.physicsBodytype = Phaser.Physics.ARCADE;
+            enemiesMotherDrone = game.add.group();
+            enemiesMotherDrone.enableBody = true;
+            enemiesMotherDrone.physicsBodytype = Phaser.Physics.ARCADE;
+            enemiesDrone = game.add.group();
+            enemiesDrone.enableBody = true;
+            enemiesDrone.physicsBodytype = Phaser.Physics.ARCADE;
             level(levelNumber);
 
             bossHealthBar = this.game.add.sprite(275, 30, 'healthBar');
@@ -105,6 +111,13 @@ var fireButton,
             enemy1Bullets.setAll('angle', -90);
             enemy1Bullets.setAll('outOfBoundsKill', true);
             enemy1Bullets.setAll('checkWorldBounds', true);
+            droneBullets = game.add.group();
+            droneBullets.enableBody = true;
+            droneBullets.physicsBodytype = Phaser.Physics.ARCADE;
+            droneBullets.createMultiple(30, 'enemyBullet');
+            droneBullets.setAll('angle', -90);
+            droneBullets.setAll('outOfBoundsKill', true);
+            droneBullets.setAll('checkWorldBounds', true);
             boss1Bullets = game.add.group();
             boss1Bullets.enableBody = true;
             boss1Bullets.physicsBodytype = Phaser.Physics.ARCADE;
@@ -158,7 +171,8 @@ var fireButton,
         },
 
         update: function () {
-            missileFires();
+            //missileFires();
+
             this.fond.tilePosition.y += 3;
             shipTrail.y = vaisseau.y;
 
@@ -256,6 +270,10 @@ var fireButton,
                     game.physics.arcade.overlap(specials2, enemiesBoss1, collisionHandlerSpecial2, null, this);
                     game.physics.arcade.overlap(specials, enemiesKamikaze, ship.collision, null, this);
                     game.physics.arcade.overlap(specials2, enemiesKamikaze, collisionHandlerSpecial2, null, this);
+                    game.physics.arcade.overlap(specials, enemiesMotherDrone, ship.collision, null, this);
+                    game.physics.arcade.overlap(specials2, enemiesMotherDrone, collisionHandlerSpecial2, null, this);
+                    game.physics.arcade.overlap(specials, enemiesDrone, ship.collision, null, this);
+                    game.physics.arcade.overlap(specials2, enemiesDrone, collisionHandlerSpecial2, null, this);
                     break;
                 case "tank":
                     //game.physics.arcade.overlap(specials, enemies, ship.collision, null, this);
@@ -268,18 +286,29 @@ var fireButton,
             game.physics.arcade.overlap(bullets, enemies1, collisionHandler, null, this);
             game.physics.arcade.overlap(bullets, enemiesMissile1, collisionHandler, null, this);
             game.physics.arcade.overlap(bullets, enemiesKamikaze, collisionHandler, null, this);
+            game.physics.arcade.overlap(bullets, enemiesMotherDrone, collisionHandler, null, this);
+            game.physics.arcade.overlap(bullets, enemiesDrone, collisionHandler, null, this);
             game.physics.arcade.overlap(bullets, enemiesBoss1, collisionHandler, null, this);
+
             game.physics.arcade.overlap(enemy1Bullets, vaisseau, enemy1HitsPlayer, null, this);
             game.physics.arcade.overlap(bulletsMissile, vaisseau, missileHitsPlayer, null, this);
             game.physics.arcade.overlap(boss1Bullets, vaisseau, boss1HitsPlayer, null, this);
             game.physics.arcade.overlap(enemiesKamikaze, vaisseau, kamikazeHitsPlayer, null, this);
+            game.physics.arcade.overlap(droneBullets, vaisseau, droneHitsPlayer, null, this);
         },
     };
 
 game.state.add('load', preloadState);
-game.state.add('menu' , menuState);
+game.state.add('menu', menuState);
 game.state.add('play', gameState);
 game.state.add('boot', bootState);
 game.state.add('ship', shipState);
 
 game.state.start('boot');
+
+function explosion(bullet) {
+    var explosion = explosions.getFirstExists(false);
+    explosion.reset(bullet.body.x, bullet.body.y);
+    explosion.alpha = 0.7;
+    explosion.play('kaboom', 30, false, true);
+}
