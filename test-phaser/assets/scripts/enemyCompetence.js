@@ -210,7 +210,8 @@ function boss1HitsPlayer(vaisseau, enemyBullet) {
 }
 
 function kamikazeHitsPlayer(vaisseau, enemyKamikaze) {
-    explosion(enemyBullet);
+    explosion(vaisseau);
+    explosion(enemyKamikaze);
     vaisseau.damage(enemiesKamikaze.damageAmount);
     game.add.tween(healthBar.scale).to({ x: vaisseau.health / 150 }, 100, Phaser.Easing.Linear.None, true);
     enemyKamikaze.kill();

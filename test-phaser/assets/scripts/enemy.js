@@ -56,27 +56,34 @@ function createEnemyMissile1(positionY) {
     }
 }
 
-var timeKamikaze = 0;
-function createEnemyKamikaze(positionX) {
-    enemiesKamikaze.createMultiple(15, 'enemyKamikaze');
-    enemiesKamikaze.damageAmount = 50;
-    var enemyKamikaze = enemiesKamikaze.getFirstExists(false);
+var countKamikaze = 0;
+function createEnemyKamikaze(maxKamikaze) {
+    var intervalKamikaze = setInterval(function () {
+        enemiesKamikaze.createMultiple(15, 'enemyKamikaze');
+        enemiesKamikaze.damageAmount = 50;
+        var enemyKamikaze = enemiesKamikaze.getFirstExists(false);
 
-    if (enemyKamikaze && game.time.now > timeKamikaze) {
-        enemyKamikaze.reset(positionX, -100, 'enemyKamikaze');
-        enemyKamikaze.body.setSize(enemyKamikaze.width, enemyKamikaze.height);
-        enemyKamikaze.anchor.setTo(0.5, 0.5);
-        enemyKamikaze.health = 4;
-        var tweenKami = game.add.tween(enemyKamikaze).to({ y: 100 }, 2000, Phaser.Easing.Linear.None, true);
-        tweenKami.onComplete.add(function () {
-            var angle = game.physics.arcade.angleBetween(enemyKamikaze, vaisseau);
-            var angleKami = game.add.tween(enemyKamikaze).to({ rotation: angle - 1.55 }, 1000, Phaser.Easing.Linear.None, true);
-            angleKami.onComplete.add(function () {
-                game.physics.arcade.moveToObject(enemyKamikaze, vaisseau, 1000);
+        if (enemyKamikaze) {
+            var x = Math.random() * 1600;
+            enemyKamikaze.reset(x, -100, 'enemyKamikaze');
+            enemyKamikaze.body.setSize(enemyKamikaze.width, enemyKamikaze.height);
+            enemyKamikaze.anchor.setTo(0.5, 0.5);
+            enemyKamikaze.health = 4;
+            var tweenKami = game.add.tween(enemyKamikaze).to({ y: 100 }, 2000, Phaser.Easing.Linear.None, true);
+            tweenKami.onComplete.add(function () {
+                var angle = game.physics.arcade.angleBetween(enemyKamikaze, vaisseau);
+                var angleKami = game.add.tween(enemyKamikaze).to({ rotation: angle - 1.55 }, 1000, Phaser.Easing.Linear.None, true);
+                angleKami.onComplete.add(function () {
+                    game.physics.arcade.moveToObject(enemyKamikaze, vaisseau, 1000);
+                }, this);
             }, this);
-        }, this);
-        timeEnemies1 = game.time.now + 500;
-    }
+            countKamikaze++;
+        }
+        if (countKamikaze >= maxKamikaze) {
+            countKamikaze = 0;
+            clearInterval(intervalKamikaze);
+        }
+    }, 500);
 }
 
 function createEnemyMotherDrone(sidePop) {
