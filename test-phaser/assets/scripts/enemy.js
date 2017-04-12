@@ -30,30 +30,53 @@ function createBoss1(positionX, positionY) {
     game.add.tween(enemiesBoss1).to({ x: 50 }, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true).loop();
 }
 
-function createEnemyMissile1(positionY) {
-    enemiesMissile1.createMultiple(1, 'enemyMissile');
-    enemiesMissile1.scale.setTo(0.04);
-    enemiesMissile1.setAll('angle', 90);
-    enemiesMissile1.damageAmount = 30;
-    var enemyMissile1 = enemiesMissile1.getFirstExists(false);
+var countMissile = 0;
+function createEnemyMissile1(sidePop, maxMissile) {
+    var intervalKamikaze = setInterval(function () {
+        var positionX = 0,
+            velocity = 300,
+            angle = -90;
+        if (livingEmemiesMissile.length < 1) {
+            enemiesMissile1.createMultiple(1, 'enemyMissile');
+            enemiesMissile1.damageAmount = 30;
+            var enemyMissile1 = enemiesMissile1.getFirstExists(false);
 
-    if (enemyMissile1) {
-        enemyMissile1.reset(41400, positionY, 'enemyMissile');
-        enemyMissile1.body.setSize(enemyMissile1.width * 0.03, enemyMissile1.height * 0.03, 20, 0);
-        enemyMissile1.health = 10;
-        enemyMissile1.body.velocity.x = -5000;
+            if (enemyMissile1) {
+                if (sidePop) {
+                    positionX = 1600;
+                    velocity = -300;
+                    angle = 90;
+                }
+                var y = Math.random() * 500;
+                enemyMissile1.reset(positionX, y, 'enemyMissile');
+                enemyMissile1.checkWorldBounds = true;
+                enemyMissile1.anchor.setTo(0.5, 0.5);
+                enemyMissile1.body.setSize(enemyMissile1.width, enemyMissile1.height);
+                enemyMissile1.angle = angle;
+                enemyMissile1.health = 10;
+                enemyMissile1.body.velocity.x = velocity;
+                countMissile++;
 
-        /*var enemyTrail = game.add.emitter(positionX-9596, positionY-9568, 400);
-        enemyTrail.gravity.y = 0;
-        enemyTrail.width = 10;
-        enemyTrail.makeParticles('enemyTrail');
-        enemyTrail.setXSpeed(200, 180);
-        enemyTrail.setYSpeed(30, -30);
-        enemyTrail.setRotation(50, -50);
-        enemyTrail.setAlpha(1, 0, 1000);
-        enemyTrail.setScale(0.1, 0.7, 0.1, 0.7, 2000, Phaser.Easing.Quintic.Out);
-        enemyTrail.start(false, 5000, 10);*/
-    }
+                /*var enemyTrail = game.add.emitter(positionX-9596, positionY-9568, 400);
+                enemyTrail.gravity.y = 0;
+                enemyTrail.width = 10;
+                enemyTrail.makeParticles('enemyTrail');
+                enemyTrail.setXSpeed(200, 180);
+                enemyTrail.setYSpeed(30, -30);
+                enemyTrail.setRotation(50, -50);
+                enemyTrail.setAlpha(1, 0, 1000);
+                enemyTrail.setScale(0.1, 0.7, 0.1, 0.7, 2000, Phaser.Easing.Quintic.Out);
+                enemyTrail.start(false, 5000, 10);*/
+            }
+            if (countMissile >= maxMissile) {
+                countMissile = 0;
+                clearInterval(intervalKamikaze);
+            }
+            enemyMissile1.events.onOutOfBounds.add(function () {
+                enemyMissile1.kill();
+            }, this);
+        }
+    }, 500);
 }
 
 var countKamikaze = 0;

@@ -21,14 +21,14 @@ var level = function (levelNumber) {
 
             var interval = setInterval(function () {
                 if (!popWave1) {
-                    createEnemyMissile1(800);
+                    createEnemyMissile1(true, 4);
                     createEnemyMotherDrone(true);
-                    createEnemyKamikaze(2);
+                    createEnemyKamikaze(15);
                     popWave1 = true;
                     time = game.time.now;
                 }
 /*
-                if (livingEnemies1.length <= 0 && !musicBoss && game.time.now >= time + levelRefresh) {
+                if (livingEnemies1.length <= 0 && livingEmemiesMissile <= 0 && livingDrones <= 0 && !musicBoss && game.time.now >= time + levelRefresh) {
                     vaisseau.alive = false;
                     game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, speedPopBoss, Phaser.Easing.Linear.None, true);
                     bossMusic.play();

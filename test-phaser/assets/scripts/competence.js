@@ -87,7 +87,7 @@ function collisionHandlerSpecial(special, enemy) {
 
 function collisionHandlerSpecial2(special2, enemy) {
     explosion(special2);
-    enemy.damage(vaisseau.damageAmount * 0.1);
+    enemy.damage(vaisseau.damageAmount * 0.5);
 
     if (enemy.key == "enemyBoss") {
         game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 100, Phaser.Easing.Linear.None, true);
