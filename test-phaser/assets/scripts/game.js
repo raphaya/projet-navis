@@ -171,7 +171,7 @@ var fireButton,
         },
 
         update: function () {
-            //missileFires();
+            missileFires();
 
             this.fond.tilePosition.y += 3;
             shipTrail.y = vaisseau.y;
@@ -276,7 +276,11 @@ var fireButton,
                     game.physics.arcade.overlap(specials2, enemiesDrone, collisionHandlerSpecial2, null, this);
                     break;
                 case "tank":
-                    //game.physics.arcade.overlap(specials, enemies, ship.collision, null, this);
+                    game.physics.arcade.overlap(enemy1Bullets, specials, collisionHandlerShield, null, this);
+                    game.physics.arcade.overlap(bulletsMissile, specials, collisionHandlerShield, null, this);
+                    game.physics.arcade.overlap(boss1Bullets, specials, collisionHandlerShield, null, this);
+                    game.physics.arcade.overlap(enemiesKamikaze, specials, collisionHandlerShield, null, this);
+                    game.physics.arcade.overlap(droneBullets, specials, collisionHandlerShield, null, this);
                     break;
                 case "heal":
                     //game.physics.arcade.overlap(specials, enemies, ship.collision, null, this);

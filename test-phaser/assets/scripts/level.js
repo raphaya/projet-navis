@@ -21,9 +21,9 @@ var level = function (levelNumber) {
 
             var interval = setInterval(function () {
                 if (!popWave1) {
-                    //createEnemyMissile1(800);
-                    //createEnemyMotherDrone(true);
-                    createEnemyKamikaze(15);
+                    createEnemyMissile1(800);
+                    createEnemyMotherDrone(true);
+                    createEnemyKamikaze(2);
                     popWave1 = true;
                     time = game.time.now;
                 }

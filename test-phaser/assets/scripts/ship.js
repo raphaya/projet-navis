@@ -1,6 +1,6 @@
 // définition des vaisseaux
 var ship;
-var type = "DPS";
+var type = "TANK";
 
 switch (type) {
     case "DPS":

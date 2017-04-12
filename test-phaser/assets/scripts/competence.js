@@ -103,22 +103,31 @@ function collisionHandlerSpecial2(special2, enemy) {
 // spécial vaisseau tank
 function specialTank() {
     var special = specials.getFirstExists(false);
+    var timeShield = game.time.now;
 
     if (special) {
         special.anchor.setTo(0.5, 0.5);
-        special.scale.setTo(0.2);
         special.angle = 67;
         special.reset(vaisseau.body.x + 28, vaisseau.body.y + 28);
-        special.body.velocity.y = 0;
+        var intervalShield = setInterval(function () {
+            game.physics.arcade.moveToObject(special, vaisseau, ship.speed);
+            if (game.time.now >= timeShield + 3000) {
+                special.kill();
+                clearInterval(intervalShield);
+            }
+        }, 1);
     }
 }
 
-function collisionHandlerShield(special, enemy) {
-
+function collisionHandlerShield(enemy, special) {
+    if (enemy.key == "enemyKamikaze") {
+        explosion(enemy);
+    }
+    enemy.kill();
 }
 
 // spécial vaisseau heal
-function specialHeal() {
+/*function specialHeal() {
     var special = specials.getFirstExists(false);
 
     if (special) {
@@ -129,4 +138,4 @@ function specialHeal() {
 
 function collisionHandlerHeal(special, enemy) {
 
-}
+}*/
