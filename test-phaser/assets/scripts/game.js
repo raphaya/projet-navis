@@ -19,6 +19,7 @@ var fireButton,
     scoreText,
     warningTimer = 0,
     bossMusic,
+    levelMusic,
     levelEnded = false,
     shipTrail,
     gameState = {
@@ -26,6 +27,7 @@ var fireButton,
         create: function () {
             this.fond = this.game.add.tileSprite(0, 0, 1600, 920, 'background');
             bossMusic = game.add.audio('bossMusic');
+            levelMusic = game.add.audio('levelMusic');
             fireBulletAudio = game.add.audio('fireBulletAudio');
             fireSpecialDpsAudio = game.add.audio('fireSpecialDpsAudio');
             fireSpecial2DpsAudio = game.add.audio('fireSpecial2DpsAudio');

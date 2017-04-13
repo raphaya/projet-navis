@@ -14,7 +14,7 @@ switch (type) {
             scaleSkin: 0.08,
             scaleIcone: 0.06,
             damage: 10,
-            maxHealth: 100,
+            maxHealth: 150,
             fireRate: 200,
             speed: 400,
             bulletX: 25
@@ -32,7 +32,7 @@ switch (type) {
             scaleSkin: 0.16,
             scaleIcone: 0.08,
             damage: 7,
-            maxHealth: 200,
+            maxHealth: 225,
             fireRate: 400,
             speed: 300,
             bulletX: 27
@@ -50,7 +50,7 @@ switch (type) {
             scaleSkin: 0.14,
             scaleIcone: 0.08,
             damage: 4,
-            maxHealth: 50,
+            maxHealth: 75,
             fireRate: 250,
             speed: 550,
             bulletX: 26

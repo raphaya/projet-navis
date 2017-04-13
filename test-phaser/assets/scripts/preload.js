@@ -7,6 +7,7 @@ var preloadState = {
         this.load.setPreloadSprite(loadingBar);
       
             this.load.audio('bossMusic', 'assets/audio/bossmusic.mp3');
+            this.load.audio('levelMusic', 'assets/audio/BR.mp3');
             this.load.audio('fireBulletAudio', 'assets/audio/pistol.wav');
             this.load.audio('fireSpecialDpsAudio', 'assets/audio/blaster.mp3');
             this.load.audio('fireSpecial2DpsAudio', 'assets/audio/shotgun.wav');
