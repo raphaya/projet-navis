@@ -1,10 +1,9 @@
+var ship;
 var shipState = {
 
     create: function () {
         var healthText, dammageText, speedText, button;
         var TitleText = game.add.text(400, game.world.height - 900, 'Choose your ship', { font: '100px Comic sans', fill: '#FF00FF' });
-        var key = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-        key.onDown.addOnce(this.launch, this);
         //button = game.add.button(game.world.centerX - 95, 400, 'button', this.actionOnClick, this, 2, 1, 0);
         vaisseau = this.game.add.sprite(400, game.world.height - 650, 'dps');
         vaisseau.anchor.set(0.5);
@@ -30,6 +29,25 @@ var shipState = {
             dammageText.destroy();
         }, this);
 
+        vaisseau.events.onInputUp.add(function () {
+            ship = {
+                class: "dps",
+                skin: 'assets/images/dps.png',
+                icone: 'assets/images/iconeDps.jpg',
+                special: 'assets/images/specialDps.png',
+                bulletSkin: 'assets/images/bulletDps.png',
+                collision: collisionHandlerSpecial,
+                scaleSkin: 0.08,
+                scaleIcone: 0.06,
+                damage: 10,
+                maxHealth: 150,
+                fireRate: 200,
+                speed: 400,
+                bulletX: 25
+            };
+            game.state.start('load');
+        });
+
         heal = this.game.add.sprite(400, game.world.height - 425, 'heal');
         heal.anchor.setTo(0.5, 0.5);
         heal.scale.setTo(0.35);
@@ -53,6 +71,26 @@ var shipState = {
             dammageText.destroy();
 
         }, this);
+
+        heal.events.onInputUp.add(function () {
+            ship = {
+                class: "heal",
+                skin: 'assets/images/heal.png',
+                icone: 'assets/images/iconeHeal.jpg',
+                special: 'assets/images/specialDps.png',
+                bulletSkin: 'assets/images/bulletHeal.png',
+                collision: '',
+                scaleSkin: 0.14,
+                scaleIcone: 0.08,
+                damage: 4,
+                maxHealth: 75,
+                fireRate: 250,
+                speed: 550,
+                bulletX: 26
+            };
+            game.state.start('load');
+        });
+
 
         tank = this.game.add.sprite(400, game.world.height - 200, 'tank');
         tank.anchor.setTo(0.5, 0.5);
@@ -78,14 +116,30 @@ var shipState = {
 
         }, this);
 
-        var next = game.input.keyboard.addKey(Phaser.Keyboard.N);
-        next.onDown.addOnce(this.launch, this);
+        tank.events.onInputUp.add(function () {
+            ship = {
+                class: "tank",
+                skin: 'assets/images/tank.png',
+                icone: 'assets/images/iconeTank.jpg',
+                special: 'assets/images/specialTank.png',
+                bulletSkin: 'assets/images/bulletTank.png',
+                collision: collisionHandlerShield,
+                scaleSkin: 0.16,
+                scaleIcone: 0.08,
+                damage: 7,
+                maxHealth: 225,
+                fireRate: 400,
+                speed: 300,
+                bulletX: 27
+            };
+            game.state.start('load');
+        });
     },
-    launch: function () {
+    /*launch: function () {
         game.state.start('menu');
     },
 
-    /* actionOnClick: function () {
+    actionOnClick: function () {
 
         game.state.start('menu');
 

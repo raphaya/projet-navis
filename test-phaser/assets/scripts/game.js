@@ -237,7 +237,7 @@ var fireButton,
                         specialTank();
                         break;
                     case "heal":
-                        specialHeal();
+                        //specialHeal();
                         break;
                 }
                 specialTime = game.time.now + 10000;

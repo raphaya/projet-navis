@@ -1,5 +1,5 @@
 // définition des vaisseaux
-var ship;
+/*var ship;
 var type = "DPS";
 
 switch (type) {
@@ -56,4 +56,4 @@ switch (type) {
             bulletX: 26
         };
         break;
-}
+}*/

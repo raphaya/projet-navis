@@ -15,9 +15,6 @@ var preloadState = {
             this.load.image('background', 'assets/images/background.png');
 
             this.load.image('vaisseau', ship.skin);
-            this.load.image('dps', 'assets/images/dps.png');
-            this.load.image('heal', 'assets/images/heal.png');
-            this.load.image('tank', 'assets/images/tank.png');
 
             this.load.image('icone', ship.icone);
             this.load.image('healthBar', 'assets/images/healthbar.png');
@@ -46,7 +43,7 @@ var preloadState = {
     },
 
     create: function () {
-        game.state.start('ship');
+        game.state.start('menu');
     }
 
 

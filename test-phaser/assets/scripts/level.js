@@ -2,10 +2,10 @@
 var level = function (levelNumber) {
     switch (levelNumber) {
         case 1:
+            levelMusic.play();
             createBoss1(775, 1300);
             var popBoss = false,
                 musicBoss = false,
-                musicLevel = false,
                 bossIsDead = false,
                 speedPopBoss = 6000,
                 popEnemies = false,
@@ -21,11 +21,6 @@ var level = function (levelNumber) {
                 levelRefresh = 200;
 
             var interval = setInterval(function () {
-                if (!musicLevel) {
-                    levelMusic.play();
-                    musicLevel = true;
-                }
-
                 if (!popWave1) {
                     createEnemyMissile1(true, 4);
                     createEnemyMotherDrone(true);
