@@ -38,8 +38,6 @@ var preloadState = {
             this.load.image('bulletBoss', 'assets/images/bulletBoss.png');
 
             this.load.spritesheet('kaboom', 'assets/images/explode.png', 128, 128);
-
-            //this.load.image('enemyTrail', 'assets/images/enemyTrail.png');
     },
 
     create: function () {

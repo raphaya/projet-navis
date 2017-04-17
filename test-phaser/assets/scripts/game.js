@@ -7,6 +7,7 @@ var fireButton,
     bullets,
     vaisseau,
     healthBar,
+    healthValue,
     expBar,
     icone,
     warning,
@@ -14,6 +15,8 @@ var fireButton,
     enemy1Bullets,
     bulletsMissile,
     boss1Bullets,
+    livingMotherDrone = [],
+    livingEnemiesKamikaze = [],
     gameOver,
     score = 0,
     scoreText,
@@ -22,6 +25,8 @@ var fireButton,
     levelMusic,
     levelEnded = false,
     shipTrail,
+    restartKey,
+    escapeKey,
     gameState = {
 
         create: function () {
@@ -31,6 +36,9 @@ var fireButton,
             fireBulletAudio = game.add.audio('fireBulletAudio');
             fireSpecialDpsAudio = game.add.audio('fireSpecialDpsAudio');
             fireSpecial2DpsAudio = game.add.audio('fireSpecial2DpsAudio');
+
+            restartKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+            escapeKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
 
             vaisseau = this.game.add.sprite(800, 800, 'vaisseau');
             vaisseau.anchor.setTo(0.5, 0.5);
@@ -42,6 +50,8 @@ var fireButton,
             healthBar.scale.setTo(0.1);
             healthBar.scale.x = vaisseau.health / 150;
             healthBar.alpha = 0.7;
+            healthValue = game.add.text(60, 855, vaisseau.health + ' HP', { font: '20px Comic sans', fill: '#FFFFFF' });
+            healthValue.anchor.setTo(0.5, 0.5);
 
             expBar = this.game.add.sprite(25, 870, 'expBar');
             expBar.scale.setTo(0.1);
@@ -173,7 +183,16 @@ var fireButton,
         },
 
         update: function () {
+            livingMotherDrone.length = 0;
+            enemiesMotherDrone.forEachAlive(function (enemy) {
+                livingMotherDrone.push(enemy);
+            });
+            livingEnemiesKamikaze.length = 0;
+            enemiesKamikaze.forEachAlive(function (enemy) {
+                livingEnemiesKamikaze.push(enemy);
+            });
             missileFires();
+            droneFires();
 
             this.fond.tilePosition.y += 3;
             shipTrail.y = vaisseau.y;
@@ -253,6 +272,9 @@ var fireButton,
                 gameOver.visible = true;
                 vaisseau.alive = false;
                 healthBar.destroy();
+                healthValue.destroy();
+                restartKey.onDown.addOnce(launch, this);
+                escapeKey.onDown.addOnce(menu, this);
             }
 
             if (vaisseau.health <= 20 && warningTimer < game.time.now) {
@@ -317,4 +339,30 @@ function explosion(bullet) {
     explosion.reset(bullet.body.x, bullet.body.y);
     explosion.alpha = 0.7;
     explosion.play('kaboom', 30, false, true);
+}
+
+function launch() {
+    enemies1.callAll('kill');
+    enemiesBoss1.callAll('kill');
+    enemiesMissile1.callAll('kill');
+    enemiesKamikaze.callAll('kill');
+    enemiesMotherDrone.callAll('kill');
+    enemiesDrone.callAll('kill');
+    score = 0;
+    levelMusic.stop();
+    bossMusic.stop();
+    game.state.start('play');
+}
+
+function menu() {
+    enemies1.callAll('kill');
+    enemiesBoss1.callAll('kill');
+    enemiesMissile1.callAll('kill');
+    enemiesKamikaze.callAll('kill');
+    enemiesMotherDrone.callAll('kill');
+    enemiesDrone.callAll('kill');
+    score = 0;
+    levelMusic.stop();
+    bossMusic.stop();
+    game.state.start('play');
 }

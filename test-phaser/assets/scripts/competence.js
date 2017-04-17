@@ -20,7 +20,7 @@ function collisionHandler(bullet, enemy) {
     enemy.damage(vaisseau.damageAmount);
 
     if (enemy.key == "enemyBoss") {
-        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 100, Phaser.Easing.Linear.None, true);
+        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 750 }, 100, Phaser.Easing.Linear.None, true);
     }
 
     if (!enemy.alive) {
@@ -87,10 +87,10 @@ function collisionHandlerSpecial(special, enemy) {
 
 function collisionHandlerSpecial2(special2, enemy) {
     explosion(special2);
-    enemy.damage(vaisseau.damageAmount * 0.5);
+    enemy.damage(vaisseau.damageAmount * 0.3);
 
     if (enemy.key == "enemyBoss") {
-        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 1500 }, 100, Phaser.Easing.Linear.None, true);
+        game.add.tween(bossHealthBar.scale).to({ x: enemiesBoss1.hash[0].health / 750 }, 100, Phaser.Easing.Linear.None, true);
     }
 
     if (!enemy.alive) {

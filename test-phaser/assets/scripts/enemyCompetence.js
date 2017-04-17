@@ -162,7 +162,7 @@ function missileFires() {
         // randomly select one of them
         var shooter = livingEmemiesMissile[random];
         // And fire the bullet from this enemy
-        bulletMissile.reset(shooter.body.x + 30 , shooter.body.y + 30);
+        bulletMissile.reset(shooter.body.x + 30, shooter.body.y + 30);
         bulletMissile.body.velocity.y = 400;
         timeMissiles = game.time.now + 700;
     }
@@ -183,43 +183,40 @@ function droneFires() {
         var shooter = livingDrones[random];
         // And fire the bullet from this enemy
         droneBullet.reset(shooter.body.x + 5, shooter.body.y + 23);
-        game.physics.arcade.moveToObject(droneBullet, vaisseau, 300);
+        game.physics.arcade.moveToObject(droneBullet, vaisseau, 700);
         timeDrones = game.time.now + 2000;
     }
 }
 
 function enemy1HitsPlayer(vaisseau, enemyBullet) {
-    explosion(enemyBullet);
     vaisseau.damage(enemies1.damageAmount);
-    game.add.tween(healthBar.scale).to({ x: vaisseau.health / 150 }, 100, Phaser.Easing.Linear.None, true);
-    enemyBullet.kill();
+    hitPlayer(enemyBullet);
 }
 
 function missileHitsPlayer(vaisseau, enemyBullet) {
-    explosion(enemyBullet);
     vaisseau.damage(enemiesMissile1.damageAmount);
-    game.add.tween(healthBar.scale).to({ x: vaisseau.health / 150 }, 100, Phaser.Easing.Linear.None, true);
-    enemyBullet.kill();
+    hitPlayer(enemyBullet);
 }
 
 function boss1HitsPlayer(vaisseau, enemyBullet) {
-    explosion(enemyBullet);
     vaisseau.damage(enemiesBoss1.damageAmount);
-    game.add.tween(healthBar.scale).to({ x: vaisseau.health / 150 }, 100, Phaser.Easing.Linear.None, true);
-    enemyBullet.kill();
+    hitPlayer(enemyBullet);
 }
 
 function kamikazeHitsPlayer(vaisseau, enemyKamikaze) {
-    explosion(vaisseau);
-    explosion(enemyKamikaze);
     vaisseau.damage(enemiesKamikaze.damageAmount);
-    game.add.tween(healthBar.scale).to({ x: vaisseau.health / 150 }, 100, Phaser.Easing.Linear.None, true);
-    enemyKamikaze.kill();
+    explosion(vaisseau);
+    hitPlayer(enemyKamikaze);
 }
 
 function droneHitsPlayer(vaisseau, enemyBullet) {
-    explosion(enemyBullet);
     vaisseau.damage(enemiesDrone.damageAmount);
+    hitPlayer(enemyBullet);
+}
+
+function hitPlayer(enemyBullet) {
+    explosion(enemyBullet);
+    healthValue.setText(vaisseau.health + ' HP');
     game.add.tween(healthBar.scale).to({ x: vaisseau.health / 150 }, 100, Phaser.Easing.Linear.None, true);
     enemyBullet.kill();
 }
