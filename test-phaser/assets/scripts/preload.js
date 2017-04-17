@@ -13,6 +13,8 @@ var preloadState = {
             this.load.audio('fireSpecial2DpsAudio', 'assets/audio/shotgun.wav');
 
             this.load.image('background', 'assets/images/background.png');
+            this.load.image('planet', 'assets/images/planet.png');
+            this.load.image('asteroids', 'assets/images/asteroids.gif');
 
             this.load.image('vaisseau', ship.skin);
 

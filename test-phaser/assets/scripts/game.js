@@ -31,6 +31,21 @@ var fireButton,
 
         create: function () {
             this.fond = this.game.add.tileSprite(0, 0, 1600, 920, 'background');
+            this.planet = this.game.add.tileSprite(2500, 460, 1024, 1024, 'planet');
+            this.planet.scale.setTo(2);
+            this.planet.anchor.setTo(0.5, 0.5);
+            this.asteroids2 = this.game.add.tileSprite(2500, 460, 3000, 3000, 'asteroids');
+            this.asteroids2.scale.setTo(1.65);
+            this.asteroids2.anchor.setTo(0.5, 0.5);
+            this.asteroids2.rotation = 1;
+            this.asteroids0 = this.game.add.tileSprite(2500, 460, 3000, 3000, 'asteroids');
+            this.asteroids0.scale.setTo(1.3);
+            this.asteroids0.anchor.setTo(0.5, 0.5);
+            this.asteroids1 = this.game.add.tileSprite(2500, 460, 3000, 3000, 'asteroids');
+            this.asteroids1.scale.setTo(1.8);
+            this.asteroids1.anchor.setTo(0.5, 0.5);
+            this.asteroids1.rotation = 1.5;
+
             bossMusic = game.add.audio('bossMusic');
             levelMusic = game.add.audio('levelMusic');
             fireBulletAudio = game.add.audio('fireBulletAudio');
@@ -194,7 +209,11 @@ var fireButton,
             missileFires();
             droneFires();
 
-            this.fond.tilePosition.y += 3;
+            this.fond.tilePosition.y += 0.5;
+            this.planet.rotation -= 0.001;
+            this.asteroids0.rotation -= 0.001;
+            this.asteroids1.rotation -= 0.001;
+            this.asteroids2.rotation -= 0.0005;
             shipTrail.y = vaisseau.y;
 
             if (levelEnded) {

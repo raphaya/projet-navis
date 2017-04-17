@@ -126,7 +126,7 @@ var shipState = {
                 collision: collisionHandlerShield,
                 scaleSkin: 0.16,
                 scaleIcone: 0.08,
-                damage: 7,
+                damage: 12,
                 maxHealth: 225,
                 fireRate: 400,
                 speed: 300,
