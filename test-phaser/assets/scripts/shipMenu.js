@@ -4,7 +4,6 @@ var shipState = {
     create: function () {
         var healthText, dammageText, speedText, button;
         var TitleText = game.add.text(400, game.world.height - 900, 'Choose your ship', { font: '100px Comic sans', fill: '#FF00FF' });
-        //button = game.add.button(game.world.centerX - 95, 400, 'button', this.actionOnClick, this, 2, 1, 0);
         vaisseau = this.game.add.sprite(400, game.world.height - 650, 'dps');
         vaisseau.anchor.set(0.5);
         vaisseau.scale.setTo(0.2);
@@ -45,7 +44,7 @@ var shipState = {
                 speed: 400,
                 bulletX: 25
             };
-            game.state.start('load');
+            game.state.start('shipLoad');
         });
 
         heal = this.game.add.sprite(400, game.world.height - 425, 'heal');
@@ -88,7 +87,7 @@ var shipState = {
                 speed: 550,
                 bulletX: 26
             };
-            game.state.start('load');
+            game.state.start('shipLoad');
         });
 
 
@@ -132,17 +131,7 @@ var shipState = {
                 speed: 300,
                 bulletX: 27
             };
-            game.state.start('load');
+            game.state.start('shipLoad');
         });
-    },
-    /*launch: function () {
-        game.state.start('menu');
-    },
-
-    actionOnClick: function () {
-
-        game.state.start('menu');
-
-    }*/
-
+    }
 };

@@ -345,11 +345,12 @@ var fireButton,
         },
     };
 
+game.state.add('boot', bootState);
 game.state.add('load', preloadState);
+game.state.add('ship', shipState);
+game.state.add('shipLoad', shipLoadState);
 game.state.add('menu', menuState);
 game.state.add('play', gameState);
-game.state.add('boot', bootState);
-game.state.add('ship', shipState);
 
 game.state.start('boot');
 

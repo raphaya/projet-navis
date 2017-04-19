@@ -72,8 +72,8 @@ var countKamikaze = 0;
 function createEnemyKamikaze(maxKamikaze) {
     var intervalKamikaze = setInterval(function () {
         enemiesKamikaze.createMultiple(15, 'enemyKamikaze');
-        enemiesKamikaze.damageAmount = 50;
-        enemiesKamikaze.setAll('lifespan', (maxKamikaze * 15) + 4000);
+        enemiesKamikaze.damageAmount = 30;
+        enemiesKamikaze.setAll('lifespan', (maxKamikaze * 15) + 5500);
         var enemyKamikaze = enemiesKamikaze.getFirstExists(false);
 
         if (enemyKamikaze) {
@@ -119,11 +119,11 @@ function createEnemyMotherDrone(sidePop) {
         enemyMotherDrone.rotation = rotation;
         tweenMotherDrone = game.add.tween(enemyMotherDrone).to({ x: tweenX }, 3000, Phaser.Easing.Linear.None, true);
         tweenMotherDrone.onComplete.add(function () {
-            setInterval(function () {
+            var intervalMotherDrone = setInterval(function () {
                 if (enemyMotherDrone.alive) {
                     createEnemyDrone(droneX);
                 } else {
-                    clearInterval();
+                    clearInterval(intervalMotherDrone);
                 }
             }, 2000);
         }, this);

@@ -8,7 +8,7 @@ var bootState = {
     },
 
     create: function () {
-        game.state.start('ship');
+        game.state.start('load');
     }
 
 };

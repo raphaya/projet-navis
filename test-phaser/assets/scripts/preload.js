@@ -1,7 +1,6 @@
 var preloadState = {
 
     preload: function () {
-        
         var loadingBar = this.add.sprite(160, 240, 'loading');
         loadingBar.anchor.setTo(3, 3);
         this.load.setPreloadSprite(loadingBar);
@@ -16,16 +15,11 @@ var preloadState = {
             this.load.image('planet', 'assets/images/planet.png');
             this.load.image('asteroids', 'assets/images/asteroids.gif');
 
-            this.load.image('vaisseau', ship.skin);
-
-            this.load.image('icone', ship.icone);
             this.load.image('healthBar', 'assets/images/healthbar.png');
             this.load.image('expBar', 'assets/images/xpbar.png');
             this.load.image('warning', 'assets/images/warning.png');
             this.load.image('shipTrail', 'assets/images/shipTrail.png');
             
-            this.load.image('bullet', ship.bulletSkin);
-            this.load.image('special', ship.special);
             this.load.image('special2', 'assets/images/special2Dps.png');
             
             this.load.image('enemy', 'assets/images/ennemi.png');
@@ -43,8 +37,6 @@ var preloadState = {
     },
 
     create: function () {
-        game.state.start('menu');
+        game.state.start('ship');
     }
-
-
 };

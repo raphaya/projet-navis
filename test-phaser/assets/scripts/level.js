@@ -65,7 +65,7 @@ var level = function (levelNumber) {
                 }
 
                 if (!wave[6] && wave[5] && livingMotherDrone.length <= 0 && livingEnemies1.length <= 0 && livingDrones.length <= 0 && game.time.now >= time) {
-                    createEnemyKamikaze(25);
+                    createEnemyKamikaze(20);
                     wave[6] = true;
                     time = game.time.now + 1000;
                 }
