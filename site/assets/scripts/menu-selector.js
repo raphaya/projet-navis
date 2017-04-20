@@ -23,7 +23,7 @@
 			$("#div-accueil").hide();
 			$("#div-jeu").hide();
 			$("#div-communaute").show();
-			$("#div-communaute").css('max-height', (($(window).height()) - ($("#bandeau").height())));
+			$("#div-communaute").css('max-height', (($(window).height()) - ($('#menu').height())));
 			$("#div-galerie").hide();
 	});
 
@@ -32,6 +32,6 @@
 			$("#div-jeu").hide();
 			$("#div-communaute").hide();
 			$("#div-galerie").show();
-			$("#div-galerie").css('max-height', ($(window).height() - $("#bandeau").height()));
+			$("#div-galerie").css('max-height', (($(window).height()) - ($('#menu').height())));
 	});
 })(jQuery);

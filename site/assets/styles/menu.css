@@ -1,7 +1,7 @@
 /* make sidebar nav vertical */ 
 	@media (min-width: 768px) {
 		.sidebar-nav{
-			height: 100vh;
+			height: 10vh;
 			background-color: #000000;
 		}
 		.sidebar-nav .navbar .navbar-collapse {
@@ -13,14 +13,12 @@
 			display: block;
 			content: '';
 			position: absolute;
-			/*left: -5px;*/
 			top: 0;
 			bottom: 0;
 			width: 100%;
 			max-width: 0;
 			background: #28d244;
 			z-index: 0;
-			/*transform: skew(-16deg);*/
 			transition: all ease .25s;
 		}
 
@@ -30,8 +28,8 @@
 		}
 
 		.sidebar-nav .navbar li {
-			float: none;
-			display: block;
+			/*float: none;*/
+			/*display: block;*/
 		}
 		.sidebar-nav .navbar li a {
 			padding-top: 12px;
