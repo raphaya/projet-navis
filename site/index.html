@@ -39,12 +39,15 @@
 						<li class="navbar-btn" id="btn-communaute"><a href="#">Communauté</a></li>
 						<li class="navbar-btn" id="btn-galerie"><a href="#">Galerie</a></li>
 					</ul>
-					<div class="nav navbar-nav navbar-right btn-group">
-						<button type="button" class="navbar-btn btn btn-success" data-action="open-popin-log" data-toggle="modal" data-target="#popin"
+					<div class="nav navbar-nav navbar-right">
+						<!--<button type="button" class="navbar-btn btn btn-success" data-action="open-popin-log" data-toggle="modal" data-target="#popin"
 						 id="menu-connect">Log in</button>
 						<button type="button" class="navbar-btn btn btn-success" data-action="open-popin-reg" data-toggle="modal" data-target="#popin"
 						 id="menu-register">Register</button>
-						<button type="button" class="navbar-btn btn btn-success" id="fermeChat">Afficher / Cacher le chat</button>
+						<button type="button" class="navbar-btn btn btn-success" id="fermeChat">Afficher / Cacher le chat</button>-->
+						<li class="navbar-btn" data-action="open-popin-log" data-toggle="modal" data-target="#popin" id="menu-connect"><a href="#">Log in</a></li>
+						<li class="navbar-btn" data-action="open-popin-reg" data-toggle="modal" data-target="#popin" id="menu-register"><a href="#">Register</a></li>
+						<li class="navbar-btn" id="fermeChat"><a>Afficher / Cacher le chat</a></li>
 					</div>
 				</div>
 			</div>
@@ -55,14 +58,16 @@
 				<div class="row" id="div-accueil">
 					<h1>L'accueil</h1>
 					<div class="col-lg-12 col-md-12 col-sm-12">
-						<div class="col-lg-2 col-md-2 col-sm-2"></div>
-						<div class="col-lg-8 col-md-8 col-sm-8">
+						<div class="col-lg-1 col-md-1 col-sm-1"></div>
+						<div class="col-lg-9 col-md-9 col-sm-9">
 							<div class="embed-responsive embed-responsive-16by9">
-								<video id="video-accueil" class="embed-responsive-item" controls>
+								<video id="video-accueil" class="embed-responsive-item" autoplay controls>
 									<source src="assets/video/navis.mp4" type="video/mp4">
 								</video>
 							</div>
+
 						</div>
+						<div class="col-lg-1 col-md-1 col-sm-1"></div>
 					</div>
 
 
