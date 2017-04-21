@@ -1,4 +1,4 @@
-var game = new Phaser.Game(1600, 920, Phaser.CANVAS);
+var game = new Phaser.Game(1600, 920, Phaser.CANVAS, 'div-jeu');
 
 var fireButton,
     levelNumber = 1,
