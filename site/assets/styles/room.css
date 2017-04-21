@@ -1,6 +1,8 @@
 #lechat{
 	height: 90vh;
 	display: block;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .affichage{
