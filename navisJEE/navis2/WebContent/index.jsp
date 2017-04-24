@@ -35,7 +35,7 @@
 					</div>
 					<ul class="nav navbar-nav">
 
-						<li class="navbar-btn" id="btn-accueil"><a href="#">Accueil</a></li>
+						<li class="navbar-btn" id="btn-accueil"><a href=<c:url value='/servletindex'/>>Accueil</a></li>
 						<li class="navbar-btn" id="btn-jeu"><a href="#">Le jeu</a></li>
 						<li class="navbar-btn" id="btn-communaute"><a href="#">Communauté</a></li>
 						<li class="navbar-btn" id="btn-galerie"><a href="#">Galerie</a></li>
@@ -145,7 +145,6 @@
 					</div>
 				</div>
 			</div>
-			
 			<script src="assets/scripts/jquery-3.2.0.min.js"></script>
 			<script src="assets/scripts/bootstrap.min.js"></script>
 			<script src="assets/scripts/popin.js"></script>
@@ -156,16 +155,7 @@
 			<script src="assets/scripts/register.js"></script>
 			<script src="assets/scripts/lib/ajaxTruc.js"></script>
 
-			<script src="assets/scripts/game/competence.js"></script>
-			<script src="assets/scripts/game/enemyCompetence.js"></script>
-			<script src="assets/scripts/game/level.js"></script>
-			<script src="assets/scripts/game/boot.js"></script>
-			<script src="assets/scripts/game/preload.js"></script>
-			<script src="assets/scripts/game/shipMenu.js"></script>
-			<script src="assets/scripts/game/shipLoad.js"></script>
-			<script src="assets/scripts/game/menu.js"></script>
-			<script src="assets/scripts/game/game.js"></script>
-			<script src="assets/scripts/game/enemy.js"></script>
+			
 </body>
 
 </html>

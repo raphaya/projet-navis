@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="row" id="div-galerie">
+<div class="row content-ajax" id="div-galerie">
 					<table id="table-galerie">
 						<h1>La galerie</h1>
 						<thead>

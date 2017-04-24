@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="row" id="div-accueil">
+<div class="row content-ajax" id="div-accueil">
 	<h1>L'accueil</h1>
 	<div class="col-lg-12 col-md-12 col-sm-12">
 		<div class="col-lg-2 col-md-2 col-sm-2"></div>
