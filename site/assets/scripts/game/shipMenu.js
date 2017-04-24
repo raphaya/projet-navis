@@ -76,7 +76,7 @@ var shipState = {
                 class: "heal",
                 skin: 'assets/images/heal.png',
                 icone: 'assets/images/iconeHeal.jpg',
-                special: 'assets/images/specialDps.png',
+                special: 'assets/images/specialHeal.png',
                 bulletSkin: 'assets/images/bulletHeal.png',
                 collision: '',
                 scaleSkin: 0.14,
