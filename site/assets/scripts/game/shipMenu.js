@@ -3,7 +3,7 @@ var shipState = {
 
     create: function () {
         var healthText, dammageText, speedText, button;
-        var TitleText = game.add.text(400, game.world.height - 900, 'Choose your ship', { font: '100px Comic sans', fill: '#FF00FF' });
+        var TitleText = game.add.text(400, game.world.height - 900, 'Choose your ship', { font: '100px Comic sans', fill: '#FFFFFF' });
         vaisseau = this.game.add.sprite(400, game.world.height - 650, 'dps');
         vaisseau.anchor.set(0.5);
         vaisseau.scale.setTo(0.2);
@@ -12,24 +12,7 @@ var shipState = {
 
 
         vaisseau.events.onInputOver.add(function () {
-
-            vaisseau.alpha = 1;
-            healthText = game.add.text(500, game.world.height - 710, 'santé', { font: '25px Comic sans', fill: '#FF00FF' });
-            dammageText = game.add.text(500, game.world.height - 660, 'dégâts', { font: '25px Comic sans', fill: '#FF00FF' });
-            speedText = game.add.text(500, game.world.height - 610, 'vitesse', { font: '25px Comic sans', fill: '#FF00FF' });
-
-        }, this);
-
-        vaisseau.events.onInputOut.add(function () {
-
-            vaisseau.alpha = 0.5;
-            healthText.destroy();
-            speedText.destroy();
-            dammageText.destroy();
-        }, this);
-
-        vaisseau.events.onInputUp.add(function () {
-            ship = {
+                    ship = {
                 class: "dps",
                 skin: 'assets/images/dps.png',
                 icone: 'assets/images/iconeDps.jpg',
@@ -38,12 +21,45 @@ var shipState = {
                 collision: collisionHandlerSpecial,
                 scaleSkin: 0.08,
                 scaleIcone: 0.06,
-                damage: 10,
+                damage: 12,
                 maxHealth: 150,
                 fireRate: 200,
                 speed: 400,
                 bulletX: 25
             };
+            vaisseau.alpha = 1;
+
+            healthText = game.add.text(500, game.world.height - 710, 'santé', { font: '25px Comic sans', fill: '#FFFFFF' });
+            healthBar = this.game.add.sprite(580, game.world.height - 710, 'healthBar');
+            healthBar.scale.setTo(0.1);
+            healthBar.scale.x = ship.maxHealth / 150 ;
+
+            dammageText = game.add.text(500, game.world.height - 660, 'dégâts', { font: '25px Comic sans', fill: '#FFFFFF' });
+            dammageBar = this.game.add.sprite(580, game.world.height - 660, 'expBar');
+            dammageBar.scale.setTo(0.1);
+            dammageBar.scale.x = ship.damage / 50;
+
+
+            speedText = game.add.text(500, game.world.height - 610, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
+            speedBar = this.game.add.sprite(580, game.world.height - 610, 'speedBar');
+            speedBar.scale.setTo(0.1);
+            speedBar.scale.x = ship.speed/ 250;
+
+        }, this);
+
+        vaisseau.events.onInputOut.add(function () {
+
+            vaisseau.alpha = 0.5;
+            healthText.destroy();
+            healthBar.destroy();
+            speedText.destroy();
+            speedBar.destroy();
+            dammageText.destroy();
+            dammageBar.destroy();
+        }, this);
+
+        vaisseau.events.onInputUp.add(function () {
+
             game.state.start('shipLoad');
         });
 
@@ -54,29 +70,11 @@ var shipState = {
         heal.inputEnabled = true;
 
         heal.events.onInputOver.add(function () {
-
-            heal.alpha = 1;
-            healthText = game.add.text(500, game.world.height - 490, 'santé', { font: '25px Comic sans', fill: '#FF00FF' });
-            dammageText = game.add.text(500, game.world.height - 440, 'dégâts', { font: '25px Comic sans', fill: '#FF00FF' });
-            speedText = game.add.text(500, game.world.height - 390, 'vitesse', { font: '25px Comic sans', fill: '#FF00FF' });
-
-        }, this);
-
-        heal.events.onInputOut.add(function () {
-
-            heal.alpha = 0.5;
-            healthText.destroy();
-            speedText.destroy();
-            dammageText.destroy();
-
-        }, this);
-
-        heal.events.onInputUp.add(function () {
             ship = {
                 class: "heal",
                 skin: 'assets/images/heal.png',
                 icone: 'assets/images/iconeHeal.jpg',
-                special: 'assets/images/specialHeal.png',
+                special: 'assets/images/specialDps.png',
                 bulletSkin: 'assets/images/bulletHeal.png',
                 collision: '',
                 scaleSkin: 0.14,
@@ -87,6 +85,40 @@ var shipState = {
                 speed: 550,
                 bulletX: 26
             };
+
+            heal.alpha = 1;
+
+            healthText = game.add.text(500, game.world.height - 490, 'santé', { font: '25px Comic sans', fill: '#FFFFFF' });
+            healthBar = this.game.add.sprite(580, game.world.height - 490, 'healthBar');
+            healthBar.scale.setTo(0.1);
+            healthBar.scale.x = ship.maxHealth / 150;
+
+            dammageText = game.add.text(500, game.world.height - 440, 'dégâts', { font: '25px Comic sans', fill: '#FFFFFF' });
+            dammageBar = this.game.add.sprite(580, game.world.height - 440, 'expBar');
+            dammageBar.scale.setTo(0.1);
+            dammageBar.scale.x = ship.damage / 50;
+
+            speedText = game.add.text(500, game.world.height - 390, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
+            speedBar = this.game.add.sprite(580, game.world.height - 390, 'speedBar');
+            speedBar.scale.setTo(0.1);
+            speedBar.scale.x = ship.speed / 250;
+
+        }, this);
+
+        heal.events.onInputOut.add(function () {
+
+            heal.alpha = 0.5;
+            healthText.destroy();
+            healthBar.destroy();
+            speedText.destroy();
+            speedBar.destroy();
+            dammageText.destroy();
+            dammageBar.destroy();
+
+        }, this);
+
+        heal.events.onInputUp.add(function () {
+
             game.state.start('shipLoad');
         });
 
@@ -98,24 +130,6 @@ var shipState = {
         tank.inputEnabled = true;
 
         tank.events.onInputOver.add(function () {
-
-            tank.alpha = 1;
-            healthText = game.add.text(500, game.world.height - 260, 'santé', { font: '25px Comic sans', fill: '#FF00FF' });
-            dammageText = game.add.text(500, game.world.height - 210, 'dégâts', { font: '25px Comic sans', fill: '#FF00FF' });
-            speedText = game.add.text(500, game.world.height - 160, 'vitesse', { font: '25px Comic sans', fill: '#FF00FF' });
-
-        }, this);
-
-        tank.events.onInputOut.add(function () {
-
-            tank.alpha = 0.5;
-            healthText.destroy();
-            speedText.destroy();
-            dammageText.destroy();
-
-        }, this);
-
-        tank.events.onInputUp.add(function () {
             ship = {
                 class: "tank",
                 skin: 'assets/images/tank.png',
@@ -125,12 +139,46 @@ var shipState = {
                 collision: collisionHandlerShield,
                 scaleSkin: 0.16,
                 scaleIcone: 0.08,
-                damage: 12,
+                damage: 8,
                 maxHealth: 225,
                 fireRate: 400,
                 speed: 300,
                 bulletX: 27
             };
+
+            tank.alpha = 1;
+
+            healthText = game.add.text(500, game.world.height - 260, 'santé', { font: '25px Comic sans', fill: '#FFFFFF' });
+            healthBar = this.game.add.sprite(580, game.world.height - 260, 'healthBar');
+            healthBar.scale.setTo(0.1);
+            healthBar.scale.x = ship.maxHealth / 150;
+
+            dammageText = game.add.text(500, game.world.height - 210, 'dégâts', { font: '25px Comic sans', fill: '#FFFFFF' });
+            dammageBar = this.game.add.sprite(580, game.world.height - 210, 'expBar');
+            dammageBar.scale.setTo(0.1);
+            dammageBar.scale.x = ship.damage / 50;
+
+            speedText = game.add.text(500, game.world.height - 160, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
+            speedBar = this.game.add.sprite(580, game.world.height - 160, 'speedBar');
+            speedBar.scale.setTo(0.1);
+            speedBar.scale.x = ship.speed / 250;
+
+        }, this);
+
+        tank.events.onInputOut.add(function () {
+
+            tank.alpha = 0.5;
+            healthText.destroy();
+            healthBar.destroy();
+            speedText.destroy();
+            speedBar.destroy();
+            dammageText.destroy();
+            dammageBar.destroy();
+
+        }, this);
+
+        tank.events.onInputUp.add(function () {
+
             game.state.start('shipLoad');
         });
     }

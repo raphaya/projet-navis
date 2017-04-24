@@ -12,11 +12,13 @@ var preloadState = {
             this.load.audio('fireSpecial2DpsAudio', 'assets/audio/shotgun.wav');
 
             this.load.image('background', 'assets/images/background.png');
+            this.load.image('level1', 'assets/images/level1.png');
             this.load.image('planet', 'assets/images/planet.png');
             this.load.image('asteroids', 'assets/images/asteroids.gif');
 
             this.load.image('healthBar', 'assets/images/healthbar.png');
             this.load.image('expBar', 'assets/images/xpbar.png');
+            this.load.image('speedBar', 'assets/images/speedBar.png');
             this.load.image('warning', 'assets/images/warning.png');
             this.load.image('shipTrail', 'assets/images/shipTrail.png');
             
@@ -37,6 +39,6 @@ var preloadState = {
     },
 
     create: function () {
-        game.state.start('ship');
+        game.state.start('mainMenu');
     }
 };

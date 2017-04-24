@@ -18,6 +18,6 @@ var shipLoadState = {
     },
 
     create: function () {
-        game.state.start('menu');
+        game.state.start('level');
     }
 };
