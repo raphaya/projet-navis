@@ -4,6 +4,7 @@
 	var btnJeu = document.getElementById("btn-jeu");
 	var btnCommunaute = document.getElementById("btn-communaute");
 	var btnGalerie = document.getElementById("btn-galerie");
+	var chat = document.getElementById("lechat");
 //	var videoAccueil = document.getElementById("video-accueil");
 
 	$(btnAccueil).click(function(){
