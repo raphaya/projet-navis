@@ -12,7 +12,7 @@ var shipState = {
 
 
         vaisseau.events.onInputOver.add(function () {
-                    ship = {
+            ship = {
                 class: "dps",
                 skin: 'assets/images/dps.png',
                 icone: 'assets/images/iconeDps.jpg',
@@ -32,7 +32,7 @@ var shipState = {
             healthText = game.add.text(500, game.world.height - 710, 'santé', { font: '25px Comic sans', fill: '#FFFFFF' });
             healthBar = this.game.add.sprite(580, game.world.height - 710, 'healthBar');
             healthBar.scale.setTo(0.1);
-            healthBar.scale.x = ship.maxHealth / 150 ;
+            healthBar.scale.x = ship.maxHealth / 150;
 
             dammageText = game.add.text(500, game.world.height - 660, 'dégâts', { font: '25px Comic sans', fill: '#FFFFFF' });
             dammageBar = this.game.add.sprite(580, game.world.height - 660, 'expBar');
@@ -43,7 +43,7 @@ var shipState = {
             speedText = game.add.text(500, game.world.height - 610, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
             speedBar = this.game.add.sprite(580, game.world.height - 610, 'speedBar');
             speedBar.scale.setTo(0.1);
-            speedBar.scale.x = ship.speed/ 250;
+            speedBar.scale.x = ship.speed / 250;
 
         }, this);
 
@@ -74,7 +74,7 @@ var shipState = {
                 class: "heal",
                 skin: 'assets/images/heal.png',
                 icone: 'assets/images/iconeHeal.jpg',
-                special: 'assets/images/specialDps.png',
+                special: 'assets/images/specialHeal.png',
                 bulletSkin: 'assets/images/bulletHeal.png',
                 collision: '',
                 scaleSkin: 0.14,
