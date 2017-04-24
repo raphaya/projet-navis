@@ -35,7 +35,7 @@
 					</div>
 					<ul class="nav navbar-nav">
 
-						<li class="navbar-btn" id="btn-accueil"><a href=<c:url value='/servletindex'/>>Accueil</a></li>
+						<li class="navbar-btn" id="btn-accueil"><a href="#">Accueil</a></li>
 						<li class="navbar-btn" id="btn-jeu"><a href="#">Le jeu</a></li>
 						<li class="navbar-btn" id="btn-communaute"><a href="#">Communauté</a></li>
 						<li class="navbar-btn" id="btn-galerie"><a href="#">Galerie</a></li>

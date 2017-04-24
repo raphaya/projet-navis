@@ -4,7 +4,7 @@ var content = document.getElementById('content'),
 $('#btn-galerie').click(function() {
 	$.ajax({
 		method : "get",
-		url : 'http://localhost:8080/navis2/WEB-INF/galerie.jsp',
+		url : 'http://localhost:8080/navis2/galerie.jsp',
 		success : function(html) {
 			var $html =  $(html),
 			elem = $html.find(".content-ajax");
@@ -17,7 +17,7 @@ $('#btn-galerie').click(function() {
 $('#btn-accueil').click(function() {
 	$.ajax({
 		method : "get",
-		url : 'http://localhost:8080/navis2/WEB-INF/accueil.jsp',
+		url : 'http://localhost:8080/navis2/accueil.jsp',
 		success : function(html) {
 			var $html =  $(html),
 			elem = $html.find(".content-ajax");
@@ -30,7 +30,7 @@ $('#btn-accueil').click(function() {
 $('#btn-communaute').click(function() {
 	$.ajax({
 		method : "get",
-		url : 'http://localhost:8080/navis2/WEB-INF/communaute.jsp',
+		url : 'http://localhost:8080/navis2/communaute.jsp',
 		success : function(html) {
 			var $html =  $(html),
 				elem = $html.find(".content-ajax");
@@ -42,7 +42,7 @@ $('#btn-communaute').click(function() {
 $('#btn-jeu').click(function() {
 	$.ajax({
 		method : "get",
-		url : 'http://localhost:8080/navis2/WEB-INF/jeu.jsp',
+		url : 'http://localhost:8080/navis2/jeu.jsp',
 		success : function(html) {
 			var $html =  $(html),
 			elem = $html.find(".content-ajax");

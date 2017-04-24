@@ -1,1 +1,0 @@
-<div id="div-jeu">Le jeu</div>
