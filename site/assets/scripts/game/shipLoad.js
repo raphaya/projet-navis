@@ -10,7 +10,11 @@ var shipLoadState = {
             this.load.image('icone', ship.icone);
             
             this.load.image('bullet', ship.bulletSkin);
-            this.load.image('special', ship.special);
+            if (ship.class == "heal") {
+                this.load.spritesheet('special', ship.special, 193, 193);
+            } else {
+                this.load.image('special', ship.special);
+            }
     },
 
     create: function () {

@@ -127,15 +127,36 @@ function collisionHandlerShield(enemy, special) {
 }
 
 // spécial vaisseau heal
-/*function specialHeal() {
+function specialHeal() {
+    specials.setAll('anchor.x', 0.5);
+    specials.setAll('anchor.y', 0.5);
+    specials.forEach(function (heal) {
+        heal.animations.add('special');
+    });
     var special = specials.getFirstExists(false);
+    special.play('special', 25, false, true);
+    var timeHeal = game.time.now;
+    if (vaisseau.health + 50 >= ship.maxHealth) {
+        vaisseau.health = ship.maxHealth;
+    } else {
+        vaisseau.health += 50;
+    }
+    healthValue.setText(vaisseau.health + ' HP');
+    game.add.tween(healthBar.scale).to({ x: vaisseau.health / 150 }, 100, Phaser.Easing.Linear.None, true);
 
     if (special) {
-        special.reset(vaisseau.body.x + 20, vaisseau.body.y - 20);
-        special.body.velocity.y = -300;
+        special.anchor.setTo(0.5, 0.5);
+        special.reset(vaisseau.body.x + 28, vaisseau.body.y + 28);
+        var intervalHeal = setInterval(function () {
+            game.physics.arcade.moveToObject(special, vaisseau, ship.speed);
+            if (game.time.now >= timeHeal + 3000) {
+                special.kill();
+                clearInterval(intervalHeal);
+            }
+        }, 1);
     }
 }
 
-function collisionHandlerHeal(special, enemy) {
+/*function collisionHandlerHeal(special, enemy) {
 
 }*/
