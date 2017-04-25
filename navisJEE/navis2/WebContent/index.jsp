@@ -34,7 +34,7 @@
 						<ul class="nav navbar-nav" id="menu-gauche">
 							<li class="navbar-btn" id="btn-accueil"><a href="#">NAVIS,</a></li>
 							<li class="navbar-btn" id="btn-jeu"><a href="#">Le jeu</a></li>
-							<li class="navbar-btn" id="btn-communaute"><a href="#">Communautï¿½</a></li>
+							<li class="navbar-btn" id="btn-communaute"><a href="#">Communauté</a></li>
 							<li class="navbar-btn" id="btn-galerie"><a href="#">Galerie</a></li>
 						</ul>
 						<div class="nav navbar-nav navbar-right">
@@ -45,7 +45,7 @@
 					</div>
 				</div>
 			</div>
-
+		</div>
 
 			<div class="col-lg-12 col-md-12 col-sm-12" id="corps">
 				<div class="col-lg-12 col-md-12 col-sm-12 " id="content">
@@ -156,15 +156,16 @@
 						</div>
 					</div>
 				</div>
-				<script src="assets/scripts/jquery-3.2.0.min.js"></script>
-				<script src="assets/scripts/bootstrap.min.js"></script>
-				<script src="assets/scripts/popin.js"></script>
-				<script src="assets/scripts/menu-selector.js"></script>
-				<script src="assets/scripts/lib/ajax.js"></script>
-				<script src="assets/scripts/room.js"></script>
-				<script src="assets/scripts/login.js"></script>
-				<script src="assets/scripts/register.js"></script>
-				<script src="assets/scripts/lib/ajaxTruc.js"></script>
+			</div>
+			<script src="assets/scripts/jquery-3.2.0.min.js"></script>
+			<script src="assets/scripts/bootstrap.min.js"></script>
+			<script src="assets/scripts/popin.js"></script>
+			<script src="assets/scripts/menu-selector.js"></script>
+			<script src="assets/scripts/lib/ajax.js"></script>
+			<script src="assets/scripts/room.js"></script>
+			<script src="assets/scripts/login.js"></script>
+			<script src="assets/scripts/register.js"></script>
+			<script src="assets/scripts/lib/ajaxTruc.js"></script>
 
 
 	</body>
