@@ -43,7 +43,7 @@ var shipState = {
             speedText = game.add.text(500, game.world.height - 610, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
             speedBar = this.game.add.sprite(580, game.world.height - 610, 'speedBar');
             speedBar.scale.setTo(0.1);
-            speedBar.scale.x = ship.speed / 250;
+            speedBar.scale.x = ship.speed / 500;
 
         }, this);
 
@@ -101,7 +101,7 @@ var shipState = {
             speedText = game.add.text(500, game.world.height - 390, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
             speedBar = this.game.add.sprite(580, game.world.height - 390, 'speedBar');
             speedBar.scale.setTo(0.1);
-            speedBar.scale.x = ship.speed / 250;
+            speedBar.scale.x = ship.speed / 500;
 
         }, this);
 
@@ -161,7 +161,7 @@ var shipState = {
             speedText = game.add.text(500, game.world.height - 160, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
             speedBar = this.game.add.sprite(580, game.world.height - 160, 'speedBar');
             speedBar.scale.setTo(0.1);
-            speedBar.scale.x = ship.speed / 250;
+            speedBar.scale.x = ship.speed / 500;
 
         }, this);
 
