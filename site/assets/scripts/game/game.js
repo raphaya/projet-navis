@@ -1,7 +1,6 @@
 var game = new Phaser.Game(1600, 920, Phaser.CANVAS, 'div-jeu');
 
 var fireButton,
-    levelNumber = 1,
     specialButton,
     specialTime = 0,
     bullets,
@@ -217,6 +216,8 @@ var fireButton,
             shipTrail.y = vaisseau.y;
 
             if (levelEnded) {
+                restartKey.onDown.addOnce(launch, this);
+                escapeKey.onDown.addOnce(menu, this);
                 return;
             }
 
@@ -290,6 +291,7 @@ var fireButton,
             if (vaisseau.health <= 0) {
                 gameOver.visible = true;
                 vaisseau.alive = false;
+                score = 0;
                 healthBar.destroy();
                 healthValue.destroy();
                 restartKey.onDown.addOnce(launch, this);
@@ -369,9 +371,10 @@ function launch() {
     enemiesKamikaze.callAll('kill');
     enemiesMotherDrone.callAll('kill');
     enemiesDrone.callAll('kill');
-    score = 0;
+    levelEnded = false;
     levelMusic.stop();
     bossMusic.stop();
+    specialTime = game.time.now;
     game.state.start('play');
 }
 
@@ -382,8 +385,9 @@ function menu() {
     enemiesKamikaze.callAll('kill');
     enemiesMotherDrone.callAll('kill');
     enemiesDrone.callAll('kill');
-    score = 0;
+    levelEnded = false;
     levelMusic.stop();
     bossMusic.stop();
-    game.state.start('play');
+    specialTime = game.time.now;
+    game.state.start('ship');
 }
