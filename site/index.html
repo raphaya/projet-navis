@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/styles/div-lejeu.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/div-galerie.css">
 	<link rel="stylesheet" type="text/css" href="assets/styles/div-communaute.css">
+	<link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
 </head>
 
 <body>
@@ -26,25 +27,16 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-					<span class="visible-xs navbar-brand">NAVIS,</span>
+					<span class="visible-xs navbar-brand">Menu</span>
 				</div>
 				<div class="navbar-collapse collapse sidebar-navbar-collapse">
-					<div class="navbar-brand">
-						<span class="visible-lg visible-md visible-sm navbar-btn">NAVIS,</span>
-					</div>
-					<ul class="nav navbar-nav">
-
-						<li class="navbar-btn" id="btn-accueil"><a href="#">Accueil</a></li>
+					<ul class="nav navbar-nav" id="menu-gauche">
+						<li class="navbar-btn" id="btn-accueil"><a href="#">NAVIS,</a></li>
 						<li class="navbar-btn" id="btn-jeu"><a href="#">Le jeu</a></li>
-						<li class="navbar-btn" id="btn-communaute"><a href="#">Communauté</a></li>
+						<li class="navbar-btn" id="btn-communaute"><a href="#">Communaut�</a></li>
 						<li class="navbar-btn" id="btn-galerie"><a href="#">Galerie</a></li>
 					</ul>
 					<div class="nav navbar-nav navbar-right">
-						<!--<button type="button" class="navbar-btn btn btn-success" data-action="open-popin-log" data-toggle="modal" data-target="#popin"
-						 id="menu-connect">Log in</button>
-						<button type="button" class="navbar-btn btn btn-success" data-action="open-popin-reg" data-toggle="modal" data-target="#popin"
-						 id="menu-register">Register</button>
-						<button type="button" class="navbar-btn btn btn-success" id="fermeChat">Afficher / Cacher le chat</button>-->
 						<li class="navbar-btn" data-action="open-popin-log" data-toggle="modal" data-target="#popin" id="menu-connect"><a href="#">Log in</a></li>
 						<li class="navbar-btn" data-action="open-popin-reg" data-toggle="modal" data-target="#popin" id="menu-register"><a href="#">Register</a></li>
 						<li class="navbar-btn" id="fermeChat"><a>Afficher / Cacher le chat</a></li>
@@ -52,317 +44,111 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<div class="col-lg-10 col-md-10 col-sm-9" id="corps">
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<div class="row" id="div-accueil">
-					<h1>L'accueil</h1>
-					<div class="col-lg-12 col-md-12 col-sm-12">
-						<div class="col-lg-1 col-md-1 col-sm-1"></div>
-						<div class="col-lg-9 col-md-9 col-sm-9">
-							<div class="embed-responsive embed-responsive-16by9">
-								<video id="video-accueil" class="embed-responsive-item" autoplay controls>
-									<source src="assets/video/navis.mp4" type="video/mp4">
-								</video>
+	<div class="col-lg-12 col-md-12 col-sm-12" id="corps">
+		<div class="col-lg-12 col-md-12 col-sm-12 " id="content"></div>
+	</div>
+
+	<div class="col-lg-2 col-md-2 col-sm-3" id="lechat">
+
+		<div id="room" class="affichage">
+			<div class="content"> tchat :</div>
+		</div>
+
+		<div class="input">
+			<form method="POST" id="input-room" name="form-room">
+				<input class="input input-lg" type="text" id="message" name="message" placeholder="tapez votre texte ici">
+				<input class="btn btn-default" type="submit" value="Envoyer">
+			</form>
+		</div>
+	</div>
+
+	<div class="modal fade" id="popin">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="btn btn-success" id="btn-connect">Se connecter</button>
+					<button type="button" class="btn btn-success" id="btn-register">S'inscrire</button>
+					<button type="button" class="btn btn-success" id="btn-recovery">R�cup�rer son mot de passe</button>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form method="POST" id="form-connect" class="form-horizontal">
+						<fieldset>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="pseudo-co">Pseudo :</label>
+								<div class="col-sm-5" id="pseudolabel">
+									<input class="form-control" type="text" id="pseudo-co" name="pseudo" placeholder="pseudo">
+								</div>
 							</div>
-
-						</div>
-						<div class="col-lg-1 col-md-1 col-sm-1"></div>
-					</div>
-
-
-					<div class="col-lg-2 col-md-2 col-sm-2"></div>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="mdp-co">Mot de passe :</label>
+								<div class="col-sm-5" id="mdplabel">
+									<input class="form-control" type="password" id="mdp-co" name="mdp" placeholder="mot de passe">
+								</div>
+							</div>
+							<input id="connection" type="submit">
+						</fieldset>
+					</form>
+					<form method="POST" id="form-register" class="form-horizontal">
+						<fieldset>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="pseudo">Pseudo :</label>
+								<div class="col-sm-5" id="namelabel">
+									<input class="form-control" type="text" id="pseudo-reg" name="pseudo" placeholder="pseudo">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="mail">Mail :</label>
+								<div class="col-sm-5" id="maillabel">
+									<input class="form-control" type="text" id="mail" name="mail" placeholder="mail">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="mdp">Mot de passe :</label>
+								<div class="col-sm-5" id="pwdlabel">
+									<input class="form-control" type="password" id="mdp-reg" name="mdp" placeholder="mot de passe">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="confirm-mdplabel">Confirmation mot de passe :</label>
+								<div class="col-sm-5" id="confirm-mdplabel">
+									<input class="form-control" type="password" id="confirm-mdp-reg" name="confirm-mdp" placeholder="confirmation mot de passe">
+								</div>
+							</div>
+							<input id="inscription" type="submit">
+						</fieldset>
+					</form>
+					<form method="POST" action="assets\scripts\recupPass.php" id="form-recup" class="form-horizontal">
+						<fieldset>
+							<div class="form-group">
+								<label class="control-label col-sm-5" for="mail-recup">Votre adresse mail :</label>
+								<div class="col-sm-5" id="maillabel">
+									<input class="form-control" type="text" id="mail-recup" name="mail" placeholder="exemple@mail.xxx">
+								</div>
+							</div>
+							<input id="recuperation" type="submit">
+						</fieldset>
+					</form>
 				</div>
-				<div class="row" id="div-jeu">
-
-				</div>
-				<div class="row" id="div-communaute">
-					<h1>La communauté</h1>
-					<table id="table-communaute" class="table">
-
-						<thead>
-							<tr>
-								<th>Position</th>
-								<th>Nom joueur</th>
-								<th>Score</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Doe</td>
-								<td>23000</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Moe</td>
-								<td>20500</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>Quelqu'un</td>
-								<td>18000</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>D'autre</td>
-								<td>16500</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>Doe</td>
-								<td>16000</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>Moe</td>
-								<td>14500</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>Quelqu'un</td>
-								<td>13000</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>D'autre</td>
-								<td>12700</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>Doe</td>
-								<td>12400</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>Moe</td>
-								<td>11000</td>
-							</tr>
-							<tr>
-								<td>11</td>
-								<td>Quelqu'un</td>
-								<td>10500</td>
-							</tr>
-							<tr>
-								<td>12</td>
-								<td>D'autre</td>
-								<td>10100</td>
-							</tr>
-							<tr>
-								<td>13</td>
-								<td>Doe</td>
-								<td>9000</td>
-							</tr>
-							<tr>
-								<td>14</td>
-								<td>Moe</td>
-								<td>8600</td>
-							</tr>
-							<tr>
-								<td>15</td>
-								<td>Quelqu'un</td>
-								<td>8000</td>
-							</tr>
-							<tr>
-								<td>16</td>
-								<td>D'autre</td>
-								<td>3000</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="row" id="div-galerie">
-					<table id="table-galerie">
-						<h1>La galerie</h1>
-						<thead>
-							<tr>
-								<td>Photo</td>
-								<td>Description</td>
-							</tr>
-						</thead>
-						<tbody id="contenu-galerie">
-							<tr>
-								<td><img src="assets/images/wingship.png" alt=""></td>
-								<td>
-									PRÒSKOPOS</br>
-									Ces vaisseaux sont les éclaireurs alien : ils voyagent en petit groupe à la recherche de leurs ennemis.</br>
-									Lorsque qu'ils en rencontrent un, certains attaquent alors que d'autres partent prévenir leurs supérieurs.</br>
-									Ces ennemis sont relativement faibles : ils sont simple à détruire, et leurs missiles sont lents et facile à éviter, mais
-									leurs dégâts sont conséquent, attention à ne pas se laisser surprendre lorsque qu'ils sont accompagnés d'autres
-									ennemis.
-								</td>
-							</tr>
-							<tr>
-								<td><img src="assets/images/ennemi.png" alt=""></td>
-								<td>
-									STÒLOS</br>
-									Ils constituent l'atout principal de la flotte alien.</br>
-									Construit en très grand nombre, ils vous paraîtront venir par vagues infinies.</br>
-									Ils ne se déplacent que très rarement seuls, mais leurs attaquent gagneront en intensité au fur et à mesure que vous détruirez
-									les autres STÒLOS.</br>
-									De ce fait, bien que peu mobile, et ne faisant que peu de dégats, leur vitesse peu rapidement devenir très élevée.</br>
-									Attention donc à bien gérer vos priorités en présence de ces ennemis.
-								</td>
-							</tr>
-							<tr>
-								<td><img src="assets/images/evilboss2.png" alt=""></td>
-								<td>
-									ALOGÀKI</br>
-									L'objectif de cet ennemi, est de vous détruire coûte que coûte.</br>
-									N'étant pas armé, leur seul moyen d'y parvenir est de vous rentrer dedans.</br>
-									Ils sont donc très rapide, causent des dégats importants, et ne vous lacheront qu'à leur déstruction, ou en se perdant dans
-									l'espace.</br>
-									Ils sont aussi capable de changer de direction extremment rapidement afin de vous surprendre.</br>
-									Très faible individuellement car très fragile, ils arrivent toujours en grand nombre afin de palier à leur faiblesse.
-								</td>
-							</tr>
-							<tr>
-								<td><img src="assets/images/enemyMotherDrone.png" alt=""></td>
-								<td>
-									DIMIOURGÒS</br>
-									Un vaisseau qui peu paraître pacifique car il ne vous attaquera jamais directement, mais il n'est pas à sous-estimer.</br>
-									Très peu mobile, mais très résistant, il contient un stock de pièce conséquent lui permettant de fabriquer des drones à la chaîne.</br>
-									Drones qu'il enverra en combat dès qu'un autre sera détruit.</br>
-									Il ne se déplace que très rarement en groupe car suffisemment puissant à lui seul.</br>
-								</td>
-							</tr>
-							<tr>
-								<td><img src="assets/images/roundysh.png" alt=""></td>
-								<td>
-									KIFÌNAS</br>
-									Le drone fabriqué par le DIMIOURGÒS.</br>
-									Il fonctionne de manière complétement automatique.</br>
-									Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</br>
-									Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.
-								</td>
-							</tr>
-							<tr>
-								<td><img src="assets/images/enemyBoss.png" alt=""></td>
-								<td>
-									EPIKEFALÌS</br>
-									Un des vaisseau mère de la flotte alien, il commande une partie des troupes et coordonne les attaques.</br>
-									Extremment puissant, extremment résistant, mais peu mobile.</br>
-									Il sera très souvent accompagné d'autres vaisseaux pour augmenter sa force de frappe.</br>
-									Une de ses attaques permet de couvrir la zone de combat de projectiles limitant ainsi grandement les déplacements.</br>
-									Son autre attaque est une rafale de tirs très puissante.</br>
-									Il peut aussi combiner ses 2 attaques pour augmenter ses chances de vous toucher et de vous détruire.
-								</td>
-							</tr>
-						</tbody>
-					</table>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
 				</div>
 			</div>
 		</div>
+	</div>
+	<script src="assets/scripts/jquery-3.2.0.min.js"></script>
+	<script src="assets/scripts/bootstrap.min.js"></script>
+	<script src="assets/scripts/popin.js"></script>
+	<script src="assets/scripts/menu-selector.js"></script>
+	<script src="assets/scripts/lib/ajax.js"></script>
+	<script src="assets/scripts/room.js"></script>
+	<script src="assets/scripts/login.js"></script>
+	<script src="assets/scripts/register.js"></script>
+	<script src="assets/scripts/lib/ajaxTruc.js"></script>
 
-		<div class="col-lg-2 col-md-2 col-sm-3" id="lechat">
 
-			<div id="room" class="affichage">
-				<div class="content"> tchat :</div>
-			</div>
-
-			<div class="input">
-				<form method="POST" id="input-room" name="form-room">
-					<input class="input" type="text" id="message" name="message" placeholder="tapez votre texte ici">
-					<input type="submit" value="Envoyer">
-				</form>
-			</div>
-		</div>
-
-		<div class="modal fade" id="popin">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="btn btn-success" id="btn-connect">Se connecter</button>
-						<button type="button" class="btn btn-success" id="btn-register">S'inscrire</button>
-						<button type="button" class="btn btn-success" id="btn-recovery">Récupérer son mot de passe</button>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-						<form method="POST" id="form-connect" class="form-horizontal">
-							<fieldset>
-								<div class="form-group">
-									<label class="control-label col-sm-5" for="pseudo-co">Pseudo :</label>
-									<div class="col-sm-5" id="pseudolabel">
-										<input class="form-control" type="text" id="pseudo-co" name="pseudo" placeholder="pseudo">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-5" for="mdp-co">Mot de passe :</label>
-									<div class="col-sm-5" id="mdplabel">
-										<input class="form-control" type="password" id="mdp-co" name="mdp" placeholder="mot de passe">
-									</div>
-								</div>
-								<input id="connection" type="submit">
-							</fieldset>
-						</form>
-						<form method="POST" id="form-register" class="form-horizontal">
-							<fieldset>
-								<div class="form-group">
-									<label class="control-label col-sm-5" for="pseudo">Pseudo :</label>
-									<div class="col-sm-5" id="namelabel">
-										<input class="form-control" type="text" id="pseudo-reg" name="pseudo" placeholder="pseudo">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-5" for="mail">Mail :</label>
-									<div class="col-sm-5" id="maillabel">
-										<input class="form-control" type="text" id="mail" name="mail" placeholder="mail">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-5" for="mdp">Mot de passe :</label>
-									<div class="col-sm-5" id="pwdlabel">
-										<input class="form-control" type="password" id="mdp-reg" name="mdp" placeholder="mot de passe">
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label col-sm-5" for="confirm-mdplabel">Confirmation mot de passe :</label>
-									<div class="col-sm-5" id="confirm-mdplabel">
-										<input class="form-control" type="password" id="confirm-mdp-reg" name="confirm-mdp" placeholder="confirmation mot de passe">
-									</div>
-								</div>
-								<input id="inscription" type="submit">
-							</fieldset>
-						</form>
-						<form method="POST" action="assets\scripts\recupPass.php" id="form-recup" class="form-horizontal">
-							<fieldset>
-								<div class="form-group">
-									<label class="control-label col-sm-5" for="mail-recup">Votre adresse mail :</label>
-									<div class="col-sm-5" id="maillabel">
-										<input class="form-control" type="text" id="mail-recup" name="mail" placeholder="exemple@mail.xxx">
-									</div>
-								</div>
-								<input id="recuperation" type="submit">
-							</fieldset>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-					</div>
-				</div>
-			</div>
-
-			<script type="text/javascript" src="assets/scripts/lib/phaser.min.js"></script>
-			<script src="assets/scripts/jquery-3.2.0.min.js"></script>
-			<script src="assets/scripts/bootstrap.min.js"></script>
-			<script src="assets/scripts/popin.js"></script>
-			<script src="assets/scripts/menu-selector.js"></script>
-			<script src="assets/scripts/lib/ajax.js"></script>
-			<script src="assets/scripts/room.js"></script>
-			<script src="assets/scripts/login.js"></script>
-			<script src="assets/scripts/register.js"></script>
-
-			<script src="assets/scripts/game/competence.js"></script>
-			<script src="assets/scripts/game/enemyCompetence.js"></script>
-			<script src="assets/scripts/game/level.js"></script>
-			<script src="assets/scripts/game/boot.js"></script>
-			<script src="assets/scripts/game/preload.js"></script>
-			<script src="assets/scripts/game/shipMenu.js"></script>
-			<script src="assets/scripts/game/shipLoad.js"></script>
-			<script src="assets/scripts/game/levelMenu.js"></script>
-			<script src="assets/scripts/game/mainMenu.js"></script>
-			<script src="assets/scripts/game/game.js"></script>
-			<script src="assets/scripts/game/enemy.js"></script>
 </body>
 
 </html>

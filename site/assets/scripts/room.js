@@ -1,18 +1,18 @@
 (function ($) {
-	$('#fermeChat').click(function() {
+	$('#fermeChat').click(function () {
 		let chat = document.getElementById("lechat");
 		let corps = document.getElementById("corps");
-		if (chat.style.display == 'none')
-			{
-				chat.style.display = 'block';
-				corps.className = 'col-lg-10 col-md-10 col-sm-9';
 
-			}
-			else
-			{
-				chat.style.display = 'none';
-				corps.className ='col-lg-12 col-md-12 col-sm-12';
-			}
+		if (chat.style.display == 'block') {
+			chat.style.display = 'none';
+			corps.className = 'col-lg-12 col-md-12 col-sm-12';
+		}
+		else {
+			chat.style.display = 'block';
+			corps.className = 'col-lg-10 col-md-10 col-sm-10';
+
+		}
+
 	})
 
 	var $room = $('#room');
@@ -20,14 +20,14 @@
 	$('#input-room').on("submit", function (e) {
 		var $msg = $('#message'),
 			html = '';
-		
-	irc.ajax({
-			data: {
-				message : $msg.val()
-			},
-			url : 'messages.php'
-		});
-		console.log($msg.val(),$msg);
+
+		//	irc.ajax({
+		//			data: {
+		//				message : $msg.val()
+		//			},
+		//			url : 'messages.php'
+		//		});
+		console.log($msg.val(), $msg);
 		html += "<div>";
 		html += "<span class='name'>moi : </span>";
 		html += "<span class='message'>" + $msg.val() + "</span>";
@@ -39,12 +39,12 @@
 		e.preventDefault();
 	});
 
-	function discution(user, message,date){
+	function discution(user, message, date) {
 		$content = $('.content'),
-	
-		html = "<div>";
-		html += "<span class='name'>"+ user +" a </span>";
-		html += "<span class='name'>"+ date +" --> </span>";
+
+			html = "<div>";
+		html += "<span class='name'>" + user + " a </span>";
+		html += "<span class='name'>" + date + " --> </span>";
 		html += "<span class='message'>" + message + "</span>";
 		html += "</div";
 
@@ -52,25 +52,25 @@
 
 	}
 
-	setInterval(function(){
-		var html = '';
-		irc.ajax({
-			method:'get',
-			url:'messages.php',
-			
-		success: function(donnees){
-				console.log(donnees);
+	// setInterval(function () {
+	// 	var html = '';
+	// 	irc.ajax({
+	// 		method: 'get',
+	// 		url: 'messages.php',
 
-				if(donnees.data.length>0){
-					discution(donnees.data[0].user,
-							donnees.data[0].text,
-							donnees.data[0].date);
-				}
-			}
-		}); 
-		
+	// 		success: function (donnees) {
+	// 			console.log(donnees);
 
-	},5000);
+	// 			if (donnees.data.length > 0) {
+	// 				discution(donnees.data[0].user,
+	// 					donnees.data[0].text,
+	// 					donnees.data[0].date);
+	// 			}
+	// 		}
+	// 	});
+
+
+	// }, 5000);
 
 })(jQuery);
 

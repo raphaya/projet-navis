@@ -1,8 +1,9 @@
 #lechat{
-	height: 90vh;
-	display: block;
+	height: 85vh;
+	display: none;
 	padding-left: 0;
 	padding-right: 0;
+    background-color: #222222;
 }
 
 .affichage{

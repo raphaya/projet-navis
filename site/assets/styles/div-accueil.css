@@ -1,3 +1,54 @@
 #div-accueil{
   display: block;
+	left: 0;
+	top: 0;
+	max-height: 85vh;
+	overflow-y: scroll;
+	overflow-x: auto;
+	margin-top: 0px;
+}
+
+.div-pilotes img {
+	max-width: 200px;
+	max-height: 500px;
+  padding: 2%;
+}
+.text-accueil{
+  margin-top: 7%;
+  color: #9d9d9d;
+}
+.div-pilotes{
+  margin-top: 150px;
+}
+ .div-pilotes::before{
+    background: #c59216;
+    box-shadow: 0px 0px 10px 1px #c59216;
+ }
+ #img-dps{
+   margin-top: 50%;
+ }
+ #img-heal{
+   margin-top: 30%;
+ }
+#img-tank{
+   margin-top: 60%;
+ }
+#sheriff .titre{
+  text-align: left;
+}
+#bandit .titre{
+  text-align: left;
+}
+#salvador .titre{
+  text-align: center;
+}
+.titre{
+  font-size: 30px;
+}
+
+#bandit{
+background: url("../images/nebula.png")
+}
+#sheriff{
+background: url("../images/planet-modif.png") no-repeat center
 }

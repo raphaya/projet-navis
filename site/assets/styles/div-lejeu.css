@@ -1,4 +1,4 @@
-#div-jeu{
-  display: none;
-  max-height: 90vh;
+#div-jeu {
+	display: block;
+	max-height: 85vh;
 }
