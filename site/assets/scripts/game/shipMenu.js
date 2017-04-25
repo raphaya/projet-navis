@@ -29,19 +29,20 @@ var shipState = {
             };
             vaisseau.alpha = 1;
 
-            healthText = game.add.text(500, game.world.height - 710, 'santé', { font: '25px Comic sans', fill: '#FFFFFF' });
-            healthBar = this.game.add.sprite(580, game.world.height - 710, 'healthBar');
+            healthText = game.add.text(500, game.world.height - 710, 'health', { font: '25px Comic sans', fill: '#FFFFFF' });
+            healthBar = this.game.add.sprite(590, game.world.height - 710, 'healthBar');
             healthBar.scale.setTo(0.1);
             healthBar.scale.x = ship.maxHealth / 150;
 
-            dammageText = game.add.text(500, game.world.height - 660, 'dégâts', { font: '25px Comic sans', fill: '#FFFFFF' });
-            dammageBar = this.game.add.sprite(580, game.world.height - 660, 'expBar');
+            dammageText = game.add.text(500, game.world.height - 660, 'damage ', { font: '25px Comic sans', fill: '#FFFFFF' });
+            dammageBar = this.game.add.sprite(590, game.world.height - 660, 'expBar');
             dammageBar.scale.setTo(0.1);
-            dammageBar.scale.x = ship.damage / 50;
+            dammageBar.scale.x = (ship.damage /  ship.fireRate) * 10;
 
 
-            speedText = game.add.text(500, game.world.height - 610, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
-            speedBar = this.game.add.sprite(580, game.world.height - 610, 'speedBar');
+
+            speedText = game.add.text(500, game.world.height - 610, 'speed', { font: '25px Comic sans', fill: '#FFFFFF' });
+            speedBar = this.game.add.sprite(590, game.world.height - 610, 'speedBar');
             speedBar.scale.setTo(0.1);
             speedBar.scale.x = ship.speed / 500;
 
@@ -79,7 +80,7 @@ var shipState = {
                 collision: '',
                 scaleSkin: 0.14,
                 scaleIcone: 0.08,
-                damage: 4,
+                damage: 7,
                 maxHealth: 75,
                 fireRate: 250,
                 speed: 550,
@@ -88,18 +89,19 @@ var shipState = {
 
             heal.alpha = 1;
 
-            healthText = game.add.text(500, game.world.height - 490, 'santé', { font: '25px Comic sans', fill: '#FFFFFF' });
-            healthBar = this.game.add.sprite(580, game.world.height - 490, 'healthBar');
+            healthText = game.add.text(500, game.world.height - 490, 'health', { font: '25px Comic sans', fill: '#FFFFFF' });
+            healthBar = this.game.add.sprite(590, game.world.height - 490, 'healthBar');
             healthBar.scale.setTo(0.1);
             healthBar.scale.x = ship.maxHealth / 150;
 
-            dammageText = game.add.text(500, game.world.height - 440, 'dégâts', { font: '25px Comic sans', fill: '#FFFFFF' });
-            dammageBar = this.game.add.sprite(580, game.world.height - 440, 'expBar');
+            dammageText = game.add.text(500, game.world.height - 440, 'damage ', { font: '25px Comic sans', fill: '#FFFFFF' });
+            dammageBar = this.game.add.sprite(590, game.world.height - 440, 'expBar');
             dammageBar.scale.setTo(0.1);
-            dammageBar.scale.x = ship.damage / 50;
+            dammageBar.scale.x = (ship.damage /  ship.fireRate) * 10 ;
 
-            speedText = game.add.text(500, game.world.height - 390, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
-            speedBar = this.game.add.sprite(580, game.world.height - 390, 'speedBar');
+
+            speedText = game.add.text(500, game.world.height - 390, 'speed', { font: '25px Comic sans', fill: '#FFFFFF' });
+            speedBar = this.game.add.sprite(590, game.world.height - 390, 'speedBar');
             speedBar.scale.setTo(0.1);
             speedBar.scale.x = ship.speed / 500;
 
@@ -139,7 +141,7 @@ var shipState = {
                 collision: collisionHandlerShield,
                 scaleSkin: 0.16,
                 scaleIcone: 0.08,
-                damage: 8,
+                damage: 15,
                 maxHealth: 225,
                 fireRate: 400,
                 speed: 300,
@@ -148,18 +150,18 @@ var shipState = {
 
             tank.alpha = 1;
 
-            healthText = game.add.text(500, game.world.height - 260, 'santé', { font: '25px Comic sans', fill: '#FFFFFF' });
-            healthBar = this.game.add.sprite(580, game.world.height - 260, 'healthBar');
+            healthText = game.add.text(500, game.world.height - 260, 'health', { font: '25px Comic sans', fill: '#FFFFFF' });
+            healthBar = this.game.add.sprite(590, game.world.height - 260, 'healthBar');
             healthBar.scale.setTo(0.1);
             healthBar.scale.x = ship.maxHealth / 150;
 
-            dammageText = game.add.text(500, game.world.height - 210, 'dégâts', { font: '25px Comic sans', fill: '#FFFFFF' });
-            dammageBar = this.game.add.sprite(580, game.world.height - 210, 'expBar');
+            dammageText = game.add.text(500, game.world.height - 210, 'damage ', { font: '25px Comic sans', fill: '#FFFFFF' });
+            dammageBar = this.game.add.sprite(590, game.world.height - 210, 'expBar');
             dammageBar.scale.setTo(0.1);
-            dammageBar.scale.x = ship.damage / 50;
+            dammageBar.scale.x = (ship.damage /  ship.fireRate) * 10;
 
-            speedText = game.add.text(500, game.world.height - 160, 'vitesse', { font: '25px Comic sans', fill: '#FFFFFF' });
-            speedBar = this.game.add.sprite(580, game.world.height - 160, 'speedBar');
+            speedText = game.add.text(500, game.world.height - 160, 'speed', { font: '25px Comic sans', fill: '#FFFFFF' });
+            speedBar = this.game.add.sprite(590, game.world.height - 160, 'speedBar');
             speedBar.scale.setTo(0.1);
             speedBar.scale.x = ship.speed / 500;
 
