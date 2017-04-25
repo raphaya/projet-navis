@@ -1,6 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<div class="container">
 		<div class="row content-ajax" id="div-galerie">
+<!-- 			<div id="titre-content" class="container"> -->
+<!-- 				<span>Classement</span> -->
+<!-- 			</div> -->
 			<table id="table-galerie">
 				
 				<tbody id="contenu-galerie">
