@@ -1,0 +1,32 @@
+[
+		{
+			"img": "<img src='../assets/images/wingship.png' alt=''>",
+			"titre": "PRÒSKOPOS",
+			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
+		},
+		{
+			"img": "<img src='../assets/images/ennemi.png' alt=''>",
+			"titre": "STÒLOS",
+			"texte": "<p>Ils constituent l'atout principal de la flotte alien.</p><p>Construit en très grand nombre, ils vous paraîtront venir par vagues infinies.</p><p>Ils ne se déplacent que très rarement seuls, mais leurs attaquent gagneront en intensité au fur et à mesure que vous détruirez les autres STÒLOS.</p><p>De ce fait, bien que peu mobile, et ne faisant que peu de dégats, leur vitesse peu rapidement devenir très élevée.</p><p>Attention donc à bien gérer vos priorités en présence de ces ennemis.</p>"
+		},
+		{
+			"img": "<img src='../assets/images/evilboss2.png' alt=''>",
+			"titre": "ALOGÀKI",
+			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
+		},
+		{
+			"img": "<img src='../assets/images/enemyMotherDrone.png' alt=''>",
+			"titre": "DIMIOURGÒS",
+			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
+		},
+		{
+			"img": "<img src='../assets/images/wingship.png' alt=''>",
+			"titre": "KIFÌNAS",
+			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
+		},
+		{
+			"img": "<img src='../assets/images/wingship.png' alt=''>",
+			"titre": "EPIKEFALÌS",
+			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
+		}
+]

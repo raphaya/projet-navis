@@ -35,3 +35,23 @@
 .img-galerie{
 	text-align: center;
 }
+
+.ship{
+	width: 25%;
+}
+
+.description{
+	width: 75%;
+
+}
+.description p{
+	font-size: 18px;
+	color: #9d9d9d;
+}
+.description .titre{
+	color: white;
+}
+#table-galerie{
+	margin-top: 50px;
+	/*background: url("../images/nebula.png") no-repeat*/
+}
