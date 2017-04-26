@@ -12,21 +12,21 @@
 		{
 			"img": "<img src='../assets/images/evilboss2.png' alt=''>",
 			"titre": "ALOGÀKI",
-			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
+			"texte": "<p>L'objectif de cet ennemi, est de vous détruire coûte que coûte.</p><p>N'étant pas armé, leur seul moyen d'y parvenir est de vous rentrer dedans.</p><p>Ils sont donc très rapide, causent des dégats importants, et ne vous lacheront qu'à leur déstruction, ou en se perdant dans l'espace.</p><p>Ils sont aussi capable de changer de direction extremment rapidement afin de vous surprendre.</p><p>Très faible individuellement car très fragile, ils arrivent toujours en grand nombre afin de palier à leur faiblesse.</p>"
 		},
 		{
 			"img": "<img src='../assets/images/enemyMotherDrone.png' alt=''>",
 			"titre": "DIMIOURGÒS",
-			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
+			"texte": "<p>Un vaisseau qui peu paraître pacifique car il ne vous attaquera jamais directement, mais il n'est pas à sous-estimer.</p><p>Très peu mobile, mais très résistant, il contient un stock de pièce conséquent lui permettant de fabriquer des drones à la chaîne.</p><p>Drones qu'il enverra en combat dès qu'un autre sera détruit.</p><p>Il ne se déplace que très rarement en groupe car suffisemment puissant à lui seul.</p>"
 		},
 		{
-			"img": "<img src='../assets/images/wingship.png' alt=''>",
+			"img": "<img src='../assets/images/roundysh.png' alt=''>",
 			"titre": "KIFÌNAS",
 			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
 		},
 		{
-			"img": "<img src='../assets/images/wingship.png' alt=''>",
+			"img": "<img src='../assets/images/enemyBoss.png' alt=''>",
 			"titre": "EPIKEFALÌS",
-			"texte": "<p>Le drone fabriqué par le DIMIOURGÒS.</p><p>Il fonctionne de manière complétement automatique.</p><p>Son programme lui permet de suivre son ennemi sans relache et de lui tirer régulièrement dessus.</p><p>Plutôt faible car peu résistant et ne causant que peu de dégats, sa taille et son remplacement continue peuvent rapidement devenir un problème.</p>"
+			"texte": "<p>Un des vaisseau mère de la flotte alien, il commande une partie des troupes et coordonne les attaques.</p><p>Extremment puissant, extremment résistant, mais peu mobile.</p><p>Il sera très souvent accompagné d'autres vaisseaux pour augmenter sa force de frappe.</p><p>Une de ses attaques permet de couvrir la zone de combat de projectiles limitant ainsi grandement les déplacements.</p><p>Son autre attaque est une rafale de tirs très puissante.</p><p>Il peut aussi combiner ses 2 attaques pour augmenter ses chances de vous toucher et de vous détruire.</p>"
 		}
 ]

@@ -14,10 +14,7 @@
 
 		});
 	};
-
 	$('#btn-accueil').click(patate);
-
-
 
 	$('#btn-galerie').click(function () {
 		$.ajax({
@@ -67,8 +64,10 @@
 		});
 
 		$.getJSON('assets/content/communaute.json', function (data) {
+			var i = 1;
 			$.each(data, function (index, d) {
-				$('#contenu-commu').append('<tr><td class="col-xs-2">' + d.id + '</td><td class="col-xs-8">' + d.name + '</td><td class="col-xs-2">' + d.score + '</td></tr>');
+				$('#contenu-commu').append('<tr><td class="col-xs-2">' + i + '</td><td class="col-xs-8">' + d.name + '</td><td class="col-xs-2">' + d.score + '</td></tr>');
+				i++;
 			});
 		});
 	});
