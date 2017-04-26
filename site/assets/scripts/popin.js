@@ -29,7 +29,11 @@
 		formRegister.style.display = "none";
 		formRecup.style.display = "none";
 	});
-
+	$(message).click(function () {
+		formConnect.style.display = "block";
+		formRegister.style.display = "none";
+		formRecup.style.display = "none";
+	});
 	$(btnRegister).click(function () {
 		formConnect.style.display = "none";
 		formRegister.style.display = "block";

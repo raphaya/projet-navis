@@ -55,3 +55,10 @@ background: url("../images/nebula-violet.jpg") no-repeat
 #salvador{
 background: url("../images/nebula-orange.jpg") no-repeat 
 }
+#salvador .text-accueil{
+  margin-left: 35px;
+  margin-top: 35px; 
+}
+#bandit .text-accueil{
+  margin-left: 25px;
+}
