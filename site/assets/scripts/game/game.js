@@ -327,9 +327,6 @@ var fireButton,
                     game.physics.arcade.overlap(enemiesKamikaze, specials, collisionHandlerShield, null, this);
                     game.physics.arcade.overlap(droneBullets, specials, collisionHandlerShield, null, this);
                     break;
-                case "heal":
-                    //game.physics.arcade.overlap(specials, enemies, ship.collision, null, this);
-                    break;
             }
 
             game.physics.arcade.overlap(bullets, enemies1, collisionHandler, null, this);

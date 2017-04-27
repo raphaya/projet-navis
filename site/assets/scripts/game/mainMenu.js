@@ -20,7 +20,7 @@ var mainState = {
 
         start.events.onInputOver.add(function () {
             start.alpha = 1;
-        }, this)
+        }, this);
 
         start.events.onInputUp.add(function () {
             game.state.start('ship');
@@ -28,18 +28,18 @@ var mainState = {
 
         start.events.onInputOut.add(function () {
             start.alpha = 0.5;
-        }, this)
+        }, this);
 
 
 
 
         options.events.onInputOver.add(function () {
             options.alpha = 1;
-        }, this)
+        }, this);
 
         options.events.onInputOut.add(function () {
             options.alpha = 0.5;
-        }, this)
+        }, this);
 
         options.events.onInputUp.add(function () {
             game.state.start('ship');
@@ -49,12 +49,12 @@ var mainState = {
 
         credit.events.onInputOver.add(function () {
             credit.alpha = 1;
-        }, this)
+        }, this);
 
 
         credit.events.onInputOut.add(function () {
             credit.alpha = 0.5;
-        }, this)
+        }, this);
 
         credit.events.onInputUp.add(function () {
             game.state.start('ship');

@@ -156,7 +156,3 @@ function specialHeal() {
         }, 1);
     }
 }
-
-/*function collisionHandlerHeal(special, enemy) {
-
-}*/

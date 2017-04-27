@@ -1,7 +1,7 @@
 var preloadState = {
 
     preload: function () {
-        var loadingBar = this.add.sprite(160, 240, 'loading');
+        var loadingBar = this.add.sprite(900, game.world.height- 400, 'loading');
         loadingBar.anchor.setTo(3, 3);
         this.load.setPreloadSprite(loadingBar);
 
@@ -35,11 +35,17 @@ var preloadState = {
         this.load.image('bulletBoss', 'assets/images/bulletBoss.png');
 
         this.load.image('level1', 'assets/images/level1.png');
+        this.load.image('tuto1', 'assets/images/tuto1.png');
+        this.load.image('tuto2', 'assets/images/tuto2.png');
+        this.load.image('tuto3', 'assets/images/tuto3.png');
 
         this.load.spritesheet('kaboom', 'assets/images/explode.png', 128, 128);
+
+       
+
     },
 
     create: function () {
         game.state.start('mainMenu');
-    }
+    } 
 };
