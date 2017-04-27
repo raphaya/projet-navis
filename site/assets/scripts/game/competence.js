@@ -10,7 +10,7 @@ function fireBullet() {
             bullet.reset(vaisseau.body.x + ship.bulletX, vaisseau.body.y);
             bullet.body.velocity.y = -550;
             bulletTime = game.time.now + ship.fireRate;
-            fireBulletAudio.play();
+            //fireBulletAudio.play();
         }
     }
 }
