@@ -17,7 +17,7 @@
         var $nameContainer = $('#namelabel'),
             $pwdContainer = $('#pwdlabel'),
             $pwdConfirmContainer = $('#confirm-mdplabel'),
-            $mailContainer = $('#maillabel');
+            $mailContainer = $('.maillabel');
 
         var regexLogin = new RegExp('^[a-zA-Z]{1,}'),
             regexMail = /^[\w\.-]{3,20}@[\w.]{3,30}\.[a-zA-Z]{2,10}$/;
