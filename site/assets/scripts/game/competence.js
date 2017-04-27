@@ -37,7 +37,7 @@ function specialDps() {
     if (special) {
         special.reset(vaisseau.body.x + 20, vaisseau.body.y - 20);
         special.body.velocity.y = -300;
-        fireSpecialDpsAudio.play();
+        //fireSpecialDpsAudio.play();
     }
 }
 
@@ -82,7 +82,7 @@ function collisionHandlerSpecial(special, enemy) {
         i += 45;
     }
     special.kill();
-    fireSpecial2DpsAudio.play();
+    //fireSpecial2DpsAudio.play();
 }
 
 function collisionHandlerSpecial2(special2, enemy) {
