@@ -27,7 +27,6 @@
 		//			},
 		//			url : 'messages.php'
 		//		});
-		console.log($msg.val(), $msg);
 		html += "<div>";
 		html += "<span class='name'>moi : </span>";
 		html += "<span class='message'>" + $msg.val() + "</span>";
