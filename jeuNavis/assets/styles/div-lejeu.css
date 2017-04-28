@@ -1,0 +1,8 @@
+#div-jeu {
+	display: block;
+	max-height: 85vh;
+	margin-bottom: 15px;
+}
+#titre-jeu{
+	font-size: 40px;
+}

@@ -1,0 +1,65 @@
+#div-accueil{
+  display: block;
+	left: 0;
+	top: 0;
+	/*max-height: 85vh;
+	overflow-y: scroll;
+	overflow-x: auto;*/
+	margin-top: 0px;
+}
+
+.div-pilotes img {
+	max-width: 200px;
+	max-height: 500px;
+  padding: 2%;
+}
+.text-accueil{
+  margin-top: 7%;
+  color: #9d9d9d;
+}
+.div-pilotes{
+  margin-top: 150px;
+}
+ .div-pilotes::before{
+    background: #c59216;
+    box-shadow: 0px 0px 10px 1px #c59216;
+ }
+ #img-dps{
+   margin-top: 50%;
+ }
+ #img-heal{
+   margin-top: 30%;
+ }
+#img-tank{
+   margin-top: 60%;
+ }
+.titre{
+  font-size: 30px;
+  text-align: left;
+}
+
+#bandit{
+background: url("../images/nebula.png");
+-moz-box-shadow: inset -5px -5px 5px 5px #888;
+-webkit-box-shadow: inset -5px -5px 5px 5px#888;
+box-shadow: inset 0px -5px 5px 5px #000;
+}
+#sheriff{
+background: url("../images/nebula-violet.jpg") no-repeat;
+-moz-box-shadow: inset 0 0 5px 5px #888;
+-webkit-box-shadow: inset 0 0 5px 5px#888;
+box-shadow: inset 0 0 120px 27px #000;
+}
+#salvador{
+background: url("../images/nebula-orange.jpg") no-repeat; 
+-moz-box-shadow: inset 0 0 5px 5px #888;
+-webkit-box-shadow: inset 0 0 5px 5px#888;
+box-shadow: inset 0 0 120px 27px #000;
+}
+#salvador .text-accueil{
+  margin-left: 35px;
+  margin-top: 35px; 
+}
+#bandit .text-accueil{
+  margin-left: 25px;
+}

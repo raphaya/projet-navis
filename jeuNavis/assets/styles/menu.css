@@ -1,0 +1,46 @@
+/* make sidebar nav vertical */ 
+
+@font-face {
+	font-family: "Marines";
+	src: url('../fonts/telemarines1.ttf');
+}
+	@media (min-width: 768px) {
+		.sidebar-nav{
+			background-color: #222222;
+			font-family: 'Marines';
+			font-size: 15px;
+		}
+		.sidebar-nav .navbar .navbar-collapse {
+		padding: 0;
+		background-color: #222222;
+		
+		}
+
+		.sidebar-nav .navbar ul li:before {
+			display: block;
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 5px;
+			max-width: 0;
+			background: #28d244;
+			z-index: 0;
+			transition: all ease .25s;
+		}
+
+		.sidebar-nav .navbar ul li:hover:before {
+			max-width: 10%;
+			transition: all ease .25s;
+            color: green;
+		}
+
+		.sidebar-nav .navbar li a {
+			padding-top: 12px;
+			padding-bottom: 12px;
+
+		}
+        #menu li a:hover{
+            color: #28d244;
+        }
+	}

@@ -1,0 +1,20 @@
+#tableau tbody {
+    display:block;
+    /* max-height:78vh;
+    overflow:auto; */
+    background-color: lightgray;
+
+}
+#tableau thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    color: #d26828;
+    font-weight: bold;
+
+}
+
+#tableau thead, tbody th{
+    background-color: #3c3c3c;
+    color: white;
+}
